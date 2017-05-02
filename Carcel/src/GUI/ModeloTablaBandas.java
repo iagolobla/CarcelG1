@@ -13,7 +13,7 @@ public class ModeloTablaBandas extends AbstractTableModel {
     }
 
     public int getColumnCount() {
-        return 4;
+        return 2;
     }
 
     public int getRowCount() {
