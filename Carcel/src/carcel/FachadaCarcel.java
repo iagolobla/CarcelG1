@@ -1,5 +1,8 @@
 package carcel;
 
+import GUI.FachadaGUI;
+import baseDatos.FachadaBaseDatos;
+
 /*
 Transacciones grupo 1: 1,2,3,4,11,12,13,14,17,24,25,26
 Ventanas implicadas: Presos, Celda, Delitos, Login.
@@ -12,8 +15,8 @@ public class FachadaCarcel {
     private GestionEmpleados ge;
 
     public FachadaCarcel() {
-        fgui = new GUI.FachadaGUI(this);
-        fbd = new baseDatos.FachadaBaseDatos(this);
+        fgui = new FachadaGUI(this);
+        fbd = new FachadaBaseDatos(this);
         ge = new GestionEmpleados(fgui, fbd);
     }
     
