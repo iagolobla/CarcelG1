@@ -1,5 +1,6 @@
 package baseDatos;
 
+import carcel.FachadaCarcel;
 import java.sql.Connection;
 
 public abstract class AbstractDAO {
@@ -10,7 +11,7 @@ public abstract class AbstractDAO {
         return fa;
     }
 
-    public void setFachadaCarcel(carcel.FachadaCarcel fa) {
+    public void setFachadaCarcel(FachadaCarcel fa) {
         this.fa = fa;
     }
 

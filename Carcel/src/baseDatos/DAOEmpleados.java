@@ -1,5 +1,7 @@
 package baseDatos;
 
+import carcel.Administrador;
+import carcel.FachadaCarcel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -7,13 +9,13 @@ import java.sql.SQLException;
 
 public class DAOEmpleados extends AbstractDAO{
 
-    public DAOEmpleados(Connection connection, carcel.FachadaCarcel fa) {
+    public DAOEmpleados(Connection connection, FachadaCarcel fa) {
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
     }
     
     protected carcel.Empleado validarAdmin(String dni, String clave){
-        carcel.Administrador resultado = null;
+        Administrador resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
         ResultSet rsAdministrador;

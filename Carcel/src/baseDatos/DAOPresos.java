@@ -1,5 +1,6 @@
 package baseDatos;
 
+import carcel.Preso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,5 +14,5 @@ public class DAOPresos extends AbstractDAO{
         super.setFachadaCarcel(fa);
     }
     
-    public void insertarPreso(carcel.Preso preso){};
+    public void insertarPreso(Preso preso){};
 }
