@@ -19,4 +19,8 @@ public class GestionPresos {
     protected void nuevoPreso() {
         fgui.nuevoPreso();
     }
+
+    protected void modificarPreso(Preso preso) {
+        fgui.modificarPreso(preso);
+    }
 }

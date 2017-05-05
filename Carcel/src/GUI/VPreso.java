@@ -1,12 +1,19 @@
 package GUI;
 
 import carcel.FachadaCarcel;
+import carcel.Preso;
 
 public class VPreso extends javax.swing.JDialog {
 
     public VPreso(java.awt.Frame parent, boolean modal, FachadaCarcel fa) {
         super(parent, modal);
         initComponents();
+    }
+
+    public VPreso(java.awt.Frame parent, boolean modal, FachadaCarcel fa, Preso preso) {
+        super(parent, modal);
+        initComponents();
+        //Poner los datos de preso en los campos
     }
 
     @SuppressWarnings("unchecked")

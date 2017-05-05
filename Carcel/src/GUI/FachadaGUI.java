@@ -1,9 +1,10 @@
 package GUI;
 
 import carcel.FachadaCarcel;
+import carcel.Preso;
 
 public class FachadaGUI {
-    
+
     private FachadaCarcel fa;
     private VPrincipal vp;
 
@@ -14,25 +15,33 @@ public class FachadaGUI {
 
     public void iniciaVista() {
         VLogin vl;
-        
+
         //vl = new VLogin(vp, true, fa);
         vp.setVisible(true);
         //vl.setVisible(true);
-    } 
-    
+    }
+
     /*-----------------Presos--------------------*/
-    public void iniciaGestionPresos(){
+    public void iniciaGestionPresos() {
         VGestionPresos vgp;
-        
+
         vgp = new VGestionPresos(vp, true, fa);
-        
+
         vgp.setVisible(true);
     }
 
     public void nuevoPreso() {
         VPreso vpr;
+
+        vpr = new VPreso(vp, true, fa);
+
+        vpr.setVisible(true);
+    }
+
+    public void modificarPreso(Preso preso) {
+        VPreso vpr;
         
-        vpr = new VPreso (vp, true, fa);
+        vpr = new VPreso (vp, true, fa, preso);
         
         vpr.setVisible(true);
     }
@@ -40,9 +49,9 @@ public class FachadaGUI {
     /*------------------Celdas------------------*/
     public void iniciaGestionCeldas() {
         VGestionCeldas vgc;
-        
-        vgc = new VGestionCeldas (vp, true, fa);
-        
+
+        vgc = new VGestionCeldas(vp, true, fa);
+
         vgc.setVisible(true);
     }
 }

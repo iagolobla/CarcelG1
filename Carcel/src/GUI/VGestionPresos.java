@@ -1,6 +1,10 @@
 package GUI;
 
+import carcel.Banda;
 import carcel.FachadaCarcel;
+import carcel.Nivel;
+import carcel.Preso;
+import java.sql.Date;
 
 public class VGestionPresos extends javax.swing.JDialog {
     
@@ -22,7 +26,7 @@ public class VGestionPresos extends javax.swing.JDialog {
         EtiquetaNombre = new javax.swing.JLabel();
         CampoNombre = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla_presos = new javax.swing.JTable();
         BotonBuscar = new javax.swing.JButton();
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
@@ -39,8 +43,8 @@ public class VGestionPresos extends javax.swing.JDialog {
 
         EtiquetaNombre.setText("Nombre");
 
-        jTable1.setModel(new ModeloTablaPresos());
-        jScrollPane1.setViewportView(jTable1);
+        tabla_presos.setModel(new ModeloTablaPresos());
+        jScrollPane1.setViewportView(tabla_presos);
 
         BotonBuscar.setText("Buscar");
 
@@ -52,10 +56,20 @@ public class VGestionPresos extends javax.swing.JDialog {
         });
 
         BotonModificar.setText("Modificar");
+        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarActionPerformed(evt);
+            }
+        });
 
         BotonEliminar.setText("Eliminar");
 
         BotonLiberar.setText("Liberar");
+        BotonLiberar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonLiberarActionPerformed(evt);
+            }
+        });
 
         EtiquetaApodo.setText("Apodo");
 
@@ -142,6 +156,14 @@ public class VGestionPresos extends javax.swing.JDialog {
         fa.nuevoPreso();
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
+    private void BotonLiberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLiberarActionPerformed
+        
+    }//GEN-LAST:event_BotonLiberarActionPerformed
+
+    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
+        modificarPreso();
+    }//GEN-LAST:event_BotonModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
@@ -158,6 +180,29 @@ public class VGestionPresos extends javax.swing.JDialog {
     private javax.swing.JLabel EtiquetaNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabla_presos;
     // End of variables declaration//GEN-END:variables
+
+    private void modificarPreso() {
+        if (tabla_presos.getRowCount() > 0){
+            ModeloTablaPresos mtp = (ModeloTablaPresos) tabla_presos.getModel();
+            String DNI = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getDNI();
+            String nombre = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getNombre();
+            String apellido1 = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getApellido1();
+            String apellido2 = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getApellido2();
+            String apodo = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getApodo();
+            Date fechaNacimiento = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getFechaIngreso();
+            Date fechaIngreso = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getFechaIngreso();
+            Date fechaSalida = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getFechaSalida();
+            Banda banda = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getBanda();
+            Nivel agresividad = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getAgresividad();
+            Preso preso = new Preso(DNI, nombre, apellido1, apellido2, apodo, fechaNacimiento, fechaIngreso, fechaSalida, banda, agresividad);
+            fa.modificarPreso(preso);
+        }
+        else{
+            Preso preso = null;
+            fa.modificarPreso(preso);
+        }
+        
+    }
 }

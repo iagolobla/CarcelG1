@@ -37,6 +37,10 @@ public class FachadaCarcel {
         gp.nuevoPreso();
     }
 
+    public void modificarPreso(Preso preso) {
+        gp.modificarPreso(preso);
+    }
+
     /*-----------------Empleados-----------------------------*/
     public Boolean validarAdministrador(String dni, String clave) {
         return ge.validarAdmin(dni, clave);

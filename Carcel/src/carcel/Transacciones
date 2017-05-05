@@ -49,7 +49,7 @@ Desde la Gestión de Presos:
 11.	Insertar una celda
 
 Esta transacción permite a un empleado de tipo administrador insertar una celda. Desde la Gestión de Celdas:
-
+    
 a.	El administrador introduce los datos en los campos requeridos excepto el identificador. 
         Por ejemplo, Plazas, Superficie (m2) y nivel de seguridad.
 b.	El administrador selecciona el botón “Insertar”.
