@@ -1,4 +1,4 @@
-Transacciones grupo 1: 1,2,3,4,11,12,13,14,17,24,25,26
+Transacciones grupo: 1,2,3,4,11,12,13,14,17,24,25,26
 Ventanas implicadas: VPreso, VGestionCeldas, VPrincipal, VLogin.
 
 1.	Autenticación de empleados
@@ -8,7 +8,7 @@ Esta transacción permite a un empleado de tipo administrador autenticarse en el
 a.	El sistema solicita el DNI y la contraseña al empleado.
 b.	Si la información suministrada por el empleado es correcta y es un empleado de tipo administrador se le permite 
         usar la funcionalidad a la que intenta acceder, en caso contrario se informa de un error en las credenciales.
- 
+
 2.	Insertar un preso
 
 Esta transacción permite a un empleado de tipo administrador introducir un preso en el sistema, ya sea nuevo 
@@ -20,7 +20,7 @@ c.	El administrador suministra los datos correspondientes. Tales como DNI, Nombr
         Fecha de Nacimiento, Fecha de Ingreso y nivel de Agresividad.
 d.	El sistema comprueba si ingresó previamente en la cárcel. 	
 e.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como 
-        nula y act  ualiza la información con la introducida en la aplicación. 
+        nula y actualiza la información con la introducida en la aplicación. 
         En caso de ser nuevo simplemente se insertan sus datos en la Base de Datos.
 f.	El administrador introduce la celda donde se inserta. (Debe tener huecos libres)
 
