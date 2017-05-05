@@ -1,0 +1,240 @@
+Transacciones:
+
+El siguiente conjunto de transacciones describen la interacción entre cada uno de los tipos de usuario y el sistema.
+
+1.	Autenticación de empleados
+
+Esta transacción permite a un empleado de tipo administrador autenticarse en el sistema.
+
+1.	El sistema solicita el DNI y la contraseña al empleado.
+2.	Si la información suministrada por el empleado es correcta y es un empleado de tipo administrador se le permite usar la funcionalidad a la que intenta acceder, en caso contrario se informa de un error en las credenciales.
+ 
+2.	Insertar un preso
+
+Esta transacción permite a un empleado de tipo administrador introducir un preso en el sistema, ya sea nuevo o reincidente. Desde la Gestión de Presos:
+
+1.	El administrador pulsa “Insertar”
+2.	El sistema solicita los datos del preso.
+3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional),  Fecha de Nacimiento, Fecha de Ingreso y nivel de Agresividad.
+3.	El sistema comprueba si ingresó previamente en la cárcel. 	
+4.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como nula y actualiza la información con la introducida en la aplicación. En caso de ser nuevo simplemente se insertan sus datos en la Base de Datos.
+5.	El administrador introduce la celda donde se inserta. (Debe tener huecos libres)
+
+3.	Liberar un preso
+
+Esta transacción permite a un empleado de tipo administrador dar de baja a un preso en la cárcel. La información de la estancia del preso en la cárcel se guardará, con fines informativos, hasta que este sea reinsertado en ella. Desde la Gestión de Presos:
+
+1.	El administrador busca al preso por su DNI, Nombre o Apodo.
+2.	El administrador selecciona el preso a liberar y pulsa el botón “Liberar”
+3.	El administrador introduce los datos correspondientes. Como la fecha de salida del preso.
+4.	El sistema desasocia al preso de su celda.
+5.	El sistema desasocia al preso de su banda.
+
+4.	Modificar información de un preso
+
+Esta transacción permite a un empleado de tipo administrador modificar la información de un preso en el sistema. Desde la Gestión de Presos:
+
+1.	El administrador busca al preso por su DNI, Nombre o Apodo.
+2.	El administrador selecciona en la tabla al preso en cuestión y pulsa el botón “Modificar”.
+3.	El administrador modifica los campos deseados.
+4.	El sistema actualiza la información suministrada.
+
+5.	Insertar un administrador en el sistema
+
+Esta transacción permite a un empleado de tipo administrador insertar a un administrador en el sistema. Desde la Gestión de Empleados:
+
+1.	El administrador, dentro de la pestaña de administradores, rellena los campos requeridos. Tales como DNI, Nombre, Teléfono, Dirección, Contraseña, Puesto y Email.
+2.	El sistema inserta a un nuevo Administrador con la información suministrada.
+
+6.	Eliminar un administrador del sistema
+
+Esta transacción permite a un empleado de tipo administrador eliminar a un administrador en el sistema. Desde la Gestión de Empleados:
+
+
+1.	El administrador busca a un administrador determinado por DNI y Nombre.
+2.	El administrador selecciona en la tabla al administrador en cuestión.
+3.	El administrador selecciona el botón de eliminar.
+4.	El sistema actualiza los datos.
+
+7.	Modificar los datos de un administrador del sistema
+
+Esta transacción permite a un empleado de tipo administrador modificar los campos de un administrador del sistema, como por ejemplo su nombre o contraseña. Desde la Gestión de Empleados:
+
+1.	El administrador busca a un administrador determinado.
+2.	El administrador selecciona en la tabla al administrador en cuestión.
+3.	El administrador modifica los campos requeridos y los guarda seleccionando el botón modificar.
+4.	El sistema actualiza los datos.
+
+8.	Insertar un guardia
+
+ Esta transacción permite a un empleado de tipo administrador insertar a un Empleado de tipo Guardia. Desde la Gestión de Empleados:
+
+1.	El administrador rellena los campos necesarios dentro de la pestaña de Guardias. Tales datos como DNI, Nombre, Teléfono, Dirección, Email, Puesto y Agresividad.
+2.	El sistema inserta un nuevo Guardia con los nuevos datos.
+
+9.	Eliminar un guardia
+
+Esta transacción permite a un empleado de tipo administrador dar de baja a un guardia. Desde la Gestión de Empleados:
+
+1.	El administrador buscar a un guardia concreto mediante su DNI y Nombre.
+2.	El administrador selecciona de una tabla al guardia requerido.
+3.	El administrador selecciona la opción de eliminar.
+4.	El sistema actualiza la información.
+
+10.	Modificar la información de un guardia
+
+Esta transacción permite a un empleado de tipo administrador modificar los datos de un empleado. Desde la Gestión de Empleados:
+
+1.	El administrador busca a un guardia concreto mediante su DNI y Nombre.
+2.	El administrador selecciona de una tabla al guardia requerido.
+3.	El administrador modifica los campos deseados y los guarda.
+4.	El sistema actualiza la información del Guardia.
+
+11.	Insertar una celda
+
+Esta transacción permite a un empleado de tipo administrador insertar una celda. Desde la Gestión de Celdas:
+
+1.	El administrador introduce los datos en los campos requeridos excepto el identificador. Por ejemplo, Plazas, Superficie (m2) y nivel de seguridad.
+2.	El administrador selecciona el botón “Insertar”.
+3.	El sistema calcula un identificador de Celda.
+4.	El sistema añade la nueva celda con los datos introducidos.
+
+12.	Eliminar una celda
+
+Esta transacción permite a un empleado de tipo administrador poner una celda fuera de servicio. Solo se podrá realizar la transacción en caso de que no haya ocupantes asignados a la celda en cuestión. Desde la Gestión de Celdas:
+
+1.	El administrador busca una celda mediante su número de celda, plazas y nivel de seguridad.
+2.	El administrador seleccionarla en una tabla la celda en cuestión.
+3.	El administrador selecciona el botón de eliminar.
+4.	El sistema elimina la celda.
+
+13.	Modificar la información de una celda
+
+Esta transacción permite a un empleado de tipo administrador modificar la información de una celda. Desde la Gestión de Celdas:
+
+1.	El administrador busca una celda por su número de celda, de plazas y nivel de seguridad.
+2.	El administrador selecciona en una tabla la celda en cuestión.
+3.	El administrador selecciona el botón “Modificar”.
+4.	El administrador modifica los campos deseados.
+5.	El sistema actualiza los datos de la celda.
+
+14.	Intercambiar los presos de celda
+
+Esta transacción permite a un empleado de tipo administrador seleccionar dos presos de dos celdas diferentes e intercambiarlos de celda. Cabe destacar que si uno de los presos no tiene celda no se puede realizar la transacción.  Desde la Gestión de Presos:
+
+1.	El administrador busca a uno de los presos mediante su código de preso.
+2.	El administrador selecciona al primer preso a intercambiar y pulsa el botón “Modificar”.
+3.	En la pestaña Celda, selecciona la celda ocupada en la que quiere insertar al preso.
+4.	Después de aceptar el aviso de que está intercambiando presos, se le abre una ventana de selección de presos de esa celda.
+5.	El administrador selecciona al segundo preso a intercambiar.
+6.	El sistema intercambia los valores de las celdas de los presos y actualiza la información.
+
+15.	Insertar una banda
+
+Esta transacción permite a un empleado de tipo administrador añadir una banda a la base de datos. Desde la Gestión de Bandas:
+
+1.	El administrador rellena el campo de Tipo de Banda.
+2.	El administrador pulsa el botón “Insertar”.
+3.	El sistema comprueba que el tipo de banda es único.
+4.	El sistema añade la nueva Banda a la Base de Datos.
+
+16.	Eliminar una banda
+
+Esta transacción permite a un empleado de tipo administrador eliminar una banda del sistema. Solo se puede eliminar una banda que no tenga ningún preso en ella. Desde la Gestión de Bandas:
+
+1.	El administrador busca la banda que quiere eliminar mediante su tipo.
+2.	El administrador selecciona en la tabla la banda en cuestión.
+3.	El administrador selecciona la opción de eliminar esa banda, teniendo en cuenta que solo se pueden eliminar si no tienen ningún preso en ella.
+4.	El sistema actualiza la información modificada.
+
+17.	Asociar/Desasociar Preso de una Banda
+
+Esta transacción permite a un empleado de tipo administrador vincular o desvincular a un preso de una banda. Desde la Gestión de Presos:
+
+1.	El administrador, desde la pestaña de Banda, busca la banda por su tipo.
+2.	Selecciona la banda en cuestión y pulsa el botón “Vincular” o ”Desasociar”.
+3.	El sistema actualiza la información del preso.
+
+18.	Modificar los datos de una banda
+
+Esta transacción permite a un empleado de tipo administrador cambiar los valores de los campos de una banda. Desde la Gestión de Bandas:
+
+1.	El administrador busca la banda que quiere modificar mediante el nombre de su tipo.
+2.	El administrador selecciona en la tabla la banda en cuestión y pulsa el botón “Modificar”.
+3.	El administrador modifica los valores pertinentes.
+4.	El sistema actualiza la información de la Banda.
+
+19.	Insertar/Modificar relación entre bandas
+
+Esta transacción permite a un empleado de tipo administrador añadir una relación entre dos bandas, teniendo en cuenta que entre cada dos bandas solo puede existir una única relación. Desde la Gestión de Bandas:
+
+1.	El administrador busca la banda que quiere relacionar con otra mediante el nombre de su tipo.
+2.	El administrador selecciona en la tabla la banda en cuestión y pulsa el botón “Relacionar”.
+3.	El administrador busca otra banda que quiere relacionar con la anterior mediante el nombre de su tipo.
+4.	El administrador selecciona en la tabla la otra banda en cuestión.
+5.	El administrador selecciona el tipo de relación (Neutral (Por defecto), Amistad, Enemistad, etc), y selecciona la opción de aceptar.
+6.	El sistema actualiza la información modificada.
+
+20.	Insertar una visita
+
+Esta transacción permite a un empleado de tipo administrador añadir una entrada al registro de visitantes. Desde la Gestión de Visitas:
+
+1.	El administrador rellena los campos requeridos como DNI preso, DNI visitante, Nombre Visitante y Relación entre ambos.
+2.	El administrador pulsa el botón “Insertar”.
+3.	El sistema inserta como fecha actual la fecha de visita.
+4.	El sistema actualiza los datos en la base de datos.
+
+21.	Modificar una visita
+
+Esta transacción permite a un empleado de tipo administrador modificar la información de un visitante. Desde la Gestión de Visitas:
+
+1.	El administrador busca una Visita mediante el DNI, Nombre o apodo en el preso y el DNI o Nombre del visitante.
+2.	El administrador selecciona en la tabla la visita en cuestión.
+3.	El administrador modifica los datos de la visita pertinentes y pulsa el botón “Modificar”.
+4.	El sistema actualiza la información.
+
+22.	Insertar un trapicheo
+
+Esta transacción permite a un empleado de tipo administrador introducir la información de un trapicheo. Desde la Gestión de Trapicheos:
+
+1.	El administrador selecciona el botón Insertar.
+2.	El administrador Busca a ambos presos involucrados a través de sus DNI, Nombre y apodo.
+3.	El administrador, en la pestaña de información general Introduce la fecha y el objeto en cuestión. (Junto con una descripción(?))
+4.	El administrador selecciona la opción de guardar el trapicheo en la base de datos.
+5.	El sistema inserta el trapicheo con sus datos en la base de datos.
+
+23.	Modificar la información de un trapicheo
+
+Esta transacción permite a un empleado de tipo administrador cambiar los datos sobre un trapicheo, por ejemplo en caso de un error al introducir los datos. Desde la Gestión de Trapicheos:
+
+1.	El administrador busca el trapicheo determinado por los DNIs y nombres o apodos de los involucrados, así como por la fecha.
+2.	El administrador selecciona en la tabla el trapicheo en cuestión y selecciona el botón “Modificar”.
+3.	El administrador modifica la información pertinente.
+4.	El sistema actualiza la información modificada.
+
+24.	Insertar un delito
+
+Esta transacción permite a un empleado de tipo administrador insertar un delito cometido por un preso. Desde la Gestión de Presos:
+
+1.	El administrador, desde la pestaña de Cargos, rellena los campos requeridos para insertar un delito, Tipo de delito (Asesinato, Robo…), Descripción e Intensidad.
+2.	El administrador selecciona el botón “Insertar”.
+3.	El sistema inserta el delito asociado al preso en cuestión.
+
+25.	Eliminar un delito
+
+Esta transacción permite a un empleado de tipo administrador eliminar un delito cometido por un preso. Desde la Gestión de Presos:
+
+1.	El administrador, desde la pestaña de Cargos busca el delito en cuestión.
+2.	El administrador selecciona en la tabla el delito en cuestión.
+3.	El administrador selecciona la opción de eliminar el delito la base de datos.
+4.	El sistema actualiza la información en la base de datos.
+
+26.	Modificar los datos de un delito
+
+Esta transacción permite a un empleado de tipo administrador modificar los datos de un delito cometido por un preso, por ejemplo en caso de un error al introducir los datos. Desde la Gestión de Presos:
+
+1.	El administrador, desde la pestaña de Cargos, busca el delito.
+2.	El administrador selecciona en la tabla el delito en cuestión y selecciona el botón “Modificar”.
+3.	El administrador modifica los datos del delito en la base de datos y selecciona la opción de guardar.
+4.	El sistema actualiza la información modificada en la base de datos.
+
