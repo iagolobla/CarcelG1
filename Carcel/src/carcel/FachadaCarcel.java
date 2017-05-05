@@ -3,21 +3,19 @@ package carcel;
 import GUI.FachadaGUI;
 import baseDatos.FachadaBaseDatos;
 
-/*
-Transacciones grupo 1: 1,2,3,4,11,12,13,14,17,24,25,26
-Ventanas implicadas: Presos, Celda, Delitos, Login.
-*/
-
 public class FachadaCarcel {
     private GUI.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
     private GestionEmpleados ge;
     private GestionPresos gp;
+    private GestionCeldas gc;
 
     public FachadaCarcel() {
         fgui = new FachadaGUI(this);
         fbd = new FachadaBaseDatos(this);
         ge = new GestionEmpleados(fgui, fbd);
+        gp = new GestionPresos(fgui, fbd);
+        gc = new GestionCeldas(fgui, fbd);
     }
     
     public static void main(String[] args) {
@@ -29,12 +27,19 @@ public class FachadaCarcel {
     public void iniciaInterfazUsuario() {
         fgui.iniciaVista();
     }
-
+    
+    /*-----------------Presos--------------------------------*/
     public void iniciaGestionPresos() {
         gp.iniciaGestionPresos();
     }
 
+    /*-----------------Empleados-----------------------------*/
     public Boolean validarAdministrador(String dni, String clave) {
         return ge.validarAdmin(dni, clave);
+    }
+
+    /*-----------------Celdas-------------------------------*/
+    public void iniciaGestionCeldas() {
+        gc.iniciaGestionCeldas();
     }
 }
