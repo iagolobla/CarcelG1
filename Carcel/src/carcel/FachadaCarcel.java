@@ -1,5 +1,10 @@
 package carcel;
 
+/*
+Transacciones grupo 1: 1,2,3,4,11,12,13,14,17,24,25,26
+Ventanas implicadas: Presos, Celda, Delitos, Login.
+*/
+
 public class FachadaCarcel {
     
     private GUI.FachadaGUI fgui;
@@ -14,7 +19,6 @@ public class FachadaCarcel {
     
     public static void main(String[] args) {
         FachadaCarcel fa;
-        
         fa = new FachadaCarcel();
         fa.iniciaInterfazUsuario();
     }
