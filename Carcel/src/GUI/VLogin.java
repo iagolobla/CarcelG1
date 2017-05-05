@@ -33,6 +33,7 @@ public class VLogin extends javax.swing.JDialog {
         btnAcceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Login");
 
         Logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/Logo-full-1.png"))); // NOI18N
         Logo.setLabelFor(Logo);
