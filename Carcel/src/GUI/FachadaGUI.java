@@ -20,6 +20,7 @@ public class FachadaGUI {
         //vl.setVisible(true);
     } 
     
+    /*-----------------Presos--------------------*/
     public void iniciaGestionPresos(){
         VGestionPresos vgp;
         
@@ -28,19 +29,20 @@ public class FachadaGUI {
         vgp.setVisible(true);
     }
 
-    public void iniciaGestionCeldas() {
-        VGestionCeldas vgc;
-        
-        vgc = new VGestionCeldas (vp, true, fa);
-        
-        vgc.setVisible(true);
-    }
-
     public void nuevoPreso() {
         VPreso vpr;
         
         vpr = new VPreso (vp, true, fa);
         
         vpr.setVisible(true);
+    }
+
+    /*------------------Celdas------------------*/
+    public void iniciaGestionCeldas() {
+        VGestionCeldas vgc;
+        
+        vgc = new VGestionCeldas (vp, true, fa);
+        
+        vgc.setVisible(true);
     }
 }
