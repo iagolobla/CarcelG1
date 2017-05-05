@@ -20,7 +20,9 @@ o reincidente. Desde la Gestión de Presos:
 3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional),  
         Fecha de Nacimiento, Fecha de Ingreso y nivel de Agresividad.
 3.	El sistema comprueba si ingresó previamente en la cárcel. 	
-4.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como nula y actualiza la información con la introducida en la aplicación. En caso de ser nuevo simplemente se insertan sus datos en la Base de Datos.
+4.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como 
+        nula y actualiza la información con la introducida en la aplicación. 
+        En caso de ser nuevo simplemente se insertan sus datos en la Base de Datos.
 5.	El administrador introduce la celda donde se inserta. (Debe tener huecos libres)
 
 3.	Liberar un preso
@@ -57,7 +59,9 @@ Esta transacción permite a un empleado de tipo administrador insertar una celda
 
 12.	Eliminar una celda
 
-Esta transacción permite a un empleado de tipo administrador poner una celda fuera de servicio. Solo se podrá realizar la transacción en caso de que no haya ocupantes asignados a la celda en cuestión. Desde la Gestión de Celdas:
+Esta transacción permite a un empleado de tipo administrador poner una celda fuera de servicio. 
+Solo se podrá realizar la transacción en caso de que no haya ocupantes asignados a la celda en cuestión. 
+Desde la Gestión de Celdas:
 
 1.	El administrador busca una celda mediante su número de celda, plazas y nivel de seguridad.
 2.	El administrador seleccionarla en una tabla la celda en cuestión.
@@ -66,7 +70,8 @@ Esta transacción permite a un empleado de tipo administrador poner una celda fu
 
 13.	Modificar la información de una celda
 
-Esta transacción permite a un empleado de tipo administrador modificar la información de una celda. Desde la Gestión de Celdas:
+Esta transacción permite a un empleado de tipo administrador modificar la información de una celda. 
+Desde la Gestión de Celdas:
 
 1.	El administrador busca una celda por su número de celda, de plazas y nivel de seguridad.
 2.	El administrador selecciona en una tabla la celda en cuestión.
@@ -76,7 +81,9 @@ Esta transacción permite a un empleado de tipo administrador modificar la infor
 
 14.	Intercambiar los presos de celda
 
-Esta transacción permite a un empleado de tipo administrador seleccionar dos presos de dos celdas diferentes e intercambiarlos de celda. Cabe destacar que si uno de los presos no tiene celda no se puede realizar la transacción.  Desde la Gestión de Presos:
+Esta transacción permite a un empleado de tipo administrador seleccionar dos presos de dos celdas diferentes e 
+intercambiarlos de celda. Cabe destacar que si uno de los presos no tiene celda no se puede realizar la transacción.  
+Desde la Gestión de Presos:
 
 1.	El administrador busca a uno de los presos mediante su código de preso.
 2.	El administrador selecciona al primer preso a intercambiar y pulsa el botón “Modificar”.
@@ -87,7 +94,8 @@ Esta transacción permite a un empleado de tipo administrador seleccionar dos pr
 
 17.	Asociar/Desasociar Preso de una Banda
 
-Esta transacción permite a un empleado de tipo administrador vincular o desvincular a un preso de una banda. Desde la Gestión de Presos:
+Esta transacción permite a un empleado de tipo administrador vincular o desvincular a un preso de una banda.
+Desde la Gestión de Presos:
 
 1.	El administrador, desde la pestaña de Banda, busca la banda por su tipo.
 2.	Selecciona la banda en cuestión y pulsa el botón “Vincular” o ”Desasociar”.
@@ -95,7 +103,8 @@ Esta transacción permite a un empleado de tipo administrador vincular o desvinc
 
 24.	Insertar un delito
 
-Esta transacción permite a un empleado de tipo administrador insertar un delito cometido por un preso. Desde la Gestión de Presos:
+Esta transacción permite a un empleado de tipo administrador insertar un delito cometido por un preso.
+Desde la Gestión de Presos:
 
 1.	El administrador, desde la pestaña de Cargos, rellena los campos requeridos para insertar un delito, Tipo de delito (Asesinato, Robo…), Descripción e Intensidad.
 2.	El administrador selecciona el botón “Insertar”.
@@ -103,7 +112,8 @@ Esta transacción permite a un empleado de tipo administrador insertar un delito
 
 25.	Eliminar un delito
 
-Esta transacción permite a un empleado de tipo administrador eliminar un delito cometido por un preso. Desde la Gestión de Presos:
+Esta transacción permite a un empleado de tipo administrador eliminar un delito cometido por un preso.
+Desde la Gestión de Presos:
 
 1.	El administrador, desde la pestaña de Cargos busca el delito en cuestión.
 2.	El administrador selecciona en la tabla el delito en cuestión.
@@ -112,7 +122,8 @@ Esta transacción permite a un empleado de tipo administrador eliminar un delito
 
 26.	Modificar los datos de un delito
 
-Esta transacción permite a un empleado de tipo administrador modificar los datos de un delito cometido por un preso, por ejemplo en caso de un error al introducir los datos. Desde la Gestión de Presos:
+Esta transacción permite a un empleado de tipo administrador modificar los datos de un delito cometido por un preso,
+por ejemplo en caso de un error al introducir los datos. Desde la Gestión de Presos:
 
 1.	El administrador, desde la pestaña de Cargos, busca el delito.
 2.	El administrador selecciona en la tabla el delito en cuestión y selecciona el botón “Modificar”.
