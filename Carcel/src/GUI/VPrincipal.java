@@ -251,7 +251,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void MenuPresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPresosActionPerformed
-
+        fa.iniciaGestionPresos();
     }//GEN-LAST:event_MenuPresosActionPerformed
 
     private void MenuCeldasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCeldasActionPerformed
@@ -305,7 +305,8 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-public void BuscarTrapicheos(){
+
+    public void BuscarTrapicheos(){
     ModeloTablaTrapicheos m;
     
     m= (ModeloTablaTrapicheos) TablaTrapicheos.getModel();

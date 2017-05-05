@@ -1,11 +1,17 @@
 package GUI;
 
-public class VGestionPresos extends javax.swing.JDialog {
+import carcel.FachadaCarcel;
 
-    public VGestionPresos(java.awt.Frame parent, boolean modal) {
+public class VGestionPresos extends javax.swing.JDialog {
+    
+    private FachadaCarcel fa;
+
+    public VGestionPresos(java.awt.Frame parent, boolean modal, FachadaCarcel fa) {
         super(parent, modal);
+        this.fa = fa;
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

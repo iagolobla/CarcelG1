@@ -1,11 +1,13 @@
 package GUI;
 
+import carcel.FachadaCarcel;
+
 public class FachadaGUI {
     
-    private carcel.FachadaCarcel fa;
+    private FachadaCarcel fa;
     private VPrincipal vp;
 
-    public FachadaGUI(carcel.FachadaCarcel fa) {
+    public FachadaGUI(FachadaCarcel fa) {
         this.fa = fa;
         this.vp = new VPrincipal(fa);
     }
@@ -13,8 +15,16 @@ public class FachadaGUI {
     public void iniciaVista() {
         VLogin vl;
         
-        vl = new VLogin(vp, true, fa);
+        //vl = new VLogin(vp, true, fa);
         vp.setVisible(true);
-        vl.setVisible(true);
+        //vl.setVisible(true);
     } 
+    
+    public void iniciaGestionPresos(){
+        VGestionPresos vgp;
+        
+        vgp = new VGestionPresos(vp, true, fa);
+        
+        vgp.setVisible(true);
+    }
 }
