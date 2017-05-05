@@ -9,7 +9,6 @@ Ventanas implicadas: Presos, Celda, Delitos, Login.
 */
 
 public class FachadaCarcel {
-    
     private GUI.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
     private GestionEmpleados ge;
