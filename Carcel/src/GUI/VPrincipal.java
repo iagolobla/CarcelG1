@@ -255,7 +255,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_MenuPresosActionPerformed
 
     private void MenuCeldasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCeldasActionPerformed
-
+        fa.iniciaGestionCeldas();
     }//GEN-LAST:event_MenuCeldasActionPerformed
 
     private void MenuBandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBandasActionPerformed

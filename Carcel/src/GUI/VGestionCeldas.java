@@ -1,10 +1,14 @@
 package GUI;
 
+import carcel.FachadaCarcel;
+
 public class VGestionCeldas extends javax.swing.JDialog {
 
-    /** Creates new form VGestionCeldas */
-    public VGestionCeldas(java.awt.Frame parent, boolean modal) {
+    private FachadaCarcel fa;
+    
+    public VGestionCeldas(java.awt.Frame parent, boolean modal, FachadaCarcel fa) {
         super(parent, modal);
+        this.fa = fa;
         initComponents();
     }
 

@@ -27,4 +27,12 @@ public class FachadaGUI {
         
         vgp.setVisible(true);
     }
+
+    public void iniciaGestionCeldas() {
+        VGestionCeldas vgc;
+        
+        vgc = new VGestionCeldas (vp, true, fa);
+        
+        vgc.setVisible(true);
+    }
 }
