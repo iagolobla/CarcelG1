@@ -12,10 +12,12 @@ public class ModeloTablaPresos extends AbstractTableModel {
         this.presos = new ArrayList<Preso>();
     }
 
+    @Override
     public int getColumnCount() {
         return 10;
     }
 
+    @Override
     public int getRowCount() {
         return presos.size();
     }
