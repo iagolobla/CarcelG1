@@ -2,9 +2,6 @@ package GUI;
 
 public class VGestionPresos extends javax.swing.JDialog {
 
-    /**
-     * Creates new form VGestionPresos
-     */
     public VGestionPresos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -35,17 +32,7 @@ public class VGestionPresos extends javax.swing.JDialog {
 
         EtiquetaNombre.setText("Nombre");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        jTable1.setModel(new ModeloTablaPresos());
         jScrollPane1.setViewportView(jTable1);
 
         BotonBuscar.setText("Buscar");
