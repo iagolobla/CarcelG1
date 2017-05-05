@@ -7,7 +7,7 @@ import carcel.Preso;
 import java.sql.Date;
 
 public class VGestionPresos extends javax.swing.JDialog {
-    
+
     private FachadaCarcel fa;
 
     public VGestionPresos(java.awt.Frame parent, boolean modal, FachadaCarcel fa) {
@@ -157,7 +157,7 @@ public class VGestionPresos extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonLiberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLiberarActionPerformed
-        
+
     }//GEN-LAST:event_BotonLiberarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
@@ -184,7 +184,7 @@ public class VGestionPresos extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void modificarPreso() {
-        if (tabla_presos.getRowCount() > 0){
+        if (tabla_presos.getRowCount() > 0) {
             ModeloTablaPresos mtp = (ModeloTablaPresos) tabla_presos.getModel();
             String DNI = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getDNI();
             String nombre = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getNombre();
@@ -198,11 +198,10 @@ public class VGestionPresos extends javax.swing.JDialog {
             Nivel agresividad = mtp.obtenerPreso(tabla_presos.getSelectedRow()).getAgresividad();
             Preso preso = new Preso(DNI, nombre, apellido1, apellido2, apodo, fechaNacimiento, fechaIngreso, fechaSalida, banda, agresividad);
             fa.modificarPreso(preso);
-        }
-        else{
+        } else {
             Preso preso = null;
             fa.modificarPreso(preso);
         }
-        
+
     }
 }

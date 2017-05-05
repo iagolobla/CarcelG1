@@ -4,6 +4,7 @@ import carcel.FachadaCarcel;
 import java.sql.Connection;
 
 public abstract class AbstractDAO {
+
     private carcel.FachadaCarcel fa;
     private Connection connection;
 

@@ -4,6 +4,7 @@ import GUI.FachadaGUI;
 import baseDatos.FachadaBaseDatos;
 
 public class GestionCeldas {
+
     protected FachadaGUI fgui;
     protected FachadaBaseDatos fbd;
 
@@ -15,6 +16,5 @@ public class GestionCeldas {
     public void iniciaGestionCeldas() {
         fgui.iniciaGestionCeldas();
     }
-    
-    
+
 }

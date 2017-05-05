@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.Properties;
 
 public class FachadaBaseDatos {
-    
+
     private carcel.FachadaCarcel fa;
     private Connection conexion;
     private DAOEmpleados daoEmpleados;
@@ -34,9 +34,9 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            
-        daoEmpleados = new DAOEmpleados(conexion, fa);
-        daoPresos = new DAOPresos (conexion, fa);
+
+            daoEmpleados = new DAOEmpleados(conexion, fa);
+            daoPresos = new DAOPresos(conexion, fa);
 
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -47,9 +47,9 @@ public class FachadaBaseDatos {
             //Aqui se mostraria la ventana de error
         }
     }
-    
-    public Empleado validarAdmin(String dni, String clave){
+
+    public Empleado validarAdmin(String dni, String clave) {
         return daoEmpleados.validarAdmin(dni, clave);
     }
-    
+
 }

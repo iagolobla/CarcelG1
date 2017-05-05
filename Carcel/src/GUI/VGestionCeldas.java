@@ -5,7 +5,7 @@ import carcel.FachadaCarcel;
 public class VGestionCeldas extends javax.swing.JDialog {
 
     private FachadaCarcel fa;
-    
+
     public VGestionCeldas(java.awt.Frame parent, boolean modal, FachadaCarcel fa) {
         super(parent, modal);
         this.fa = fa;

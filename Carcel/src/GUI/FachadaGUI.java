@@ -40,9 +40,9 @@ public class FachadaGUI {
 
     public void modificarPreso(Preso preso) {
         VPreso vpr;
-        
-        vpr = new VPreso (vp, true, fa, preso);
-        
+
+        vpr = new VPreso(vp, true, fa, preso);
+
         vpr.setVisible(true);
     }
 

@@ -4,6 +4,7 @@ import GUI.FachadaGUI;
 import baseDatos.FachadaBaseDatos;
 
 public class GestionPresos {
+
     protected FachadaGUI fgui;
     protected FachadaBaseDatos fbd;
 

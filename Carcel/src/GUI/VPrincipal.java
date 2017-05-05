@@ -4,7 +4,7 @@ public class VPrincipal extends javax.swing.JFrame {
 
     private carcel.FachadaCarcel fa;
 
-    public VPrincipal(carcel.FachadaCarcel fa){
+    public VPrincipal(carcel.FachadaCarcel fa) {
         this.fa = fa;
         initComponents();
     }
@@ -244,11 +244,11 @@ public class VPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void MenuEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuEmpleadosActionPerformed
-        
+
     }//GEN-LAST:event_MenuEmpleadosActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
-        
+
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void MenuPresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPresosActionPerformed
@@ -272,7 +272,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        
+
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
 
@@ -307,12 +307,11 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void BuscarTrapicheos(){
-    ModeloTablaTrapicheos m;
-    
-    m= (ModeloTablaTrapicheos) TablaTrapicheos.getModel();
-   // m.setFilas(VPrincipal.obtenerTrapicheo(CampoEmisorDNI.getText(), CampoEmisorNombre.getText(), CampoEmisorApodo.getText(), CampoReceptorDNI.getText(), CampoReceptorNombre.getText(), CampoReceptorApodo.getText(), CampoFecha.getText()));
-}
+    public void BuscarTrapicheos() {
+        ModeloTablaTrapicheos m;
 
+        m = (ModeloTablaTrapicheos) TablaTrapicheos.getModel();
+        // m.setFilas(VPrincipal.obtenerTrapicheo(CampoEmisorDNI.getText(), CampoEmisorNombre.getText(), CampoEmisorApodo.getText(), CampoReceptorDNI.getText(), CampoReceptorNombre.getText(), CampoReceptorApodo.getText(), CampoFecha.getText()));
+    }
 
 }

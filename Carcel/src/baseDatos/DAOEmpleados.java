@@ -7,14 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DAOEmpleados extends AbstractDAO{
+public class DAOEmpleados extends AbstractDAO {
 
     public DAOEmpleados(Connection connection, FachadaCarcel fa) {
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
     }
-    
-    protected carcel.Empleado validarAdmin(String dni, String clave){
+
+    protected carcel.Empleado validarAdmin(String dni, String clave) {
         Administrador resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
@@ -44,5 +44,5 @@ public class DAOEmpleados extends AbstractDAO{
         }
         return resultado;
     }
-    
+
 }

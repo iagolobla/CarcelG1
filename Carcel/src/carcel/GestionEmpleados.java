@@ -4,6 +4,7 @@ import GUI.FachadaGUI;
 import baseDatos.FachadaBaseDatos;
 
 public class GestionEmpleados {
+
     protected FachadaGUI fgui;
     protected FachadaBaseDatos fbd;
 
@@ -11,11 +12,11 @@ public class GestionEmpleados {
         this.fgui = fgui;
         this.fbd = fbd;
     }
-    
-    protected Boolean validarAdmin(String dni, String clave){
+
+    protected Boolean validarAdmin(String dni, String clave) {
         Empleado empleado = fbd.validarAdmin(dni, clave);
-        
-        return empleado instanceof Administrador && empleado!=null;
+
+        return empleado instanceof Administrador && empleado != null;
     }
-    
+
 }

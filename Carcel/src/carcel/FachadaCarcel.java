@@ -4,6 +4,7 @@ import GUI.FachadaGUI;
 import baseDatos.FachadaBaseDatos;
 
 public class FachadaCarcel {
+
     private GUI.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
     private GestionEmpleados ge;
@@ -17,7 +18,7 @@ public class FachadaCarcel {
         gp = new GestionPresos(fgui, fbd);
         gc = new GestionCeldas(fgui, fbd);
     }
-    
+
     public static void main(String[] args) {
         FachadaCarcel fa;
         fa = new FachadaCarcel();
@@ -27,7 +28,7 @@ public class FachadaCarcel {
     public void iniciaInterfazUsuario() {
         fgui.iniciaVista();
     }
-    
+
     /*-----------------Presos--------------------------------*/
     public void iniciaGestionPresos() {
         gp.iniciaGestionPresos();
