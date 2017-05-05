@@ -38,6 +38,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
         BotonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de celdas");
 
         EtiquetaId.setText("Id");
 

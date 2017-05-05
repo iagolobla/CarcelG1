@@ -25,7 +25,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaFechaI = new javax.swing.JLabel();
         CampoFechaI = new javax.swing.JTextField();
         EtiquetaAgresividad = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         Celda = new javax.swing.JPanel();
         EtiquetaIdCelda = new javax.swing.JLabel();
         CampoIdCelda = new javax.swing.JTextField();
@@ -35,7 +35,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaPlazas = new javax.swing.JLabel();
         CampoPlazas = new javax.swing.JTextField();
         EtiquetaSeguridad = new javax.swing.JLabel();
-        jComboBoxSeguridad = new javax.swing.JComboBox<String>();
+        jComboBoxSeguridad = new javax.swing.JComboBox<>();
         BotonAlojar = new javax.swing.JButton();
         Banda = new javax.swing.JPanel();
         EtiquetaTipo = new javax.swing.JLabel();
@@ -57,10 +57,11 @@ public class VPreso extends javax.swing.JDialog {
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
-        ComboBoxIntensidad = new javax.swing.JComboBox<String>();
+        ComboBoxIntensidad = new javax.swing.JComboBox<>();
         BotonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Datos del preso");
 
         EtiquetaDNI.setText("DNI");
 
@@ -92,7 +93,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaAgresividad.setText("Agresividad");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PresosLayout = new javax.swing.GroupLayout(Presos);
         Presos.setLayout(PresosLayout);
@@ -183,7 +184,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaSeguridad.setText("Seguridad");
 
-        jComboBoxSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxSeguridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         BotonAlojar.setText("Alojar");
 
@@ -336,7 +337,7 @@ public class VPreso extends javax.swing.JDialog {
 
         BotonEliminar.setText("Eliminar");
 
-        ComboBoxIntensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboBoxIntensidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout CargosLayout = new javax.swing.GroupLayout(Cargos);
         Cargos.setLayout(CargosLayout);

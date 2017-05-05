@@ -43,6 +43,7 @@ public class VPrincipal extends javax.swing.JFrame {
         MenuVisitantes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de trapicheos");
 
         EtiquetaEmisor.setText("Emisor");
 

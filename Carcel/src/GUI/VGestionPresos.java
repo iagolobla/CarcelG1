@@ -33,6 +33,7 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gestión de presos");
 
         EtiquetaDNI.setText("DNI");
 
