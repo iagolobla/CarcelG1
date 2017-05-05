@@ -106,7 +106,8 @@ c.	El sistema actualiza la información del preso.
 Esta transacción permite a un empleado de tipo administrador insertar un delito cometido por un preso.
 Desde la Gestión de Presos:
 
-a.	El administrador, desde la pestaña de Cargos, rellena los campos requeridos para insertar un delito, Tipo de delito (Asesinato, Robo…), Descripción e Intensidad.
+a.	El administrador, desde la pestaña de Cargos, rellena los campos requeridos para insertar un delito, 
+        Tipo de delito (Asesinato, Robo…), Descripción e Intensidad.
 b.	El administrador selecciona el botón “Insertar”.
 c.	El sistema inserta el delito asociado al preso en cuestión.
 
