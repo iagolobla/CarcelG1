@@ -11,12 +11,12 @@ public class GestionPresos {
         this.fgui = fgui;
         this.fbd = fbd;
     }
-    
-    protected void insertarPreso(Preso p){
-        fbd.insertarPreso(p);
-    }
 
     protected void iniciaGestionPresos() {
         fgui.iniciaGestionPresos();
+    }
+
+    protected void nuevoPreso() {
+        fgui.nuevoPreso();
     }
 }

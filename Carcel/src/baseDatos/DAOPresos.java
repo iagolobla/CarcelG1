@@ -13,6 +13,4 @@ public class DAOPresos extends AbstractDAO{
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
     }
-    
-    public void insertarPreso(Preso preso){};
 }

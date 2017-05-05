@@ -52,8 +52,4 @@ public class FachadaBaseDatos {
         return daoEmpleados.validarAdmin(dni, clave);
     }
     
-    public void insertarPreso(Preso preso){
-        daoPresos.insertarPreso(preso);
-    }
-    
 }

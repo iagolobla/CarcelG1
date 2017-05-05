@@ -45,6 +45,11 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonBuscar.setText("Buscar");
 
         BotonInsertar.setText("Insertar");
+        BotonInsertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonInsertarActionPerformed(evt);
+            }
+        });
 
         BotonModificar.setText("Modificar");
 
@@ -132,6 +137,10 @@ public class VGestionPresos extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
+        fa.nuevoPreso();
+    }//GEN-LAST:event_BotonInsertarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

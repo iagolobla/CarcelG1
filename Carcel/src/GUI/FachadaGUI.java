@@ -35,4 +35,12 @@ public class FachadaGUI {
         
         vgc.setVisible(true);
     }
+
+    public void nuevoPreso() {
+        VPreso vpr;
+        
+        vpr = new VPreso (vp, true, fa);
+        
+        vpr.setVisible(true);
+    }
 }

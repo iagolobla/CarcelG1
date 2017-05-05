@@ -15,12 +15,7 @@ public class GestionEmpleados {
     protected Boolean validarAdmin(String dni, String clave){
         Empleado empleado = fbd.validarAdmin(dni, clave);
         
-        if (empleado instanceof carcel.Administrador && empleado!=null){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return empleado instanceof Administrador && empleado!=null;
     }
     
 }
