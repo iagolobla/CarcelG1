@@ -19,13 +19,15 @@ public class ModeloTablaCeldas extends AbstractTableModel{
     private java.util.List<Celda> celdas;
 
     public ModeloTablaCeldas() {
-        this.celdas = new ArrayList<Celda>();
+        this.celdas = new ArrayList<>();
     }
 
+    @Override
     public int getColumnCount() {
         return 5;
     }
 
+    @Override
     public int getRowCount() {
         return celdas.size();
     }
