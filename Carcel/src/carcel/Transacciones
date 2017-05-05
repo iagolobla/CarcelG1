@@ -21,7 +21,7 @@ c.	El administrador suministra los datos correspondientes. Tales como DNI, Nombr
         Fecha de Nacimiento, Fecha de Ingreso y nivel de Agresividad.
 d.	El sistema comprueba si ingresó previamente en la cárcel. 	
 e.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como 
-        nula y actualiza la información con la introducida en la aplicación. 
+        nula y act  ualiza la información con la introducida en la aplicación. 
         En caso de ser nuevo simplemente se insertan sus datos en la Base de Datos.
 f.	El administrador introduce la celda donde se inserta. (Debe tener huecos libres)
 
