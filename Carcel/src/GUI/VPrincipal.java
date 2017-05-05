@@ -48,25 +48,18 @@ public class VPrincipal extends javax.swing.JFrame {
 
         EtiquetaReceptor.setText("Receptor");
 
-        CampoEmisorDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoEmisorDNIActionPerformed(evt);
-            }
-        });
-
         EtiquetaFecha.setText("Fecha");
 
         EtiquetaDNI.setText("DNI");
 
-        CampoEmisorNombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoEmisorNombreActionPerformed(evt);
-            }
-        });
-
         EtiquetaNombre.setText("Nombre");
 
         BotonBuscar.setText("Buscar");
+        BotonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonBuscarActionPerformed(evt);
+            }
+        });
 
         BotonInsertar.setText("Insertar");
         BotonInsertar.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +69,11 @@ public class VPrincipal extends javax.swing.JFrame {
         });
 
         BotonModificar.setText("Modificar");
+        BotonModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonModificarActionPerformed(evt);
+            }
+        });
 
         TablaTrapicheos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -107,17 +105,12 @@ public class VPrincipal extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
-                                .addComponent(EtiquetaEmisor)
-                                .addGap(23, 23, 23))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(EtiquetaFecha)
-                                    .addComponent(EtiquetaReceptor))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                            .addComponent(EtiquetaEmisor)
+                            .addComponent(EtiquetaFecha)
+                            .addComponent(EtiquetaReceptor))
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
@@ -208,15 +201,35 @@ public class VPrincipal extends javax.swing.JFrame {
         jMenu1.add(MenuEmpleados);
 
         MenuPresos.setText("Presos");
+        MenuPresos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuPresosActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuPresos);
 
         MenuCeldas.setText("Celdas");
+        MenuCeldas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuCeldasActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuCeldas);
 
         MenuBandas.setText("Bandas");
+        MenuBandas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuBandasActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuBandas);
 
         MenuVisitantes.setText("Visitantes");
+        MenuVisitantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MenuVisitantesActionPerformed(evt);
+            }
+        });
         jMenu1.add(MenuVisitantes);
 
         jMenuBar1.add(jMenu1);
@@ -243,17 +256,33 @@ public class VPrincipal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_MenuEmpleadosActionPerformed
 
-    private void CampoEmisorDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoEmisorDNIActionPerformed
-        
-    }//GEN-LAST:event_CampoEmisorDNIActionPerformed
-
-    private void CampoEmisorNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoEmisorNombreActionPerformed
-        
-    }//GEN-LAST:event_CampoEmisorNombreActionPerformed
-
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         
     }//GEN-LAST:event_BotonInsertarActionPerformed
+
+    private void MenuPresosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuPresosActionPerformed
+
+    }//GEN-LAST:event_MenuPresosActionPerformed
+
+    private void MenuCeldasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuCeldasActionPerformed
+
+    }//GEN-LAST:event_MenuCeldasActionPerformed
+
+    private void MenuBandasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuBandasActionPerformed
+
+    }//GEN-LAST:event_MenuBandasActionPerformed
+
+    private void MenuVisitantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuVisitantesActionPerformed
+
+    }//GEN-LAST:event_MenuVisitantesActionPerformed
+
+    private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
+
+    }//GEN-LAST:event_BotonModificarActionPerformed
+
+    private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
+        
+    }//GEN-LAST:event_BotonBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
