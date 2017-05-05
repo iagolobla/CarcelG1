@@ -75,17 +75,7 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
 
-        TablaTrapicheos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        TablaTrapicheos.setModel(new ModeloTablaTrapicheos());
         jScrollPane1.setViewportView(TablaTrapicheos);
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 36)); // NOI18N
