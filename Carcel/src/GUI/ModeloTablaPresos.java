@@ -9,7 +9,7 @@ public class ModeloTablaPresos extends AbstractTableModel {
     private java.util.List<Preso> presos;
 
     public ModeloTablaPresos() {
-        this.presos = new ArrayList<Preso>();
+        this.presos = new ArrayList<>();
     }
 
     @Override
@@ -105,6 +105,7 @@ public class ModeloTablaPresos extends AbstractTableModel {
         return col > 0;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 
