@@ -12,6 +12,7 @@ public class FachadaCarcel {
     private GUI.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
     private GestionEmpleados ge;
+    private GestionPresos gp;
 
     public FachadaCarcel() {
         fgui = new FachadaGUI(this);
@@ -27,6 +28,10 @@ public class FachadaCarcel {
 
     public void iniciaInterfazUsuario() {
         fgui.iniciaVista();
+    }
+
+    public void iniciaGestionPresos() {
+        gp.iniciaGestionPresos();
     }
 
     public Boolean validarAdministrador(String dni, String clave) {

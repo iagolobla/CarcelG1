@@ -15,4 +15,8 @@ public class GestionPresos {
     protected void insertarPreso(Preso p){
         fbd.insertarPreso(p);
     }
+
+    protected void iniciaGestionPresos() {
+        fgui.iniciaGestionPresos();
+    }
 }
