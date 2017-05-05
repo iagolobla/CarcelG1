@@ -1,6 +1,5 @@
-Transacciones:
-
-El siguiente conjunto de transacciones describen la interacción entre cada uno de los tipos de usuario y el sistema.
+Transacciones grupo 1: 1,2,3,4,11,12,13,14,17,24,25,26
+    Ventanas implicadas: Presos, Celda, Delitos, Login.
 
 1.	Autenticación de empleados
 
