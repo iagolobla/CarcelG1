@@ -63,6 +63,10 @@ public class FachadaCarcel {
         gp.insertarPreso(preso);
     }
 
+    public void liberarPreso(String DNI) {
+        gp.liberarPreso(DNI);
+    }
+
     public void iniciaRelacionesBanda() {
         fgui.iniciaVGestionBandasRelaciones();
     }

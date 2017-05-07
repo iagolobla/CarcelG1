@@ -21,5 +21,9 @@ public class GestionPresos {
            fbd.insertarPresoNoReincidente(preso);
        }
     }
+
+    protected void liberarPreso(String DNI) {
+        fbd.liberarPreso(DNI);
+    }
     
 }

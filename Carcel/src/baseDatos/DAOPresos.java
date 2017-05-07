@@ -6,14 +6,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DAOPresos extends AbstractDAO{
-    
+public class DAOPresos extends AbstractDAO {
+
     public DAOPresos(Connection connection, carcel.FachadaCarcel fa) {
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
     }
-    
-    protected Boolean comprobarReincidente(String DNI){
+
+    protected Boolean comprobarReincidente(String DNI) {
         Boolean resultado = false;
         Connection con;
         PreparedStatement stmPreso = null;
@@ -22,9 +22,9 @@ public class DAOPresos extends AbstractDAO{
         con = super.getConnection();
 
         try {
-            stmPreso = con.prepareStatement("SELECT dni "
+            stmPreso = con.prepareStatement("SELECT * "
                     + "FROM preso "
-                    + "WHERE DNI = ? ");
+                    + "WHERE DNI=? AND fechaSalida IS NOT NULL");
             stmPreso.setString(1, DNI);
             rsPreso = stmPreso.executeQuery();
             if (rsPreso.next()) {
@@ -41,12 +41,12 @@ public class DAOPresos extends AbstractDAO{
         }
         return resultado;
     }
-    
-    protected void insertarPresoNoReincidente(Preso preso){
+
+    protected void insertarPresoNoReincidente(Preso preso) {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
-        
+
         try {
             stmPreso = con.prepareStatement("INSERT INTO preso(dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, "
                     + "categoria, celda "
@@ -71,12 +71,12 @@ public class DAOPresos extends AbstractDAO{
             }
         }
     }
-    
-    protected void insertarPresoReincidente(Preso preso){
+
+    protected void insertarPresoReincidente(Preso preso) {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
-        
+
         try {
             stmPreso = con.prepareStatement("UPDATE preso "
                     + "SET dni=?, "
@@ -108,9 +108,26 @@ public class DAOPresos extends AbstractDAO{
             }
         }
     }
-    
-    protected void liberarPreso(String DNI){
+
+    protected void liberarPreso(String DNI) {
         Connection con;
         PreparedStatement stmPreso = null;
+        con = super.getConnection();
+        
+        try {
+            stmPreso = con.prepareStatement("UPDATE preso "
+                    + "SET fechaSalida=CURRENT_DATE, banda=NULL, celda=NULL "
+                    + "WHERE DNI=?");
+            stmPreso.setString(1, DNI);
+            stmPreso.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmPreso.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
     }
 }

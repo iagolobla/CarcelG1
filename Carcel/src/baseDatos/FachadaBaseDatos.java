@@ -63,4 +63,8 @@ public class FachadaBaseDatos {
     public void insertarPresoReincidente(Preso preso){
         daoPresos.insertarPresoReincidente(preso);
     }
+
+    public void liberarPreso(String DNI) {
+        daoPresos.liberarPreso(DNI);
+    }
 }
