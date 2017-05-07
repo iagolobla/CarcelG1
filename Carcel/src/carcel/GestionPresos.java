@@ -13,7 +13,7 @@ public class GestionPresos {
     }
     
     protected void insertarPreso(Preso preso){
-        
+       
     }
     
 }
