@@ -11,7 +11,7 @@ Esta transacción permite a un empleado de tipo administrador introducir un pres
 
 1.	El administrador pulsa “Insertar”
 2.	El sistema solicita los datos del preso.
-3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional),  Fecha de Nacimiento,
+3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional), Fecha de Nacimiento,
         Fecha de Ingreso y nivel de Agresividad.
 3.	El sistema comprueba si ingresó previamente en la cárcel. 	
 4.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como nula y actualiza
