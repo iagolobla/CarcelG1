@@ -596,6 +596,7 @@ public class VPreso extends javax.swing.JDialog {
         Date fechaIngreso = Date.valueOf(TextoFechaI.getText());
         Nivel agresividad = (Nivel) ComboAgresividad.getSelectedItem();
         Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, null, agresividad);
+        fc.insertarPreso(preso);
     }
     
     public void buscarCelda(){
