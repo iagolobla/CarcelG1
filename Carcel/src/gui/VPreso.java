@@ -1,6 +1,7 @@
 package gui;
 
 import carcel.Banda;
+import carcel.Celda;
 import carcel.FachadaCarcel;
 import carcel.Nivel;
 import carcel.Preso;
@@ -429,7 +430,7 @@ public class VPreso extends javax.swing.JDialog {
             }
         });
 
-        BotonInsertar2.setText("Insertar");
+        BotonInsertar2.setText("Guardar");
         BotonInsertar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonInsertar2ActionPerformed(evt);
@@ -598,7 +599,9 @@ public class VPreso extends javax.swing.JDialog {
         Nivel agresividad = (Nivel) ComboAgresividad.getSelectedItem();
         
         ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
+        ModeloTablaCeldas mtc = (ModeloTablaCeldas) TablaCeldas.getModel();
         
+        Celda celda = null;
         Banda banda = null;
         if (mtb.getRowCount() > 0) {
             if (TablaBandas.getSelectedRowCount() > 0) {
@@ -607,9 +610,18 @@ public class VPreso extends javax.swing.JDialog {
                 banda = new Banda(tipoBanda, numPresos);
             }
         }   
-        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad);
         
-        
+        if(mtc.getRowCount() > 0){
+            if (TablaCeldas.getSelectedRowCount() > 0) {
+                Integer nCelda = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCelda();
+                Float superficie = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getSuperficie();
+                Integer nCamas = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCamas();
+                Nivel seguridad = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getSeguridad();
+                Preso[] ocupantes = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getOcupantes();
+                celda = new Celda(nCelda, superficie, nCamas, seguridad, ocupantes);
+            }
+        }
+        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, "no hay campo", agresividad, celda);    
         fc.insertarPreso(preso);
     }
     

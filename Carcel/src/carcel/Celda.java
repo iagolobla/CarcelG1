@@ -3,12 +3,12 @@ package carcel;
 public class Celda {
 
     private int nCelda;
-    private int superficie;
+    private float superficie;
     private int nCamas;
     private Nivel seguridad;
     private Preso[] ocupantes;  //Reservar memoria para el array de tamaño NCamas
 
-    public Celda(int nCelda, int superficie, int nCamas, Nivel seguridad) {
+    public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad) {
         this.nCelda = nCelda;
         this.superficie = superficie;
         this.nCamas = nCamas;
@@ -16,7 +16,7 @@ public class Celda {
         ocupantes = new Preso[nCamas];
     }
 
-    public Celda(int nCelda, int superficie, int nCamas, Nivel seguridad, Preso[] ocupantes) {
+    public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad, Preso[] ocupantes) {
         this.nCelda = nCelda;
         this.superficie = superficie;
         this.nCamas = nCamas;
@@ -32,11 +32,11 @@ public class Celda {
         this.nCelda = nCelda;
     }
 
-    public int getSuperficie() {
+    public float getSuperficie() {
         return superficie;
     }
 
-    public void setSuperficie(int superficie) {
+    public void setSuperficie(float superficie) {
         this.superficie = superficie;
     }
 

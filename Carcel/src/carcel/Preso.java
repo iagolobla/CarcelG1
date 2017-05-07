@@ -11,9 +11,12 @@ public class Preso {
     private java.sql.Date fechaIngreso;
     private java.sql.Date fechaSalida;
     private Banda banda;
+    private String categoria;
     private Nivel agresividad;
+    private Celda celda;
 
-    public Preso(String DNI, String nombre, String apodo, Date fechaNacimiento, Date fechaIngreso, Date fechaSalida, Banda banda, Nivel agresividad) {
+    public Preso(String DNI, String nombre, String apodo, Date fechaNacimiento, Date fechaIngreso, 
+            Date fechaSalida, Banda banda, String categoria, Nivel agresividad, Celda celda) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.apodo = apodo;
@@ -21,7 +24,9 @@ public class Preso {
         this.fechaIngreso = fechaIngreso;
         this.fechaSalida = fechaSalida;
         this.banda = banda;
+        this.categoria = categoria;
         this.agresividad = agresividad;
+        this.celda = celda;
     }
 
     public String getDNI() {
@@ -80,6 +85,14 @@ public class Preso {
         this.banda = banda;
     }
 
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
     public Nivel getAgresividad() {
         return agresividad;
     }
@@ -88,4 +101,11 @@ public class Preso {
         this.agresividad = agresividad;
     }
 
+    public Celda getCelda() {
+        return celda;
+    }
+
+    public void setCelda(Celda celda) {
+        this.celda = celda;
+    }
 }
