@@ -74,5 +74,13 @@ public class FachadaCarcel {
     public void iniciaVisita() {
         fgui.iniciaVModVisita();
     }
+    
+    public java.util.List<Delito> obtenerCargos(String tipo){
+        return(gp.obtenerCargos(tipo));
+    }
+    
+    public java.util.List<String> rellenarCampos(String tipo){
+        return gp.rellenarCampos(tipo);
+    }
 
 }

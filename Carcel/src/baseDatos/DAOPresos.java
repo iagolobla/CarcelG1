@@ -1,5 +1,7 @@
 package baseDatos;
 
+import carcel.Delito;
+import carcel.Nivel;
 import carcel.Preso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -129,5 +131,70 @@ public class DAOPresos extends AbstractDAO {
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+    
+    public java.util.List<String> rellenarCampos(String tipo){
+        java.util.List<String> resultado= new java.util.ArrayList<>();
+        Connection con;
+        PreparedStatement stmRellenar=null;
+        ResultSet rsRellenar;
+        
+        con=this.getConnection();
+        String consulta = "select *" +
+                          "from delito as d "+
+                          "where tipo = ?";
+        try{
+            stmRellenar=con.prepareStatement(consulta);
+            stmRellenar.setString(1, tipo);
+            rsRellenar=stmRellenar.executeQuery();
+            while(rsRellenar.next()){
+                resultado.add(rsRellenar.getString("tipo"));
+                resultado.add(rsRellenar.getString("descripcion"));
+                resultado.add(rsRellenar.getString("intensidad"));
+            }
+        }catch(SQLException e){
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        }finally{
+          try {stmRellenar.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        }
+        return resultado;
+    }
+    
+    public java.util.List<Delito> consultarCargos(String tipo){
+        java.util.List<Delito> resultado = new java.util.ArrayList<>();
+        Delito delitoActual;
+        Connection con;
+        PreparedStatement stmDelitos=null;
+        ResultSet rsDelitos;
+
+        con=this.getConnection();
+        
+        String consulta = "select *" +
+                          "from delito as d";
+        if(!tipo.isEmpty()){
+            consulta=consulta+" where tipo like ?";
+        }
+        try  {
+         stmDelitos=con.prepareStatement(consulta);
+         if (!tipo.isEmpty()){
+             stmDelitos.setString(1, "%"+tipo+"%");
+         }
+         rsDelitos=stmDelitos.executeQuery();
+        while (rsDelitos.next())
+        {
+            delitoActual = new Delito(rsDelitos.getString("tipo"),
+                                        rsDelitos.getString("descripcion"),
+                                        Nivel.valueOf(rsDelitos.getString("intensidad")));
+            resultado.add(delitoActual);
+        }
+
+        } catch (SQLException e){
+          System.out.println(e.getMessage());
+          //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        }finally{
+          try {stmDelitos.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        }
+        return resultado;
     }
 }
