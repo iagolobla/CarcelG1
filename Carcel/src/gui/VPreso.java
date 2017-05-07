@@ -72,7 +72,6 @@ public class VPreso extends javax.swing.JDialog {
         BotonEliminar = new javax.swing.JButton();
         ComboIntensidad = new javax.swing.JComboBox<>();
         BotonSalir = new javax.swing.JButton();
-        BotonInsertar2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -428,13 +427,6 @@ public class VPreso extends javax.swing.JDialog {
             }
         });
 
-        BotonInsertar2.setText("Insertar");
-        BotonInsertar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonInsertar2ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -444,8 +436,6 @@ public class VPreso extends javax.swing.JDialog {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BotonInsertar2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BotonSalir)
                 .addGap(31, 31, 31))
         );
@@ -454,9 +444,7 @@ public class VPreso extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jTabbedPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonSalir)
-                    .addComponent(BotonInsertar2))
+                .addComponent(BotonSalir)
                 .addContainerGap())
         );
 
@@ -532,10 +520,6 @@ public class VPreso extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_BotonSalirActionPerformed
 
-    private void BotonInsertar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertar2ActionPerformed
-       insertarPreso();
-    }//GEN-LAST:event_BotonInsertar2ActionPerformed
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banda;
     private javax.swing.JButton BotonAlojar;
@@ -545,7 +529,6 @@ public class VPreso extends javax.swing.JDialog {
     private javax.swing.JButton BotonDesasociar;
     private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonInsertar;
-    private javax.swing.JButton BotonInsertar2;
     private javax.swing.JButton BotonModificar;
     private javax.swing.JButton BotonSalir;
     private javax.swing.JTextField CampoIdCelda;
