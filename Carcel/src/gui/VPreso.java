@@ -2,12 +2,6 @@ package gui;
 
 import carcel.FachadaCarcel;
 import carcel.Nivel;
-import carcel.Preso;
-import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 
 public class VPreso extends javax.swing.JDialog {
@@ -42,7 +36,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaFechaI = new javax.swing.JLabel();
         TextoFechaI = new javax.swing.JTextField();
         EtiquetaAgresividad = new javax.swing.JLabel();
-        ComboAgresividad = new javax.swing.JComboBox<>();
+        ComboAgresividad = new javax.swing.JComboBox<String>();
         Celda = new javax.swing.JPanel();
         EtiquetaIdCelda = new javax.swing.JLabel();
         CampoIdCelda = new javax.swing.JTextField();
@@ -52,7 +46,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaPlazas = new javax.swing.JLabel();
         CampoPlazas = new javax.swing.JTextField();
         EtiquetaSeguridad = new javax.swing.JLabel();
-        ComboSeguridad = new javax.swing.JComboBox<>();
+        ComboSeguridad = new javax.swing.JComboBox<String>();
         BotonAlojar = new javax.swing.JButton();
         Banda = new javax.swing.JPanel();
         EtiquetaTipo = new javax.swing.JLabel();
@@ -74,7 +68,7 @@ public class VPreso extends javax.swing.JDialog {
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
-        ComboIntensidad = new javax.swing.JComboBox<>();
+        ComboIntensidad = new javax.swing.JComboBox<String>();
         BotonSalir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -109,7 +103,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaAgresividad.setText("Agresividad");
 
-        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PresosLayout = new javax.swing.GroupLayout(Presos);
         Presos.setLayout(PresosLayout);
@@ -195,7 +189,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaSeguridad.setText("Seguridad");
 
-        ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         BotonAlojar.setText("Alojar");
         BotonAlojar.addActionListener(new java.awt.event.ActionListener() {
@@ -363,7 +357,7 @@ public class VPreso extends javax.swing.JDialog {
             }
         });
 
-        ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout CargosLayout = new javax.swing.GroupLayout(Cargos);
         Cargos.setLayout(CargosLayout);
@@ -379,17 +373,16 @@ public class VPreso extends javax.swing.JDialog {
                                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(EtiquetaTipoDelito)
                                     .addComponent(EtiquetaDescripcion))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(CargosLayout.createSequentialGroup()
-                                        .addGap(16, 16, 16)
+                                        .addGap(12, 12, 12)
                                         .addComponent(PanelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(EtiquetaIntensidad)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(ComboIntensidad, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(CargosLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(ComboIntensidad, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addGroup(CargosLayout.createSequentialGroup()
                         .addGap(258, 258, 258)
                         .addComponent(BotonInsertar)
@@ -397,7 +390,7 @@ public class VPreso extends javax.swing.JDialog {
                         .addComponent(BotonModificar)
                         .addGap(18, 18, 18)
                         .addComponent(BotonEliminar)))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CargosLayout.setVerticalGroup(
             CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -522,21 +515,6 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
-        Preso preso = null;
-        String dni = TextoDNI.getText();
-        String nombre = TextoNombre.getText();
-        String apodo = TextoApodo.getText();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
-        try {
-            java.util.Date parsed1 = formatter.parse(TextoFechaN.getText());
-            java.util.Date parsed2 = formatter.parse(TextoFechaI.getText());
-            Date fechaNacimiento = new Date(parsed1.getTime());
-            Date fechaIngreso = new Date(parsed2.getTime());
-        } catch (ParseException ex) {
-            Logger.getLogger(VPreso.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Date fechaSalida = null;
-        
         this.dispose();
     }//GEN-LAST:event_BotonSalirActionPerformed
 
@@ -590,7 +568,7 @@ public class VPreso extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPanel;
     // End of variables declaration//GEN-END:variables
-    
+
     public void buscarCelda(){
         
     }
