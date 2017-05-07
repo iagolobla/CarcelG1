@@ -357,6 +357,7 @@ public class VPreso extends javax.swing.JDialog {
         });
 
         BotonEliminar.setText("Eliminar");
+        BotonEliminar.setEnabled(false);
         BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonEliminarActionPerformed(evt);
@@ -551,7 +552,7 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonBuscarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarCargosActionPerformed
-        
+        buscarCargo();
     }//GEN-LAST:event_BotonBuscarCargosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,6 +673,39 @@ public class VPreso extends javax.swing.JDialog {
     
     public void eliminarCargo(){
         
+    }
+    
+    public void buscarCargo(){
+        ModeloTablaCargos mtc = (ModeloTablaCargos)TablaCargos.getModel();
+
+        mtc.setFilas(fc.obtenerCargos(TextoTipoDelito.getText()));
+        if (mtc.getRowCount() > 0) {
+            TablaCargos.setRowSelectionInterval(0, 0);
+            BotonEliminar.setEnabled(true);
+            rellenarCampos();
+        }
+        else {
+            BotonEliminar.setEnabled(false);
+        }
+    }
+    
+    public void rellenarCampos(){
+        int fila=TablaCargos.getSelectedRow();
+        String tipo=TablaCargos.getValueAt(fila, 0).toString();
+        java.util.ArrayList<String> resultado=(java.util.ArrayList<String>)fc.rellenarCampos(tipo);
+        TextoTipoDelito.setText(resultado.get(0));
+        TextoDescripcion.setText(resultado.get(1));
+        switch(resultado.get(3)){
+            case "Alta":
+                ComboIntensidad.setSelectedIndex(0);
+                break;
+            case "Media":
+                ComboIntensidad.setSelectedIndex(1);
+                break;
+            case "Baja":
+                ComboIntensidad.setSelectedIndex(2);
+                break;
+        }
     }
 
 }

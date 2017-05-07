@@ -2,6 +2,7 @@ package baseDatos;
 
 import carcel.Empleado;
 import carcel.Preso;
+import carcel.Delito;
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
@@ -72,5 +73,11 @@ public class FachadaBaseDatos {
     
     public void insertarCelda(String nPlazas, String superficie, String seguridad){
         daoCeldas.insertarCelda(nPlazas, superficie, seguridad);
+    public java.util.List<String> rellenarCampos(String tipo){
+        return daoPresos.rellenarCampos(tipo);
+    }
+    
+    public java.util.List<Delito> consultarCargos(String tipo){
+        return daoPresos.consultarCargos(tipo);
     }
 }

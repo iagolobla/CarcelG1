@@ -26,4 +26,12 @@ public class GestionPresos {
         fbd.liberarPreso(DNI);
     }
     
+    public java.util.List<String> rellenarCampos(String tipo){
+        return(fbd.rellenarCampos(tipo));
+    }
+    
+    public java.util.List<Delito> obtenerCargos(String tipo) {
+        return fbd.consultarCargos(tipo);
+    }
+    
 }
