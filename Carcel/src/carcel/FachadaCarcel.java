@@ -1,21 +1,24 @@
 package carcel;
 
 public class FachadaCarcel {
-    
+
     private gui.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
     private GestionEmpleados ge;
     private GestionTrapicheos gt;
+    private GestionPresos gp;
 
     public FachadaCarcel() {
         fgui = new gui.FachadaGUI(this);
         fbd = new baseDatos.FachadaBaseDatos(this);
         ge = new GestionEmpleados(fgui, fbd);
+        gp = new GestionPresos(fgui, fbd);
+        gt = new GestionTrapicheos(fgui, fbd);
     }
-    
+
     public static void main(String[] args) {
         FachadaCarcel fa;
-        
+
         fa = new FachadaCarcel();
         fa.iniciaInterfazUsuario();
     }
@@ -27,41 +30,45 @@ public class FachadaCarcel {
     public Boolean validarAdministrador(String dni, String clave) {
         return ge.validarAdmin(dni, clave);
     }
-    
-    public void iniciaGestionTrapicheos(){
+
+    public void iniciaGestionTrapicheos() {
         fgui.iniciaVTrapicheos();
     }
-    
-    public void iniciaGestionEmpleados(){
+
+    public void iniciaGestionEmpleados() {
         fgui.iniciaVGestionEmpleados();
     }
-    
-    public void iniciaGestionPresos(){
+
+    public void iniciaGestionPresos() {
         fgui.iniciaVGestionPresos();
     }
-    
-    public void iniciaGestionCeldas(){
+
+    public void iniciaGestionCeldas() {
         fgui.iniciaVGestionCeldas();
     }
-    
-    public void iniciaGestionBandas(){
+
+    public void iniciaGestionBandas() {
         fgui.iniciaVGestionBandas();
     }
-    
-    public void iniciaGestionVisitas(){
+
+    public void iniciaGestionVisitas() {
         fgui.iniciaVGestionVisitas();
     }
-    
-    public void iniciaPreso(){
+
+    public void iniciaPreso() {
         fgui.iniciaVPreso();
     }
-    
-    public void iniciaRelacionesBanda(){
+
+    public void insertarPreso(Preso preso) {
+        gp.insertarPreso(preso);
+    }
+
+    public void iniciaRelacionesBanda() {
         fgui.iniciaVGestionBandasRelaciones();
     }
-    
-    public void iniciaVisita(){
+
+    public void iniciaVisita() {
         fgui.iniciaVModVisita();
     }
-    
+
 }

@@ -174,7 +174,7 @@ public class VGestionPresos extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
-        insertarPreso();
+        iniciaPreso();
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonLiberarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonLiberarActionPerformed
@@ -204,7 +204,7 @@ public class VGestionPresos extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void insertarPreso(){
+    public void iniciaPreso(){
         fc.iniciaPreso();
     }
     
