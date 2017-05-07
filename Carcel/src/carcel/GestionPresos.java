@@ -13,7 +13,13 @@ public class GestionPresos {
     }
     
     protected void insertarPreso(Preso preso){
-       
+       String DNI = preso.getDNI();
+       if (fbd.comprobarReincidente(DNI)){
+           fbd.insertarPresoReincidente(preso);
+       }
+       else{
+           fbd.insertarPresoNoReincidente(preso);
+       }
     }
     
 }

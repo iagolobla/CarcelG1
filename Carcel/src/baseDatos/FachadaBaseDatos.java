@@ -1,5 +1,7 @@
 package baseDatos;
 
+import carcel.Empleado;
+import carcel.Preso;
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
@@ -9,6 +11,7 @@ public class FachadaBaseDatos {
     private carcel.FachadaCarcel fa;
     private Connection conexion;
     private DAOEmpleados daoEmpleados;
+    private DAOPresos daoPresos;
 
     public FachadaBaseDatos(carcel.FachadaCarcel fa) {
         Properties configuracion = new Properties();
@@ -33,6 +36,7 @@ public class FachadaBaseDatos {
                     usuario);
             
         daoEmpleados = new DAOEmpleados(conexion, fa);
+        daoPresos = new DAOPresos(conexion, fa);
 
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -44,8 +48,19 @@ public class FachadaBaseDatos {
         }
     }
     
-    public carcel.Empleado validarAdmin(String dni, String clave){
+    public Empleado validarAdmin(String dni, String clave){
         return daoEmpleados.validarAdmin(dni, clave);
     }
     
+    public Boolean comprobarReincidente(String DNI){
+        return daoPresos.comprobarReincidente(DNI);
+    }
+    
+    public void insertarPresoNoReincidente(Preso preso){
+        daoPresos.insertarPresoNoReincidente(preso);
+    }
+    
+    public void insertarPresoReincidente(Preso preso){
+        daoPresos.insertarPresoReincidente(preso);
+    }
 }
