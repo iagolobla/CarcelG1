@@ -86,4 +86,9 @@ public class FachadaGUI {
         vmv.setVisible(true);
     }
     
+    public void muestraExcepcion(String mensaje){
+        VExcepcion ve;
+        
+        ve = new VExcepcion(vp, true, mensaje);
+    }
 }

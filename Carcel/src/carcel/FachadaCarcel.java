@@ -4,6 +4,7 @@ public class FachadaCarcel {
 
     private gui.FachadaGUI fgui;
     private baseDatos.FachadaBaseDatos fbd;
+    private GestionCeldas gc;
     private GestionEmpleados ge;
     private GestionTrapicheos gt;
     private GestionPresos gp;
@@ -14,6 +15,7 @@ public class FachadaCarcel {
         ge = new GestionEmpleados(fgui, fbd);
         gp = new GestionPresos(fgui, fbd);
         gt = new GestionTrapicheos(fgui, fbd);
+        gc = new GestionCeldas(fgui, fbd);
     }
 
     public static void main(String[] args) {
@@ -75,4 +77,12 @@ public class FachadaCarcel {
         fgui.iniciaVModVisita();
     }
 
+    public void insertarCelda(String nPlazas, String superficie, String seguridad){
+        gc.insertarCelda(nPlazas, superficie, seguridad);
+    }
+    
+    public void muestraExcepcion(String mensaje){
+        fgui.muestraExcepcion(mensaje);
+    }
+    
 }

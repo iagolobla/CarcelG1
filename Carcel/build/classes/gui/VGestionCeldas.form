@@ -61,8 +61,8 @@
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Component id="EtiquetaSeguridad" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="CampoSeguridad" min="-2" pref="77" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ComboCampoSeguridad" min="-2" pref="83" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BotonBuscar" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -82,7 +82,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="EtiquetaSeguridad1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="TextoSeguridad" min="-2" pref="80" max="-2" attributes="0"/>
+                                  <Component id="ComboSeguridad" min="-2" pref="101" max="-2" attributes="0"/>
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
@@ -110,15 +110,15 @@
                       <Component id="EtiquetaId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="CampoId" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EtiquetaSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="CampoSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonBuscar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComboCampoSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="CampoPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EtqiuetaPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -130,7 +130,7 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="EtiquetaSeguridad1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="TextoSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ComboSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -156,8 +156,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Seguridad"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="CampoSeguridad">
         </Component>
         <Component class="javax.swing.JButton" name="BotonBuscar">
           <Properties>
@@ -208,8 +206,6 @@
             <Property name="text" type="java.lang.String" value="Seguridad"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="TextoSeguridad">
-        </Component>
         <Component class="javax.swing.JButton" name="BotonInsertar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Insertar"/>
@@ -248,6 +244,30 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonSalirActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="ComboCampoSeguridad">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="ComboSeguridad">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="4">
+                <StringItem index="0" value="Item 1"/>
+                <StringItem index="1" value="Item 2"/>
+                <StringItem index="2" value="Item 3"/>
+                <StringItem index="3" value="Item 4"/>
+              </StringArray>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

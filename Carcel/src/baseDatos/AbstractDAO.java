@@ -21,4 +21,8 @@ public abstract class AbstractDAO {
     public void setConnection(Connection connection) {
         this.connection = connection;
     }
+    
+    public void muestraExcepcion(String mensaje){
+        fa.muestraExcepcion(mensaje);
+    }
 }

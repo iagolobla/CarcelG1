@@ -1,6 +1,8 @@
 package gui;
 
 import carcel.FachadaCarcel;
+import carcel.Nivel;
+import javax.swing.DefaultComboBoxModel;
 
 public class VGestionCeldas extends javax.swing.JDialog {
 
@@ -10,6 +12,8 @@ public class VGestionCeldas extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fc = fc;
+        ComboCampoSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
+        ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +24,6 @@ public class VGestionCeldas extends javax.swing.JDialog {
         EtiquetaId = new javax.swing.JLabel();
         CampoId = new javax.swing.JTextField();
         EtiquetaSeguridad = new javax.swing.JLabel();
-        CampoSeguridad = new javax.swing.JTextField();
         BotonBuscar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaCeldas = new javax.swing.JTable();
@@ -29,13 +32,14 @@ public class VGestionCeldas extends javax.swing.JDialog {
         EtiquetaSuperficie = new javax.swing.JLabel();
         TextoSuperficie = new javax.swing.JTextField();
         EtiquetaSeguridad1 = new javax.swing.JLabel();
-        TextoSeguridad = new javax.swing.JTextField();
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         EtqiuetaPlazas = new javax.swing.JLabel();
         CampoPlazas = new javax.swing.JTextField();
         BotonSalir = new javax.swing.JButton();
+        ComboCampoSeguridad = new javax.swing.JComboBox();
+        ComboSeguridad = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -89,6 +93,10 @@ public class VGestionCeldas extends javax.swing.JDialog {
             }
         });
 
+        ComboCampoSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -112,8 +120,8 @@ public class VGestionCeldas extends javax.swing.JDialog {
                         .addGap(26, 26, 26)
                         .addComponent(EtiquetaSeguridad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CampoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(ComboCampoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BotonBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -131,7 +139,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(EtiquetaSeguridad1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TextoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(EtiquetaPlazas1)
@@ -152,13 +160,13 @@ public class VGestionCeldas extends javax.swing.JDialog {
                     .addComponent(EtiquetaId)
                     .addComponent(CampoId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EtiquetaSeguridad)
-                    .addComponent(CampoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonBuscar))
+                    .addComponent(BotonBuscar)
+                    .addComponent(ComboCampoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CampoPlazas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EtqiuetaPlazas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -169,7 +177,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EtiquetaSeguridad1)
-                    .addComponent(TextoSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonInsertar)
@@ -222,7 +230,8 @@ public class VGestionCeldas extends javax.swing.JDialog {
     private javax.swing.JButton BotonSalir;
     private javax.swing.JTextField CampoId;
     private javax.swing.JTextField CampoPlazas;
-    private javax.swing.JTextField CampoSeguridad;
+    private javax.swing.JComboBox ComboCampoSeguridad;
+    private javax.swing.JComboBox ComboSeguridad;
     private javax.swing.JLabel EtiquetaId;
     private javax.swing.JLabel EtiquetaPlazas1;
     private javax.swing.JLabel EtiquetaSeguridad;
@@ -231,14 +240,13 @@ public class VGestionCeldas extends javax.swing.JDialog {
     private javax.swing.JLabel EtqiuetaPlazas;
     private javax.swing.JTable TablaCeldas;
     private javax.swing.JTextField TextoPlazas;
-    private javax.swing.JTextField TextoSeguridad;
     private javax.swing.JTextField TextoSuperficie;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
     public void insertarCelda(){
-        
+        fc.insertarCelda(TextoPlazas.getText(), TextoSuperficie.getText(), ComboSeguridad.getSelectedItem().toString());
     }
     
     public void modificarCelda(){
