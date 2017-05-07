@@ -7,12 +7,11 @@ Esta transacción permite a un empleado de tipo administrador autenticarse en el
         intenta acceder, en caso contrario se informa de un error en las credenciales.
  
 2.	Insertar un preso
-
 Esta transacción permite a un empleado de tipo administrador introducir un preso en el sistema, ya sea nuevo o reincidente. Desde la Gestión de Presos:
 
 1.	El administrador pulsa “Insertar”
 2.	El sistema solicita los datos del preso.
-3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional),  Fecha de Nacimiento,
+3.	El administrador suministra los datos correspondientes. Tales como DNI, Nombre, Apodo (Opcional), Fecha de Nacimiento,
         Fecha de Ingreso y nivel de Agresividad.
 3.	El sistema comprueba si ingresó previamente en la cárcel. 	
 4.	Si es reincidente, el sistema borra los cargos anteriores que tenía el preso, pone la fecha de salida como nula y actualiza
@@ -20,7 +19,6 @@ Esta transacción permite a un empleado de tipo administrador introducir un pres
 5.	El administrador introduce la celda donde se inserta. (Debe tener huecos libres)
 
 3.	Liberar un preso
-
 Esta transacción permite a un empleado de tipo administrador dar de baja a un preso en la cárcel.
 La información de la estancia del preso en la cárcel se guardará, con fines informativos, hasta que este sea reinsertado en ella.
 Desde la Gestión de Presos:
@@ -32,7 +30,6 @@ Desde la Gestión de Presos:
 5.	El sistema desasocia al preso de su banda.
 
 4.	Modificar información de un preso
-
 Esta transacción permite a un empleado de tipo administrador modificar la información de un preso en el sistema. Desde la Gestión de Presos:
 
 1.	El administrador busca al preso por su DNI, Nombre o Apodo.
