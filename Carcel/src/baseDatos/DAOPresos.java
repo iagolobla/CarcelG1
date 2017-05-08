@@ -92,8 +92,8 @@ public class DAOPresos extends AbstractDAO {
 
         try {
             stmPreso = con.prepareStatement("INSERT INTO preso(dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, "
-                    + "categoria, celda "
-                    + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?)");
+                    + "categoria, celda) "
+                    + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?);");
             stmPreso.setString(1, preso.getDNI());
             stmPreso.setDate(2, preso.getFechaIngreso());
             stmPreso.setString(3, preso.getNombre());
