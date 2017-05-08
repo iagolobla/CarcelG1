@@ -47,6 +47,10 @@ public class GestionPresos {
         fbd.buscarPresosCelda(celda);
     }
     
+    protected java.util.List<Banda> obtenerBandas(String tipo) {
+        return fbd.obtenerBandas(tipo);
+    }
+    
     public void insertarCargo(String dni, Delito delito){
         fbd.insertarCargo(dni, delito);
     }
