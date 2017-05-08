@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -107,6 +108,105 @@ public class DAOCeldas extends AbstractDAO{
         }
         
         return celda;
+    }
+    
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+        Connection con;
+        ArrayList<Celda> celdas = new ArrayList<>();
+        Celda auxCell = null;
+        
+        //Variables para guardar el orden de cada parametro en la consulta
+        int oId, oNPlazas, oSeguridad;
+        
+        PreparedStatement query = null;
+        ResultSet rsCeldas;
+        
+        String Consulta = "SELECT * FROM celda c ";
+        
+        //Si algun parametro tiene algo
+        if(!(id.isEmpty() && nPlazas.isEmpty() && seguridad.isEmpty())){
+            Consulta += "WHERE ";
+        }
+        
+        //La construccion selectiva de la consulta la hago de esta forma debido a que no tendria sentido utilizar
+        //like %% ya que si introducimos una id, queremos que nos salgan solo las celdas de esa id, pasa lo mismo
+        //con el numero de plazas y la seguridad. Por tanto, para ofrecer flexibilidad de consultas pudiendo 
+        //introducir los parametros de busqueda libremente, debe realizarse asi.
+        if(!id.isEmpty()){
+            Consulta += "id = ? ";
+            oId = 1;
+            if(!nPlazas.isEmpty()){
+                Consulta += "and numCamas = ? ";
+                oNPlazas = 2;
+                if(!seguridad.isEmpty()){
+                    Consulta += "and seguridad = ?";
+                    oSeguridad = 3;
+                } else {
+                    oSeguridad = 0;
+                }
+            } else {
+                oNPlazas = 0;
+                if(!seguridad.isEmpty()){
+                    Consulta += "and seguridad = ?";
+                    oSeguridad = 2;
+                } else {
+                    oSeguridad = 0;
+                }
+            }
+        } else {
+            oId = 0;
+            if(!nPlazas.isEmpty()){
+                Consulta += "numCamas = ? ";
+                oNPlazas = 1;
+                if(!seguridad.isEmpty()){
+                    Consulta += "and seguridad = ?";
+                    oSeguridad = 2;
+                } else {
+                    oSeguridad = 0;
+                }
+            } else {
+                oNPlazas = 0;
+                if(!seguridad.isEmpty()){
+                    Consulta += "seguridad = ?";
+                    oSeguridad = 1;
+                } else {
+                    oSeguridad = 0;
+                }
+            }
+        }
+        
+        con = this.getConnection();
+        
+        try{
+            query = con.prepareStatement(Consulta);
+            
+            if(oId != 0)    query.setInt(oId, Integer.parseInt(id));
+            if(oNPlazas != 0)   query.setInt(oNPlazas, Integer.parseInt(nPlazas));
+            if(oSeguridad != 0) query.setString(oSeguridad, seguridad);
+            
+            rsCeldas = query.executeQuery();
+            
+            while(rsCeldas.next()){
+                auxCell = new Celda(rsCeldas.getInt("numCelda"),
+                                    rsCeldas.getFloat("superficie"),
+                                    rsCeldas.getInt("numCamas"),
+                                    Nivel.valueOf(rsCeldas.getString("seguridad")),
+                                    rsCeldas.getInt("ocupantes")
+                );
+                
+                celdas.add(auxCell);
+            }
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   //Aprender funcionamiento
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
+        return celdas;
     }
     
 }

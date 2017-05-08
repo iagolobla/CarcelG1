@@ -6,6 +6,7 @@ import carcel.Preso;
 import carcel.Delito;
 import java.io.*;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -95,5 +96,9 @@ public class FachadaBaseDatos {
     
     public Celda obtenerCelda(String id){
         return daoCeldas.obtenerCelda(id);
+    }
+    
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+        return daoCeldas.buscarCelda(id, nPlazas, seguridad);
     }
 }

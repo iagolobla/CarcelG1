@@ -3,6 +3,7 @@ package gui;
 import carcel.Celda;
 import carcel.FachadaCarcel;
 import carcel.Nivel;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 
 public class VGestionCeldas extends javax.swing.JDialog {
@@ -268,7 +269,18 @@ public class VGestionCeldas extends javax.swing.JDialog {
     }
     
     public void buscarCelda(){
+        ModeloTablaCeldas mc;
+        ArrayList<Celda> celdas = null;
         
+        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+        celdas = fc.buscarCelda(CampoId.getText(), CampoPlazas.getText(), ComboCampoSeguridad.getSelectedItem().toString());
+    
+        mc.setFilas(celdas);
+
+        if (mc.getRowCount() > 0) {
+            TablaCeldas.setRowSelectionInterval(0, 0);    //Selecciona el primero por defecto      
+            rellenarCampos();
+        }
     }
     
     public void rellenarCampos(){

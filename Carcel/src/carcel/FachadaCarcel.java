@@ -1,5 +1,7 @@
 package carcel;
 
+import java.util.ArrayList;
+
 public class FachadaCarcel {
 
     private gui.FachadaGUI fgui;
@@ -107,5 +109,9 @@ public class FachadaCarcel {
     
     public Celda obtenerCelda(String id){
         return gc.obtenerCelda(id);
+    }
+    
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+        return gc.buscarCelda(id, nPlazas, seguridad);
     }
 }

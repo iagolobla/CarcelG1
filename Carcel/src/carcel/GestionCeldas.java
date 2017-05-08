@@ -7,6 +7,7 @@ package carcel;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGUI;
+import java.util.ArrayList;
 
 /**
  *
@@ -29,5 +30,9 @@ public class GestionCeldas {
         if(id.isEmpty())    return null;
 
         return fbd.obtenerCelda(id);
+    }
+    
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+        return fbd.buscarCelda(id,nPlazas,seguridad);
     }
 }
