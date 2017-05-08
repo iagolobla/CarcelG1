@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Properties;
 
 public class FachadaBaseDatos {
-    
+
     private carcel.FachadaCarcel fa;
     private Connection conexion;
     private DAOEmpleados daoEmpleados;
@@ -41,11 +41,11 @@ public class FachadaBaseDatos {
                     + configuracion.getProperty("puerto") + "/"
                     + configuracion.getProperty("baseDatos"),
                     usuario);
-            
-        daoEmpleados = new DAOEmpleados(conexion, fa);
-        daoPresos = new DAOPresos(conexion, fa);
-        daoCeldas = new DAOCeldas(conexion, fa);
-        daoDelitos = new DAODelitos(conexion, fa);
+
+            daoEmpleados = new DAOEmpleados(conexion, fa);
+            daoPresos = new DAOPresos(conexion, fa);
+            daoCeldas = new DAOCeldas(conexion, fa);
+            daoDelitos = new DAODelitos(conexion, fa);
 
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -56,69 +56,73 @@ public class FachadaBaseDatos {
             //Aqui se mostraria la ventana de error
         }
     }
-    
-    public Empleado validarAdmin(String dni, String clave){
+
+    public Empleado validarAdmin(String dni, String clave) {
         return daoEmpleados.validarAdmin(dni, clave);
     }
-    
-    public Boolean comprobarReincidente(String DNI){
+
+    public Boolean comprobarReincidente(String DNI) {
         return daoPresos.comprobarReincidente(DNI);
     }
-    
-    public void insertarPresoNoReincidente(Preso preso){
+
+    public void insertarPresoNoReincidente(Preso preso) {
         daoPresos.insertarPresoNoReincidente(preso);
     }
-    
-    public void insertarPresoReincidente(Preso preso){
+
+    public void insertarPresoReincidente(Preso preso) {
         daoPresos.insertarPresoReincidente(preso);
     }
 
     public void liberarPreso(String DNI) {
         daoPresos.liberarPreso(DNI);
     }
-    
-    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo){
+
+    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo) {
         return daoPresos.buscarPresos(DNI, nombre, apodo);
     }
-    
-    public void insertarCelda(String nPlazas, String superficie, String seguridad){
+
+    public void insertarCelda(String nPlazas, String superficie, String seguridad) {
         daoCeldas.insertarCelda(nPlazas, superficie, seguridad);
     }
-    
-    public java.util.List<String> rellenarCampos(String tipo){
+
+    public java.util.List<String> rellenarCampos(String tipo) {
         return daoPresos.rellenarCampos(tipo);
     }
 
     public List<Delito> consultarCargosPreso(String DNI) {
         return daoPresos.consultarCargosPreso(DNI);
     }
-    
-    public Celda obtenerCelda(String id){
+
+    public Celda obtenerCelda(String id) {
         return daoCeldas.obtenerCelda(id);
     }
-    
-    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad) {
         return daoCeldas.buscarCelda(id, nPlazas, seguridad);
     }
-    
-    public void asociarPreso(String DNI, Banda banda){
+
+    public void asociarPreso(String DNI, Banda banda) {
         daoPresos.asociarPreso(DNI, banda);
     }
-    
-    public void eliminarCelda(Celda celda){
+
+    public void eliminarCelda(Celda celda) {
         daoCeldas.eliminarCelda(celda);
     }
-    
-    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad) {
         daoCeldas.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
-    
-    public void buscarPresosCelda(Celda celda){
+
+    public void buscarPresosCelda(Celda celda) {
         daoPresos.buscarPresosCelda(celda);
     }
-    
-    public void insertarCargo(String dni, Delito delito){
-        if(!daoDelitos.comprobarDelito(delito)){
+
+    public java.util.List<Banda> obtenerBandas(String tipo) {
+        return daoPresos.obtenerBanda(tipo);
+    }
+
+    public void insertarCargo(String dni, Delito delito) {
+        if (!daoDelitos.comprobarDelito(delito)) {
             daoDelitos.insertarDelito(delito);
         }
         daoDelitos.insertarCargo(dni, delito);

@@ -541,7 +541,7 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonAlojarActionPerformed
 
     private void BotonBuscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarBActionPerformed
-        buscarBanda();
+        buscarBanda(CampoTipoBanda.getText());
     }//GEN-LAST:event_BotonBuscarBActionPerformed
 
     private void BotonAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsociarActionPerformed
@@ -674,6 +674,15 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void buscarCelda(){
+        ModeloTablaCeldas mc;
+        
+        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+    
+        mc.setFilas(fc.buscarCelda(CampoIdCelda.getText(), CampoPlazas.getText(), ComboSeguridad.getSelectedItem().toString()));
+
+        if (mc.getRowCount() > 0) {
+            TablaCeldas.setRowSelectionInterval(0, 0);    //Selecciona el primero por defecto      
+        }
         
     }
     
@@ -681,7 +690,13 @@ public class VPreso extends javax.swing.JDialog {
         
     }
     
-    public void buscarBanda(){
+    public void buscarBanda(String tipo){
+        ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
+        java.util.List<Banda> bandas = fc.obtenerBandas(tipo);
+        mtb.setFilas(bandas);
+        if(mtb.getRowCount() > 0){
+            TablaBandas.setRowSelectionInterval(0, 0);
+        }
         
     }
     

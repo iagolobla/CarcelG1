@@ -239,8 +239,8 @@ public class DAOPresos extends AbstractDAO {
         }
         return resultado;
     }
-    
-    public void asociarPreso(String DNI, Banda banda){
+
+    public void asociarPreso(String DNI, Banda banda) {
         Connection con;
         PreparedStatement stmAsociar = null;
 
@@ -266,8 +266,39 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
-    
-    public void buscarPresosCelda(Celda celda){
-        
+
+    protected java.util.List<Banda> obtenerBanda(String tipo) {
+        java.util.List<Banda> bandas = new java.util.ArrayList<Banda>();
+        Connection con;
+        PreparedStatement stmBandas = null;
+        ResultSet rsBandas;
+
+        con = super.getConnection();
+
+        try {
+            stmBandas = con.prepareStatement("SELECT tipo, numPresos "
+                    + "FROM banda "
+                    + "WHERE tipo LIKE ? ");
+            stmBandas.setString(1, "%" + tipo + "%");
+            rsBandas = stmBandas.executeQuery();
+            while (rsBandas.next()) {
+                bandas.add(new Banda(rsBandas.getString("tipo"), rsBandas.getInt("numPresos")));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmBandas.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return bandas;
+    }
+
+    public void buscarPresosCelda(Celda celda) {
+
     }
 }
