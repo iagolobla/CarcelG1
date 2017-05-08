@@ -146,8 +146,17 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            stmPreso.setString(7, preso.getBanda().getTipo_banda());
-            stmPreso.setInt(8, preso.getCelda().getnCelda());
+            if (preso.getBanda()!=null) {
+                stmPreso.setString(7, preso.getBanda().getTipo_banda());
+
+            } else {
+                stmPreso.setNull(7, java.sql.Types.VARCHAR);
+            }
+            if (preso.getCelda() != null) {
+                stmPreso.setInt(8, preso.getCelda().getnCelda());
+            } else {
+                stmPreso.setNull(8, java.sql.Types.INTEGER);
+            }
             stmPreso.setString(9, preso.getDNI());
             stmPreso.executeUpdate();
         } catch (SQLException e) {
