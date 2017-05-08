@@ -676,7 +676,18 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void asociarPresoBanda(){
+        String DNI = TextoDNI.getText();
+        ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
         
+        Banda banda = null;
+        if (mtb.getRowCount() > 0) {
+            if (TablaBandas.getSelectedRowCount() > 0) {
+                String tipoBanda = mtb.obtenerBanda(TablaBandas.getSelectedRow()).getTipo_banda();
+                Integer numPresos = mtb.obtenerBanda((TablaBandas.getSelectedRow())).getPresos();
+                banda = new Banda(tipoBanda, numPresos);
+            }
+        }   
+        fc.asociarPreso(DNI, banda);
     }
     
     public void desasociarPresoBanda(){
