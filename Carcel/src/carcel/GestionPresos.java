@@ -43,4 +43,8 @@ public class GestionPresos {
         fbd.asociarPreso(DNI, banda);
     }
     
+    public void buscarPresosCelda(Celda celda){
+        fbd.buscarPresosCelda(celda);
+    }
+    
 }

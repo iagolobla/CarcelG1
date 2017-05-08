@@ -266,4 +266,8 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
+    
+    public void buscarPresosCelda(Celda celda){
+        
+    }
 }

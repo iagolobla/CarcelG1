@@ -1,5 +1,6 @@
 package gui;
 
+import carcel.Celda;
 import carcel.Preso;
 
 public class FachadaGUI {
@@ -92,6 +93,19 @@ public class FachadaGUI {
         
         vmv = new VModVisita(vp, true, fc);
         vmv.setVisible(true);
+    }
+    
+    public void iniciaVAvisoIntercambio(Celda celda, Preso preso){
+        VAvisoIntercambio vai;
+        
+        vai = new VAvisoIntercambio(vp, true, fc, celda, preso);
+        vai.setVisible(true);
+    }
+    
+    public void iniciaVIntercambio(Celda celda, Preso preso){
+        VIntercambio vi;
+        
+        vi = new VIntercambio(vp, true, fc, celda, preso);
     }
     
     public void muestraExcepcion(String mensaje){

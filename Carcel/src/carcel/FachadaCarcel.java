@@ -66,6 +66,14 @@ public class FachadaCarcel {
     public void iniciaPreso(Preso preso) {
         fgui.iniciaVPreso(preso);
     }
+    
+    public void iniciaAvisoIntercambio(Celda celda, Preso preso){
+        fgui.iniciaVAvisoIntercambio(celda, preso);
+    }
+    
+    public void iniciaGestionIntercambio(Celda celda, Preso preso){
+        fgui.iniciaVIntercambio(celda, preso);
+    }
 
     public void insertarPreso(Preso preso) {
         gp.insertarPreso(preso);
@@ -121,5 +129,9 @@ public class FachadaCarcel {
     
     public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
         gc.modificarCelda(celda, nPlazas, superficie, seguridad);
+    }
+    
+    public void buscarPresosCelda(Celda celda){
+        gp.buscarPresosCelda(celda);
     }
 }

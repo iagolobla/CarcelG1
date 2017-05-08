@@ -1,10 +1,23 @@
 package gui;
 
+import carcel.Celda;
+import carcel.FachadaCarcel;
+import carcel.Preso;
+
 public class VIntercambio extends javax.swing.JDialog {
 
-    public VIntercambio(java.awt.Frame parent, boolean modal) {
+    FachadaCarcel fc;
+    Celda celda;
+    Preso preso;
+    
+    public VIntercambio(java.awt.Frame parent, boolean modal, FachadaCarcel fc, Celda celda, Preso preso) {
         super(parent, modal);
         initComponents();
+        this.fc = fc;
+        this.celda = celda;
+        this.preso = preso;
+        
+        buscarPresosCelda();
     }
 
     @SuppressWarnings("unchecked")
@@ -76,4 +89,9 @@ public class VIntercambio extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+    public void buscarPresosCelda(){
+        fc.buscarPresosCelda(celda);
+    }
+    
 }
