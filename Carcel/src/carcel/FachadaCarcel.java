@@ -114,4 +114,8 @@ public class FachadaCarcel {
     public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
         return gc.buscarCelda(id, nPlazas, seguridad);
     }
+    
+    public void asociarPreso(String DNI, Banda banda){
+        gp.asociarPreso(DNI, banda);
+    }
 }

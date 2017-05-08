@@ -1,5 +1,6 @@
 package baseDatos;
 
+import carcel.Banda;
 import carcel.Celda;
 import carcel.Empleado;
 import carcel.Preso;
@@ -100,5 +101,9 @@ public class FachadaBaseDatos {
     
     public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
         return daoCeldas.buscarCelda(id, nPlazas, seguridad);
+    }
+    
+    public void asociarPreso(String DNI, Banda banda){
+        daoPresos.asociarPreso(DNI, banda);
     }
 }

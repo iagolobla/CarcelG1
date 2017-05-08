@@ -279,4 +279,8 @@ public class DAOPresos extends AbstractDAO {
         }
         return resultado;
     }
+    
+    public void asociarPreso(String DNI, Banda banda){
+        
+    }
 }

@@ -43,4 +43,8 @@ public class GestionPresos {
         return fbd.consultarCargosPreso(DNI);
     }
     
+    public void asociarPreso(String DNI, Banda banda){
+        fbd.asociarPreso(DNI, banda);
+    }
+    
 }
