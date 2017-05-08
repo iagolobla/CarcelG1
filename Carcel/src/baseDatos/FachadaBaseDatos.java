@@ -105,6 +105,10 @@ public class FachadaBaseDatos {
         daoPresos.asociarPreso(DNI, banda);
     }
     
+    public void desasociarPreso(String dni){
+        daoPresos.desasociarPreso(dni);
+    }
+    
     public void eliminarCelda(Celda celda){
         daoCeldas.eliminarCelda(celda);
     }

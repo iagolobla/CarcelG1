@@ -123,6 +123,10 @@ public class FachadaCarcel {
         gp.asociarPreso(DNI, banda);
     }
     
+    public void desasociarPreso(String dni){
+        gp.desasociarPreso(dni);
+    }
+    
     public void eliminarCelda(Celda celda){
         gc.eliminarCelda(celda);
     }

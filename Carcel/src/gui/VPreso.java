@@ -538,10 +538,12 @@ public class VPreso extends javax.swing.JDialog {
 
     private void BotonAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsociarActionPerformed
         asociarPresoBanda();
+        buscarBanda(CampoTipoBanda.getText());
     }//GEN-LAST:event_BotonAsociarActionPerformed
 
     private void BotonDesasociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDesasociarActionPerformed
         desasociarPresoBanda();
+        buscarBanda(CampoTipoBanda.getText());
     }//GEN-LAST:event_BotonDesasociarActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
@@ -722,7 +724,8 @@ public class VPreso extends javax.swing.JDialog {
     }
 
     public void desasociarPresoBanda() {
-
+        String dni = TextoDNI.getText();
+        fc.desasociarPreso(dni);
     }
 
     public void insertarCargo() {

@@ -273,6 +273,33 @@ public class DAOPresos extends AbstractDAO {
         }
     }
     
+    public void desasociarPreso(String dni){
+        Connection con;
+        PreparedStatement stmAsociar = null;
+
+        con = this.getConnection();
+
+        String consulta = "update preso"
+                + " set banda = null"
+                + " where dni = ?";
+        try {
+            stmAsociar = con.prepareStatement(consulta);
+            //stmAsociar.setString(1, banda.getTipo_banda());
+            stmAsociar.setString(1, dni);
+            stmAsociar.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmAsociar.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+    }
+    
     protected java.util.List<Banda> obtenerBanda(String tipo) {
         java.util.List<Banda> bandas = new java.util.ArrayList<Banda>();
         Connection con;
