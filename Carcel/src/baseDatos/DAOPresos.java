@@ -216,7 +216,7 @@ public class DAOPresos extends AbstractDAO {
         String consulta = "select *"
                 + "from delito as d";
         if (!tipo.isEmpty()) {
-            consulta = consulta + " where tipo like ?";
+            consulta = consulta + " where nombre like ?";
         }
         try {
             stmDelitos = con.prepareStatement(consulta);
