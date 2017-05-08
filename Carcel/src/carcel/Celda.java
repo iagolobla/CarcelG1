@@ -85,4 +85,12 @@ public class Celda {
         this.ocupantes = ocupantes;
     }
 
+    public int getnOcupantes() {
+        return nOcupantes;
+    }
+
+    public void setnOcupantes(int nOcupantes) {
+        this.nOcupantes = nOcupantes;
+    }
+
 }

@@ -199,7 +199,6 @@ public class DAOCeldas extends AbstractDAO{
                                     Nivel.valueOf(rsCeldas.getString("seguridad")),
                                     rsCeldas.getInt("ocupantes")
                 );
-                
                 celdas.add(auxCell);
             }
         } catch(SQLException e){
