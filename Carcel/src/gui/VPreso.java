@@ -41,6 +41,7 @@ public class VPreso extends javax.swing.JDialog {
         ComboAgresividad.setSelectedItem(preso.getAgresividad());
         //Buscar celda segun el preso y seleccionar fila
         //Buscar banda segun el preso y seleccionar fila
+        TextoDNI.setEditable(false);
         buscarCargosPreso(preso.getDNI());
         buscarBanda(preso.getBanda().getTipo_banda());
         buscarCargosPreso(preso.getDNI());
