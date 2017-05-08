@@ -11,10 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- *
- * @author alumnogreibd
- */
+
 public class DAODelitos extends AbstractDAO{
     public DAODelitos(Connection connection, carcel.FachadaCarcel fa) {
         super.setConnection(connection);

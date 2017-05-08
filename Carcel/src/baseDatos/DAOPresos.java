@@ -99,8 +99,16 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            stmPreso.setString(7, preso.getBanda().getTipo_banda());
-            stmPreso.setInt(9, preso.getCelda().getnCelda());
+            if (preso.getBanda() != null) {
+                stmPreso.setString(7, preso.getBanda().getTipo_banda());
+            } else {
+                stmPreso.setString(7, "null");
+            }
+            if (preso.getCelda() != null) {
+                stmPreso.setInt(8, preso.getCelda().getnCelda());
+            } else {
+                stmPreso.setString(8, "null");
+            }
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -243,8 +251,8 @@ public class DAOPresos extends AbstractDAO {
         }
         return resultado;
     }
-    
-    public void asociarPreso(String DNI, Banda banda){
+
+    public void asociarPreso(String DNI, Banda banda) {
         Connection con;
         PreparedStatement stmAsociar = null;
 
@@ -270,8 +278,8 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
-    
-    public void desasociarPreso(String dni){
+
+    public void desasociarPreso(String dni) {
         Connection con;
         PreparedStatement stmAsociar = null;
 
@@ -297,7 +305,7 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
-    
+
     protected java.util.List<Banda> obtenerBanda(String tipo) {
         java.util.List<Banda> bandas = new java.util.ArrayList<Banda>();
         Connection con;
@@ -328,9 +336,8 @@ public class DAOPresos extends AbstractDAO {
         }
         return bandas;
     }
-    
-    public void buscarPresosCelda(Celda celda){
-        
-    }
-}   
 
+    public void buscarPresosCelda(Celda celda) {
+
+    }
+}
