@@ -133,7 +133,7 @@ public class DAOCeldas extends AbstractDAO{
         //con el numero de plazas y la seguridad. Por tanto, para ofrecer flexibilidad de consultas pudiendo 
         //introducir los parametros de busqueda libremente, debe realizarse asi.
         if(!id.isEmpty()){
-            Consulta += "id = ? ";
+            Consulta += "numCelda = ? ";
             oId = 1;
             if(!nPlazas.isEmpty()){
                 Consulta += "and numCamas = ? ";

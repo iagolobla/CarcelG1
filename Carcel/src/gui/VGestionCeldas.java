@@ -291,8 +291,8 @@ public class VGestionCeldas extends javax.swing.JDialog {
         celda = fc.obtenerCelda((String) mc.getValueAt(TablaCeldas.getSelectedRow(), 0));
         
         if(celda != null){
-            TextoPlazas.setText(Integer.toString(celda.getnCamas()));
-            TextoSuperficie.setText(Float.toString(celda.getSuperficie()));
+            TextoPlazas.setText(String.valueOf(celda.getnCamas()));
+            TextoSuperficie.setText(String.valueOf(celda.getSuperficie()));
             ComboSeguridad.setSelectedItem(celda.getSeguridad());
         }
     }
