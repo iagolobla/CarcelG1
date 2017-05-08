@@ -349,6 +349,11 @@ public class VPreso extends javax.swing.JDialog {
         jTabbedPanel.addTab("Banda", Banda);
 
         TablaCargos.setModel(new ModeloTablaCargos());
+        TablaCargos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaCargosMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(TablaCargos);
 
         EtiquetaTipoDelito.setText("Tipo Delito");
@@ -558,14 +563,17 @@ public class VPreso extends javax.swing.JDialog {
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         insertarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         eliminarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -577,8 +585,12 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonAtualizarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtualizarCargosActionPerformed
-        buscarCargosPreso(TextoDNI.getText());
+        //buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonAtualizarCargosActionPerformed
+
+    private void TablaCargosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCargosMouseReleased
+        rellenarCampos();
+    }//GEN-LAST:event_TablaCargosMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banda;
@@ -758,7 +770,7 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void modificarCargo(){
-        /*String dni = TextoDNI.getText();
+        String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.Alta;
@@ -775,11 +787,28 @@ public class VPreso extends javax.swing.JDialog {
         }
         Delito delito = new Delito(nombre, descripcion, intensidad);
         
-        fc.modificarCargo(dni, delito);*/
+        fc.modificarCargo(dni, delito);
     }
 
     public void eliminarCargo() {
-
+        String dni = TextoDNI.getText();
+        String nombre = TextoTipoDelito.getText();
+        String descripcion = TextoDescripcion.getText();
+        Nivel intensidad = Nivel.Alta;
+        switch(ComboIntensidad.getSelectedItem().toString()){
+            case "Alta":
+                intensidad = Nivel.Alta;
+                break;
+            case "Media":
+                intensidad = Nivel.Media;
+                break;
+            case "Baja":
+                intensidad = Nivel.Baja;
+                break;
+        }
+        Delito delito = new Delito(nombre, descripcion, intensidad);
+        
+        fc.eliminarCargo(dni, delito);
     }
 
     public void buscarCargosPreso(String DNI) {

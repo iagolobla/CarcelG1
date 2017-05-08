@@ -55,4 +55,12 @@ public class GestionPresos {
         fbd.insertarCargo(dni, delito);
     }
     
+    public void modificarCargo(String dni, Delito delito){
+        fbd.modificarCargo(dni, delito);
+    }
+    
+    public void eliminarCargo(String dni, Delito delito){
+        fbd.eliminarCargo(dni, delito);
+    }
+    
 }

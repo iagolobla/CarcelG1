@@ -131,4 +131,16 @@ public class FachadaBaseDatos {
             //Mensaje de que xa ten un cargo dese tipo
         }
     }
+    
+    public void modificarCargo(String dni, Delito delito){
+        if(daoDelitos.comprobarCargo(dni, delito)){
+            daoDelitos.modificarCargo(dni, delito);
+        }
+    }
+    
+    public void eliminarCargo(String dni, Delito delito){
+        if(daoDelitos.comprobarCargo(dni,delito)){
+            daoDelitos.eliminarCargo(dni, delito);
+        }
+    }
 }
