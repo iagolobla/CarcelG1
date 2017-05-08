@@ -73,11 +73,8 @@ public class DAODelitos extends AbstractDAO{
     }
     
     public void insertarCargo(String dni, Delito delito){
-        java.util.List<Delito> resultado = new java.util.ArrayList<>();
-        Delito delitoActual;
         Connection con;
         PreparedStatement stmDelitos = null;
-        ResultSet rsDelitos;
 
         con = this.getConnection();
 
