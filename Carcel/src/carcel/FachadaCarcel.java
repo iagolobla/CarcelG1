@@ -133,7 +133,6 @@ public class FachadaCarcel {
     
     public void buscarPresosCelda(Celda celda){
         gp.buscarPresosCelda(celda);
-    }
     public void insertarCargo(String dni, Delito delito){
         gp.insertarCargo(dni, delito);
     }
