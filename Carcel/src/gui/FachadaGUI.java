@@ -106,6 +106,7 @@ public class FachadaGUI {
         VIntercambio vi;
         
         vi = new VIntercambio(vp, true, fc, celda, preso);
+        vi.setVisible(true);
     }
     
     public void muestraExcepcion(String mensaje){
