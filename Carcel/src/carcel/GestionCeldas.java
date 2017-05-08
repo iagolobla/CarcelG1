@@ -24,4 +24,10 @@ public class GestionCeldas {
     public void insertarCelda(String nPlazas, String superficie, String seguridad){        
         fbd.insertarCelda(nPlazas, superficie, seguridad);
     }
+    
+    public Celda obtenerCelda(String id){
+        if(id.isEmpty())    return null;
+
+        return fbd.obtenerCelda(id);
+    }
 }

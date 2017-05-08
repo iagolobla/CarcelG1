@@ -1,5 +1,6 @@
 package gui;
 
+import carcel.Celda;
 import carcel.FachadaCarcel;
 import carcel.Nivel;
 import javax.swing.DefaultComboBoxModel;
@@ -55,6 +56,11 @@ public class VGestionCeldas extends javax.swing.JDialog {
         });
 
         TablaCeldas.setModel(new ModeloTablaCeldas());
+        TablaCeldas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaCeldasMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaCeldas);
 
         EtiquetaPlazas1.setText("Plazas");
@@ -221,6 +227,10 @@ public class VGestionCeldas extends javax.swing.JDialog {
         buscarCelda();
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
+    private void TablaCeldasMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCeldasMouseReleased
+        rellenarCampos();
+    }//GEN-LAST:event_TablaCeldasMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
@@ -261,4 +271,17 @@ public class VGestionCeldas extends javax.swing.JDialog {
         
     }
     
+    public void rellenarCampos(){
+        ModeloTablaCeldas mc;
+        Celda celda = null;
+        
+        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+        celda = fc.obtenerCelda((String) mc.getValueAt(TablaCeldas.getSelectedRow(), 0));
+        
+        if(celda != null){
+            TextoPlazas.setText(Integer.toString(celda.getnCamas()));
+            TextoSuperficie.setText(Float.toString(celda.getSuperficie()));
+            ComboSeguridad.setSelectedItem(celda.getSeguridad());
+        }
+    }
 }

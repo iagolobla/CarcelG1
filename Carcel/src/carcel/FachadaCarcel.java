@@ -105,4 +105,7 @@ public class FachadaCarcel {
         fgui.muestraExcepcion(mensaje);
     }
     
+    public Celda obtenerCelda(String id){
+        return gc.obtenerCelda(id);
+    }
 }

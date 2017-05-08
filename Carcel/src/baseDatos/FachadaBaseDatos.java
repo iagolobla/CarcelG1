@@ -1,5 +1,6 @@
 package baseDatos;
 
+import carcel.Celda;
 import carcel.Empleado;
 import carcel.Preso;
 import carcel.Delito;
@@ -90,5 +91,9 @@ public class FachadaBaseDatos {
 
     public List<Delito> consultarCargosPreso(String DNI) {
         return daoPresos.consultarCargosPreso(DNI);
+    }
+    
+    public Celda obtenerCelda(String id){
+        return daoCeldas.obtenerCelda(id);
     }
 }

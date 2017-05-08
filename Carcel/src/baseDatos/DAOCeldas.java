@@ -6,8 +6,10 @@
 package baseDatos;
 
 import carcel.Celda;
+import carcel.Nivel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -21,9 +23,7 @@ public class DAOCeldas extends AbstractDAO{
         super.setFachadaCarcel(fc);
     }
     
-    public void insertarCelda(String nPlazas, String superficie, String seguridad){
-        Celda celda;
-        
+    public void insertarCelda(String nPlazas, String superficie, String seguridad){        
         Connection con;
         PreparedStatement query;
         
@@ -69,6 +69,44 @@ public class DAOCeldas extends AbstractDAO{
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         }
+    }
+    
+    public Celda obtenerCelda(String id){
+        Celda celda = null;
+        
+        Connection con;
+        
+        PreparedStatement query = null;
+        ResultSet rsCelda;
+        
+        String consulta =   "SELECT numCelda, superficie, numCamas, seguridad " +
+                            "FROM celda c " +
+                            "WHERE c.numCelda = ?";
+        
+        con = this.getConnection();
+        
+        try{
+            query = con.prepareStatement(consulta);
+            
+            query.setInt(1, Integer.parseInt(id));
+            
+            rsCelda = query.executeQuery();
+            
+            while(rsCelda.next()){
+                celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), Nivel.valueOf(rsCelda.getString("seguridad")));
+            }
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   //Aprender funcionamiento
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
+        
+        return celda;
     }
     
 }
