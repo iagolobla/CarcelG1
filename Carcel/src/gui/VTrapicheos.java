@@ -43,6 +43,9 @@ public class VTrapicheos extends javax.swing.JDialog {
         TextoFecha = new javax.swing.JTextField();
         EtiquetaObjeto = new javax.swing.JLabel();
         TextoObjeto = new javax.swing.JTextField();
+        EtiquetaDescripcion = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TextoDescripcion = new javax.swing.JTextArea();
         BotonSalir = new javax.swing.JButton();
         BotonGuardar = new javax.swing.JButton();
 
@@ -92,7 +95,7 @@ public class VTrapicheos extends javax.swing.JDialog {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(PanelEmisorLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         PanelEmisorLayout.setVerticalGroup(
@@ -155,7 +158,7 @@ public class VTrapicheos extends javax.swing.JDialog {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelReceptorLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE)
                 .addContainerGap())
         );
         PanelReceptorLayout.setVerticalGroup(
@@ -183,6 +186,12 @@ public class VTrapicheos extends javax.swing.JDialog {
 
         EtiquetaObjeto.setText("Objeto");
 
+        EtiquetaDescripcion.setText("Descripcion");
+
+        TextoDescripcion.setColumns(20);
+        TextoDescripcion.setRows(5);
+        jScrollPane3.setViewportView(TextoDescripcion);
+
         javax.swing.GroupLayout PanelInfoLayout = new javax.swing.GroupLayout(PanelInfo);
         PanelInfo.setLayout(PanelInfoLayout);
         PanelInfoLayout.setHorizontalGroup(
@@ -190,26 +199,34 @@ public class VTrapicheos extends javax.swing.JDialog {
             .addGroup(PanelInfoLayout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(EtiquetaFecha3)
-                    .addComponent(EtiquetaObjeto))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TextoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(424, Short.MAX_VALUE))
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addComponent(EtiquetaDescripcion)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelInfoLayout.createSequentialGroup()
+                        .addComponent(EtiquetaFecha3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(EtiquetaObjeto)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TextoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
         PanelInfoLayout.setVerticalGroup(
             PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelInfoLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(37, 37, 37)
                 .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EtiquetaFecha3)
-                    .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TextoFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EtiquetaObjeto)
                     .addComponent(TextoObjeto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65))
+                .addGap(31, 31, 31)
+                .addGroup(PanelInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EtiquetaDescripcion)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Info. General", PanelInfo);
@@ -299,6 +316,7 @@ public class VTrapicheos extends javax.swing.JDialog {
     private javax.swing.JLabel EtiquetaApodo2;
     private javax.swing.JLabel EtiquetaDNI1;
     private javax.swing.JLabel EtiquetaDNI2;
+    private javax.swing.JLabel EtiquetaDescripcion;
     private javax.swing.JLabel EtiquetaFecha3;
     private javax.swing.JLabel EtiquetaNombre1;
     private javax.swing.JLabel EtiquetaNombre2;
@@ -306,11 +324,13 @@ public class VTrapicheos extends javax.swing.JDialog {
     private javax.swing.JPanel PanelEmisor;
     private javax.swing.JPanel PanelInfo;
     private javax.swing.JPanel PanelReceptor;
+    private javax.swing.JTextArea TextoDescripcion;
     private javax.swing.JTextField TextoFecha;
     private javax.swing.JTextField TextoObjeto;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
