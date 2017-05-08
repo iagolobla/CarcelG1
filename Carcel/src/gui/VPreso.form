@@ -164,9 +164,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="TextoDNI">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TextoDNIActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="EtiquetaNombre">
                   <Properties>
