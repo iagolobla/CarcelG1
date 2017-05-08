@@ -35,10 +35,6 @@ public class GestionPresos {
         return(fbd.rellenarCampos(tipo));
     }
     
-    public java.util.List<Delito> obtenerCargos(String tipo) {
-        return fbd.consultarCargos(tipo);
-    }
-    
     protected java.util.List<Delito> obtenerCargosPreso(String DNI){
         return fbd.consultarCargosPreso(DNI);
     }

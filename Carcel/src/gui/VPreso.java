@@ -572,7 +572,7 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonBuscarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarCargosActionPerformed
-        buscarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonBuscarCargosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -704,20 +704,6 @@ public class VPreso extends javax.swing.JDialog {
     
     public void eliminarCargo(){
         
-    }
-    
-    public void buscarCargo(){
-        ModeloTablaCargos mtc = (ModeloTablaCargos)TablaCargos.getModel();
-
-        mtc.setFilas(fc.obtenerCargos(TextoTipoDelito.getText()));
-        if (mtc.getRowCount() > 0) {
-            TablaCargos.setRowSelectionInterval(0, 0);
-            BotonEliminar.setEnabled(true);
-            rellenarCampos();
-        }
-        else {
-            BotonEliminar.setEnabled(false);
-        }
     }
     
     public void buscarCargosPreso(String DNI){
