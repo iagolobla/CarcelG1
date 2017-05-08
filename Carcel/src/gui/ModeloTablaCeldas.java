@@ -100,7 +100,7 @@ public class ModeloTablaCeldas extends AbstractTableModel{
                 resultado = celdas.get(row).getSeguridad().toString();
                 break;
             case 4:
-                resultado = celdas.get(row).getOcupantes().length;
+                resultado = celdas.get(row).getnOcupantes();
                 break;
         }
         return resultado;
