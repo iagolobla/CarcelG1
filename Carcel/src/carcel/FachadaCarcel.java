@@ -87,10 +87,6 @@ public class FachadaCarcel {
         fgui.iniciaVModVisita();
     }
     
-    public java.util.List<Delito> obtenerCargos(String tipo){
-        return(gp.obtenerCargos(tipo));
-    }
-    
     public java.util.List<Delito> obtenerCargosPreso(String DNI) {
         return gp.obtenerCargosPreso(DNI);
     }

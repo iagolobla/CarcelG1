@@ -204,46 +204,6 @@ public class DAOPresos extends AbstractDAO {
         return resultado;
     }
 
-    public java.util.List<Delito> consultarCargos(String tipo) {
-        java.util.List<Delito> resultado = new java.util.ArrayList<>();
-        Delito delitoActual;
-        Connection con;
-        PreparedStatement stmDelitos = null;
-        ResultSet rsDelitos;
-
-        con = this.getConnection();
-
-        String consulta = "select *"
-                + "from delito as d";
-        if (!tipo.isEmpty()) {
-            consulta = consulta + " where nombre like ?";
-        }
-        try {
-            stmDelitos = con.prepareStatement(consulta);
-            if (!tipo.isEmpty()) {
-                stmDelitos.setString(1, "%" + tipo + "%");
-            }
-            rsDelitos = stmDelitos.executeQuery();
-            while (rsDelitos.next()) {
-                delitoActual = new Delito(rsDelitos.getString("tipo"),
-                        rsDelitos.getString("descripcion"),
-                        Nivel.valueOf(rsDelitos.getString("intensidad")));
-                resultado.add(delitoActual);
-            }
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
-        } finally {
-            try {
-                stmDelitos.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-        return resultado;
-    }
-
     protected java.util.List<Delito> consultarCargosPreso(String DNI) {
         java.util.List<Delito> resultado = new java.util.ArrayList<>();
         Delito delitoActual;

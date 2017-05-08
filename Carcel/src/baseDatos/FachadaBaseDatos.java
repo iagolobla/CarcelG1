@@ -86,10 +86,6 @@ public class FachadaBaseDatos {
     public java.util.List<String> rellenarCampos(String tipo){
         return daoPresos.rellenarCampos(tipo);
     }
-    
-    public java.util.List<Delito> consultarCargos(String tipo){
-        return daoPresos.consultarCargos(tipo);
-    }
 
     public List<Delito> consultarCargosPreso(String DNI) {
         return daoPresos.consultarCargosPreso(DNI);
