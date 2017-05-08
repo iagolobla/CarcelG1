@@ -660,7 +660,7 @@ public class VPreso extends javax.swing.JDialog {
         }
 
         //Insertar Preso
-        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, "no hay campo en la interfaz", agresividad, celda);
+        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
         fc.insertarPreso(preso);
     }
 

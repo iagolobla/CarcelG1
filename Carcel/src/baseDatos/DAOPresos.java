@@ -38,7 +38,7 @@ public class DAOPresos extends AbstractDAO {
                 Banda banda = new Banda(rsPreso.getString("banda"));
                 Celda celda = new Celda(rsPreso.getInt("celda"));
                 Preso preso = new Preso(rsPreso.getString("dni"), rsPreso.getString("nombre"), rsPreso.getString("apodo"), rsPreso.getDate("fechaNacimiento"),
-                        rsPreso.getDate("fechaIngreso"), rsPreso.getDate("fechaSalida"), banda, rsPreso.getString("categoria"), Nivel.valueOf(rsPreso.getString("agresividad")), celda);
+                        rsPreso.getDate("fechaIngreso"), rsPreso.getDate("fechaSalida"), banda, Nivel.valueOf(rsPreso.getString("agresividad")), celda);
                 presos.add(preso);
             }
         } catch (SQLException e) {
@@ -91,8 +91,8 @@ public class DAOPresos extends AbstractDAO {
 
         try {
             stmPreso = con.prepareStatement("INSERT INTO preso(dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, "
-                    + "categoria, celda) "
-                    + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?);");
+                    + "celda) "
+                    + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?);");
             stmPreso.setString(1, preso.getDNI());
             stmPreso.setDate(2, preso.getFechaIngreso());
             stmPreso.setString(3, preso.getNombre());
@@ -100,7 +100,6 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
             stmPreso.setString(7, preso.getBanda().getTipo_banda());
-            stmPreso.setString(8, preso.getCategoria());
             stmPreso.setInt(9, preso.getCelda().getnCelda());
             stmPreso.executeUpdate();
         } catch (SQLException e) {
