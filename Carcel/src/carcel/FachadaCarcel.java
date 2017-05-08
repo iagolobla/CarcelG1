@@ -118,4 +118,12 @@ public class FachadaCarcel {
     public void asociarPreso(String DNI, Banda banda){
         gp.asociarPreso(DNI, banda);
     }
+    
+    public void eliminarCelda(Celda celda){
+        gc.eliminarCelda(celda);
+    }
+    
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+        gc.modificarCelda(celda, nPlazas, superficie, seguridad);
+    }
 }

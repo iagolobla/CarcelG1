@@ -26,7 +26,7 @@ public class DAOCeldas extends AbstractDAO{
     
     public void insertarCelda(String nPlazas, String superficie, String seguridad){        
         Connection con;
-        PreparedStatement query;
+        PreparedStatement query=null;
         
         String consulta = "INSERT INTO celda(";
         
@@ -69,6 +69,12 @@ public class DAOCeldas extends AbstractDAO{
         } catch (SQLException e){
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   //Aprender funcionamiento
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
         }
     }
     
@@ -201,12 +207,70 @@ public class DAOCeldas extends AbstractDAO{
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                query.close();   //Aprender funcionamiento
+                query.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar Cursores");
             }
         }
         return celdas;
+    }
+    
+    public void eliminarCelda(Celda celda){
+        Connection con;
+        
+        PreparedStatement query = null;
+        
+        String consulta = "DELETE FROM celda WHERE numCelda = ?";
+        
+        con = this.getConnection();
+        try{
+            query = con.prepareStatement(consulta);
+            
+            query.setInt(1, celda.getnCelda());
+            
+            query.execute();
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
+    }
+    
+    //Si llegamos aqui quiere decir que la celda no es vacia y hay campos que cambiar
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+        Connection con;
+        
+        PreparedStatement query = null;
+        
+        String consulta = "UPDATE celda SET numCamas = ?, superficie = ?, seguridad = ? WHERE numCelda = ?";
+        
+        con = this.getConnection();
+        
+        try{
+            query = con.prepareStatement(consulta);
+            
+            query.setInt(1, Integer.parseInt(nPlazas)); //SET numCamas
+            query.setFloat(2, Float.parseFloat(superficie));    //SET superficie
+            query.setString(3, seguridad);  //SET seguridad
+            query.setInt(4, celda.getnCelda()); //WHERE numCelda
+            
+            query.execute();    //Ejecucion
+            
+        } catch(SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
     }
     
 }

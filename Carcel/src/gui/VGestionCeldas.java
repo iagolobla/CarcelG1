@@ -261,11 +261,29 @@ public class VGestionCeldas extends javax.swing.JDialog {
     }
     
     public void modificarCelda(){
+        ModeloTablaCeldas mc;
+        Celda celda = null;
         
+        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+        celda = fc.obtenerCelda(mc.getValueAt(TablaCeldas.getSelectedRow(), 0).toString());
+        
+        if(celda != null){
+            fc.modificarCelda(celda, TextoPlazas.getText(), TextoSuperficie.getText(), ComboSeguridad.getSelectedItem().toString());
+            mc.fireTableDataChanged();
+        }
     }
     
     public void eliminarCelda(){
+        ModeloTablaCeldas mc;
+        Celda celda = null;
         
+        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+        celda = fc.obtenerCelda(mc.getValueAt(TablaCeldas.getSelectedRow(), 0).toString());
+        
+        if(celda != null){
+            fc.eliminarCelda(celda);
+            mc.fireTableDataChanged();
+        }
     }
     
     public void buscarCelda(){

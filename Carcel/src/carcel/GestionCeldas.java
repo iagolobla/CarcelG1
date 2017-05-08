@@ -35,4 +35,18 @@ public class GestionCeldas {
     public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
         return fbd.buscarCelda(id,nPlazas,seguridad);
     }
+    
+    public void eliminarCelda(Celda celda){
+        fbd.eliminarCelda(celda);
+    }
+    
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+        //Si todos los campos ya son iguales, no vamos a pasar la consulta a la fachada base de datos
+        if(String.valueOf(celda.getnCamas()).equals(nPlazas) && 
+           String.valueOf(celda.getSuperficie()).equals(superficie) &&
+           celda.getSeguridad().toString().equals(seguridad)){
+            return;
+        }
+        fbd.modificarCelda(celda, nPlazas, superficie, seguridad);
+    }
 }

@@ -106,4 +106,12 @@ public class FachadaBaseDatos {
     public void asociarPreso(String DNI, Banda banda){
         daoPresos.asociarPreso(DNI, banda);
     }
+    
+    public void eliminarCelda(Celda celda){
+        daoCeldas.eliminarCelda(celda);
+    }
+    
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+        daoCeldas.modificarCelda(celda, nPlazas, superficie, seguridad);
+    }
 }
