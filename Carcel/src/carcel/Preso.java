@@ -14,6 +14,18 @@ public class Preso {
     private Nivel agresividad;
     private Celda celda;
 
+    public Preso(Preso otroPreso) {
+        this.DNI = otroPreso.getDNI();
+        this.nombre = otroPreso.getNombre();
+        this.apodo = otroPreso.getApodo();
+        this.fechaNacimiento = otroPreso.getFechaNacimiento();
+        this.fechaIngreso = otroPreso.getFechaIngreso();
+        this.fechaSalida = otroPreso.getFechaSalida();
+        this.banda = otroPreso.getBanda();
+        this.agresividad = otroPreso.getAgresividad();
+        this.celda = otroPreso.getCelda();
+    }
+    
     public Preso(String DNI, String nombre, String apodo, Date fechaNacimiento, Date fechaIngreso, 
             Date fechaSalida, Banda banda, Nivel agresividad, Celda celda) {
         this.DNI = DNI;

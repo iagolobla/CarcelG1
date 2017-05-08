@@ -384,4 +384,50 @@ public class DAOPresos extends AbstractDAO {
         }
          return presos;
     }
+    
+    //Con query (Consulta1) desligamos al preso 2 de su celda
+    //Con query2 (Consulta2) ligamos el preso 1 a la antigua celda del preso 2
+    //Con query3 (Consulta2) ligamos el preso 2 a la antigua celda del preso 1
+    //Esta complicacion se hace para evitar problemas en caso de que ambas celdas estuviesen llenas
+    public void intercambiarPresos(Preso preso1, Preso preso2){
+        Connection con;
+        PreparedStatement query = null;
+        PreparedStatement query2 = null;
+        PreparedStatement query3 = null;
+        
+        String consulta1 = "UPDATE preso SET celda = NULL WHERE DNI = ?";
+        String consulta2 = "UPDATE preso SET celda = ? WHERE DNI = ?";
+        
+        con = this.getConnection();
+        
+        try{
+            query = con.prepareStatement(consulta1);
+            query2 = con.prepareStatement(consulta2);
+            query3 = con.prepareStatement(consulta2);
+            
+            query.setString(1, preso2.getDNI());
+            //Preso 1 a la celda 2
+            query2.setInt(1, preso2.getCelda().getnCelda());
+            query2.setString(2, preso1.getDNI());
+            //Preso 2 a la celda 1
+            query3.setInt(1, preso1.getCelda().getnCelda());
+            query3.setString(2, preso2.getDNI());
+            
+            query.execute();
+            query2.execute();
+            query3.execute();
+            
+        } catch (SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   
+                query2.close();
+                query3.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
+    }
 }

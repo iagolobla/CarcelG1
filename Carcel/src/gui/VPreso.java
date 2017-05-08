@@ -13,11 +13,13 @@ import javax.swing.DefaultComboBoxModel;
 public class VPreso extends javax.swing.JDialog {
 
     FachadaCarcel fc;
+    Preso preso;
 
     public VPreso(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
         this.fc = fc;
+        this.preso = preso;
 
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
@@ -649,34 +651,28 @@ public class VPreso extends javax.swing.JDialog {
         //Parte de Celdas
         if (mtc.getRowCount() > 0) {
             if (TablaCeldas.getSelectedRowCount() > 0) {
-                Integer nCelda = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCelda();
-                Float superficie = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getSuperficie();
-                Integer nCamas = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCamas();
-                Nivel seguridad = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getSeguridad();
-                Preso[] ocupantes = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getOcupantes();
-                //Falta comprobar si hay sitio o no en la celda (¿o salta la excepcion?)
-                celda = new Celda(nCelda, superficie, nCamas, seguridad, ocupantes);
+                celda = new Celda(mtc.obtenerCelda(TablaCeldas.getSelectedRow()));
+                
+                //Si la celda esta llena
+                if(celda.getnOcupantes() >= celda.getnCamas()){
+                    if(preso.getCelda() != null){   //En caso de que el preso este en otra celda (Modificacion)
+                        intercambiarPresos(celda);
+                    } else {    //Si el preso no esta en ninguna otra celda (Insercion)
+                        System.out.println("La celda escogida esta llena!");
+                        return;
+                    }
+                }
             }
         }
         //Insertar Preso
-        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
-        fc.insertarPreso(preso);
+        Preso auxPreso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
+        fc.insertarPreso(auxPreso);
 
         if (!TextoTipoDelito.getText().isEmpty()) {
             String nombreDelito = TextoTipoDelito.getText();
             String descripcion = TextoDescripcion.getText();
-            Nivel intensidad = Nivel.Alta;
-            switch (ComboIntensidad.getSelectedItem().toString()) {
-                case "Alta":
-                    intensidad = Nivel.Alta;
-                    break;
-                case "Media":
-                    intensidad = Nivel.Media;
-                    break;
-                case "Baja":
-                    intensidad = Nivel.Baja;
-                    break;
-            }
+            Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
+                    
             Delito delito = new Delito(nombreDelito, descripcion, intensidad);
             fc.insertarCargo(DNI, delito);
         }
@@ -695,7 +691,7 @@ public class VPreso extends javax.swing.JDialog {
     }
 
     //Debe usarse junto con la comprobacion previa de si esta ocupada o no una celda
-    public void intercambiarPresos(Celda celda, Preso preso) {
+    public void intercambiarPresos(Celda celda) {
         fc.iniciaAvisoIntercambio(celda, preso);
     }
 

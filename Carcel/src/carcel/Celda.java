@@ -9,6 +9,16 @@ public class Celda {
     private Preso[] ocupantes;  //Reservar memoria para el array de tamaño NCamas
     private int nOcupantes;
 
+    public Celda(Celda celda){
+        this.nCamas = celda.getnCamas();
+        this.nCelda = celda.getnCelda();
+        this.nOcupantes = celda.getnOcupantes();
+        this.ocupantes = celda.getOcupantes();
+        this.seguridad = celda.getSeguridad();
+        this.superficie = celda.getSuperficie();
+    }
+    
+    
     public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad) {
         this.nCelda = nCelda;
         this.superficie = superficie;

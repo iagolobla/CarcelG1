@@ -2,6 +2,7 @@ package gui;
 
 import carcel.Celda;
 import carcel.FachadaCarcel;
+import carcel.Nivel;
 import carcel.Preso;
 import java.util.ArrayList;
 
@@ -37,8 +38,18 @@ public class VIntercambio extends javax.swing.JDialog {
         jScrollPane1.setViewportView(TablaPresos);
 
         BotonIntercambiar.setText("Intercambiar");
+        BotonIntercambiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonIntercambiarActionPerformed(evt);
+            }
+        });
 
         BotonCancelar.setText("Cancelar");
+        BotonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,6 +93,14 @@ public class VIntercambio extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BotonIntercambiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIntercambiarActionPerformed
+        intercambiarPresos();
+    }//GEN-LAST:event_BotonIntercambiarActionPerformed
+
+    private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_BotonCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
@@ -104,6 +123,21 @@ public class VIntercambio extends javax.swing.JDialog {
             TablaPresos.setRowSelectionInterval(0, 0);
          }
         
+    }
+    
+    public void intercambiarPresos(){
+        Preso preso2;
+        ModeloTablaPresos mp;
+        
+        mp = (ModeloTablaPresos) TablaPresos.getModel();
+        if (mp.getRowCount() > 0) {
+            if(TablaPresos.getSelectedRow() > 0){   //Si hay algo seleccionado
+                preso2 = new Preso(mp.obtenerPreso(TablaPresos.getSelectedRow()));
+                //Hace de forma unitaria el intercambio
+                fc.intercambiarPresos(this.preso, preso2);
+            }
+         }
+        this.dispose(); //Al final cerramos la ventana
     }
     
 }
