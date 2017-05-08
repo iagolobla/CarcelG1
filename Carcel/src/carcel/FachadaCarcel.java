@@ -122,4 +122,8 @@ public class FachadaCarcel {
     public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
         gc.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
+    
+    public void insertarCargo(String dni, Delito delito){
+        gp.insertarCargo(dni, delito);
+    }
 }

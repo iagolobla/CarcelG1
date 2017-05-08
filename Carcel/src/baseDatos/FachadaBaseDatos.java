@@ -110,4 +110,8 @@ public class FachadaBaseDatos {
     public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
         daoCeldas.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
+    
+    public void insertarCargo(String dni, Delito delito){
+        daoPresos.insertarCargo(dni, delito);
+    }
 }
