@@ -269,6 +269,7 @@ public class DAOPresos extends AbstractDAO {
     
     public void buscarPresosCelda(Celda celda){
         
+    }
     public void insertarCargo(String dni, Delito delito){
         /*java.util.List<Delito> resultado = new java.util.ArrayList<>();
         Delito delitoActual;
