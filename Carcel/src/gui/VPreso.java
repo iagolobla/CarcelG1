@@ -650,6 +650,7 @@ public class VPreso extends javax.swing.JDialog {
             }
         }   
         
+        //Parte de Celdas
         if(mtc.getRowCount() > 0){
             if (TablaCeldas.getSelectedRowCount() > 0) {
                 Integer nCelda = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCelda();
@@ -657,11 +658,19 @@ public class VPreso extends javax.swing.JDialog {
                 Integer nCamas = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getnCamas();
                 Nivel seguridad = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getSeguridad();
                 Preso[] ocupantes = mtc.obtenerCelda(TablaCeldas.getSelectedRow()).getOcupantes();
+                //Falta comprobar si hay sitio o no en la celda (¿o salta la excepcion?)
                 celda = new Celda(nCelda, superficie, nCamas, seguridad, ocupantes);
             }
         }
+        
+        //Insertar Preso
         Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, "no hay campo en la interfaz", agresividad, celda);    
         fc.insertarPreso(preso);
+    }
+    
+    //Debe usarse junto con la comprobacion previa de si esta ocupada o no una celda
+    public void intercambiarPresos(Celda celda, Preso preso){
+        fc.iniciaAvisoIntercambio(celda, preso);
     }
     
     public void buscarCelda(){

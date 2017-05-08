@@ -1,10 +1,21 @@
 package gui;
 
-public class VAvisoIntercambio extends javax.swing.JDialog {
+import carcel.Celda;
+import carcel.FachadaCarcel;
+import carcel.Preso;
 
-    public VAvisoIntercambio(java.awt.Frame parent, boolean modal) {
+public class VAvisoIntercambio extends javax.swing.JDialog {
+    
+    FachadaCarcel fc;
+    Celda celda;
+    Preso preso;
+    
+    public VAvisoIntercambio(java.awt.Frame parent, boolean modal, FachadaCarcel fc, Celda celda, Preso preso) {
         super(parent, modal);
         initComponents();
+        this.fc = fc;
+        this.celda = celda;
+        this.preso = preso;
     }
 
     @SuppressWarnings("unchecked")
@@ -18,8 +29,18 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         BotonSI.setText("SI");
+        BotonSI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonSIActionPerformed(evt);
+            }
+        });
 
         BotonNo.setText("NO");
+        BotonNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonNoActionPerformed(evt);
+            }
+        });
 
         TextoPregunta.setColumns(20);
         TextoPregunta.setRows(5);
@@ -55,6 +76,14 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BotonSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSIActionPerformed
+        fc.iniciaGestionIntercambio(celda, preso);
+    }//GEN-LAST:event_BotonSIActionPerformed
+
+    private void BotonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotonNoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonNo;
