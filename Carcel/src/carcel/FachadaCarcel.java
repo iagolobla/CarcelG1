@@ -26,6 +26,10 @@ public class FachadaCarcel {
         fa = new FachadaCarcel();
         fa.iniciaInterfazUsuario();
     }
+    
+    public void muestraExcepcion(String e){
+        fgui.muestraExcepcion(e);
+    }
 
     public void iniciaInterfazUsuario() {
         fgui.iniciaVista();
