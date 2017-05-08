@@ -138,4 +138,8 @@ public class FachadaCarcel {
     public void insertarCargo(String dni, Delito delito){
         gp.insertarCargo(dni, delito);
     }
+    
+    public void modificarCargo(String dni, Delito delito){
+        //gp.modificarCargo(dni, delito);
+    }
 }

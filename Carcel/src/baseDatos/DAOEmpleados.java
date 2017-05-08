@@ -33,6 +33,7 @@ public class DAOEmpleados extends AbstractDAO{
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmUsuario.close();

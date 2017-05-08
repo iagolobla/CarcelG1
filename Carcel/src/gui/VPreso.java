@@ -727,7 +727,24 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void modificarCargo(){
+        /*String dni = TextoDNI.getText();
+        String nombre = TextoTipoDelito.getText();
+        String descripcion = TextoDescripcion.getText();
+        Nivel intensidad = Nivel.Alta;
+        switch(ComboIntensidad.getSelectedItem().toString()){
+            case "Alta":
+                intensidad = Nivel.Alta;
+                break;
+            case "Media":
+                intensidad = Nivel.Media;
+                break;
+            case "Baja":
+                intensidad = Nivel.Baja;
+                break;
+        }
+        Delito delito = new Delito(nombre, descripcion, intensidad);
         
+        fc.modificarCargo(dni, delito);*/
     }
     
     public void eliminarCargo(){

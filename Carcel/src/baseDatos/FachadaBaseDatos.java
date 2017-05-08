@@ -121,6 +121,10 @@ public class FachadaBaseDatos {
         if(!daoDelitos.comprobarDelito(delito)){
             daoDelitos.insertarDelito(delito);
         }
-        daoDelitos.insertarCargo(dni, delito);
+        if(!daoDelitos.comprobarCargo(dni, delito)){
+            daoDelitos.insertarCargo(dni, delito);
+        } else{
+            //Mensaje de que xa ten un cargo dese tipo
+        }
     }
 }
