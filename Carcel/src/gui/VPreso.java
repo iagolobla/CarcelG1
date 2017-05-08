@@ -659,6 +659,8 @@ public class VPreso extends javax.swing.JDialog {
             }
         }
 
+        if (!TextoTipoDelito.getText().isEmpty()){
+        }
         //Insertar Preso
         Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
         fc.insertarPreso(preso);

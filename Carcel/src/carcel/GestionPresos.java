@@ -2,7 +2,6 @@ package carcel;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGUI;
-import java.util.List;
 
 public class GestionPresos {
     protected FachadaGUI fgui;
