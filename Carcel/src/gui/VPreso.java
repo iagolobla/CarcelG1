@@ -659,7 +659,23 @@ public class VPreso extends javax.swing.JDialog {
             }
         }
 
-        if (!TextoTipoDelito.getText().isEmpty()){
+        if (!TextoTipoDelito.getText().isEmpty()) {
+            String nombreDelito = TextoTipoDelito.getText();
+            String descripcion = TextoDescripcion.getText();
+            Nivel intensidad = Nivel.Alta;
+            switch (ComboIntensidad.getSelectedItem().toString()) {
+                case "Alta":
+                    intensidad = Nivel.Alta;
+                    break;
+                case "Media":
+                    intensidad = Nivel.Media;
+                    break;
+                case "Baja":
+                    intensidad = Nivel.Baja;
+                    break;
+            }
+            Delito delito = new Delito(nombreDelito, descripcion, intensidad);
+            fc.insertarCargo(DNI, delito);
         }
         //Insertar Preso
         Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
@@ -751,13 +767,13 @@ public class VPreso extends javax.swing.JDialog {
         fc.insertarCargo(dni, delito);
 
     }
-    
-    public void modificarCargo(){
+
+    public void modificarCargo() {
         String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.Alta;
-        switch(ComboIntensidad.getSelectedItem().toString()){
+        switch (ComboIntensidad.getSelectedItem().toString()) {
             case "Alta":
                 intensidad = Nivel.Alta;
                 break;
@@ -769,7 +785,7 @@ public class VPreso extends javax.swing.JDialog {
                 break;
         }
         Delito delito = new Delito(nombre, descripcion, intensidad);
-        
+
         fc.modificarCargo(dni, delito);
     }
 
@@ -778,7 +794,7 @@ public class VPreso extends javax.swing.JDialog {
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.Alta;
-        switch(ComboIntensidad.getSelectedItem().toString()){
+        switch (ComboIntensidad.getSelectedItem().toString()) {
             case "Alta":
                 intensidad = Nivel.Alta;
                 break;
@@ -790,7 +806,7 @@ public class VPreso extends javax.swing.JDialog {
                 break;
         }
         Delito delito = new Delito(nombre, descripcion, intensidad);
-        
+
         fc.eliminarCargo(dni, delito);
     }
 
