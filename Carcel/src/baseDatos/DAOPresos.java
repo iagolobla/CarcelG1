@@ -64,7 +64,7 @@ public class DAOPresos extends AbstractDAO {
         try {
             stmPreso = con.prepareStatement("SELECT * "
                     + "FROM preso "
-                    + "WHERE DNI=? AND fechaSalida IS NOT NULL");
+                    + "WHERE DNI=?");
             stmPreso.setString(1, DNI);
             rsPreso = stmPreso.executeQuery();
             if (rsPreso.next()) {
