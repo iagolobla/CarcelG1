@@ -18,7 +18,6 @@ public class FachadaBaseDatos {
     private DAOEmpleados daoEmpleados;
     private DAOPresos daoPresos;
     private DAOCeldas daoCeldas;
-    private DAODelitos daoDelitos;
 
     public FachadaBaseDatos(carcel.FachadaCarcel fa) {
         Properties configuracion = new Properties();
@@ -45,7 +44,6 @@ public class FachadaBaseDatos {
         daoEmpleados = new DAOEmpleados(conexion, fa);
         daoPresos = new DAOPresos(conexion, fa);
         daoCeldas = new DAOCeldas(conexion, fa);
-        daoDelitos = new DAODelitos(conexion, fa);
 
         } catch (FileNotFoundException f) {
             System.out.println(f.getMessage());
@@ -113,6 +111,8 @@ public class FachadaBaseDatos {
         daoCeldas.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
     
+    public void buscarPresosCelda(Celda celda){
+        daoPresos.buscarPresosCelda(celda);
     public void insertarCargo(String dni, Delito delito){
         if(!daoDelitos.comprobarDelito(delito)){
             daoDelitos.insertarDelito(delito);
