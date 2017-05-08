@@ -34,6 +34,7 @@ public class DAODelitos extends AbstractDAO{
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -62,6 +63,7 @@ public class DAODelitos extends AbstractDAO{
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -90,7 +92,7 @@ public class DAODelitos extends AbstractDAO{
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmDelitos.close();
@@ -98,5 +100,36 @@ public class DAODelitos extends AbstractDAO{
                 System.out.println("Imposible cerrar cursores");
             }
         }
+    }
+    
+    public Boolean comprobarCargo(String dni, Delito delito){
+        Boolean resultado = false;
+        Connection con;
+        PreparedStatement stmDelito = null;
+        ResultSet rsDelito;
+        
+        con = super.getConnection();
+
+        try {
+            stmDelito = con.prepareStatement("SELECT * "
+                    + "FROM cometerDelito "
+                    + "WHERE delito = ? AND preso = ?");
+            stmDelito.setString(1, delito.getTipo_delito());
+            stmDelito.setString(2, dni);
+            rsDelito = stmDelito.executeQuery();
+            if (rsDelito.next()) {
+                resultado = true;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmDelito.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
     }
 }

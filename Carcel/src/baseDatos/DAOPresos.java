@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOPresos extends AbstractDAO {
 
@@ -94,9 +95,9 @@ public class DAOPresos extends AbstractDAO {
                     + "categoria, celda "
                     + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?)");
             stmPreso.setString(1, preso.getDNI());
-            stmPreso.setDate(2, preso.getFechaIngreso());
+            stmPreso.setString(2, preso.getFechaIngreso().toString());
             stmPreso.setString(3, preso.getNombre());
-            stmPreso.setDate(4, preso.getFechaNacimiento());
+            stmPreso.setString(4, preso.getFechaNacimiento().toString());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
             stmPreso.setString(7, preso.getBanda().getTipo_banda());
@@ -130,17 +131,16 @@ public class DAOPresos extends AbstractDAO {
                     + "apodo=?, "
                     + "agresividad=?, "
                     + "banda=?, "
-                    + "celda=? "
+                    + "categoria=?, "
+                    + "celda=?"
                     + "WHERE DNI=?");
             stmPreso.setString(1, preso.getDNI());
-            stmPreso.setDate(2, preso.getFechaIngreso());
+            stmPreso.setString(2, preso.getFechaIngreso().toString());
             stmPreso.setString(3, preso.getNombre());
-            stmPreso.setDate(4, preso.getFechaNacimiento());
+            stmPreso.setString(4, preso.getFechaNacimiento().toString());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            stmPreso.setString(7, preso.getBanda().getTipo_banda());
-            stmPreso.setInt(8, preso.getCelda().getnCelda());
-            stmPreso.setString(9, preso.getDNI());
+            stmPreso.setString(7, preso.getDNI());
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -198,7 +198,7 @@ public class DAOPresos extends AbstractDAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmRellenar.close();
@@ -234,7 +234,7 @@ public class DAOPresos extends AbstractDAO {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmDelitos.close();
@@ -244,8 +244,8 @@ public class DAOPresos extends AbstractDAO {
         }
         return resultado;
     }
-
-    public void asociarPreso(String DNI, Banda banda) {
+    
+    public void asociarPreso(String DNI, Banda banda){
         Connection con;
         PreparedStatement stmAsociar = null;
 
@@ -262,7 +262,7 @@ public class DAOPresos extends AbstractDAO {
 
         } catch (SQLException e) {
             System.out.println(e.getMessage());
-            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmAsociar.close();
@@ -271,7 +271,7 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
-
+    
     protected java.util.List<Banda> obtenerBanda(String tipo) {
         java.util.List<Banda> bandas = new java.util.ArrayList<Banda>();
         Connection con;
@@ -302,8 +302,9 @@ public class DAOPresos extends AbstractDAO {
         }
         return bandas;
     }
-
-    public void buscarPresosCelda(Celda celda) {
-
+    
+    public void buscarPresosCelda(Celda celda){
+        
     }
-}
+}   
+

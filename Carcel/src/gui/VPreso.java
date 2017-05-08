@@ -40,7 +40,7 @@ public class VPreso extends javax.swing.JDialog {
         TextoFechaN.setText(preso.getFechaNacimiento().toString());
         ComboAgresividad.setSelectedItem(preso.getAgresividad());
         //Buscar celda segun el preso y seleccionar fila
-        
+        //Buscar banda segun el preso y seleccionar fila
         TextoDNI.setEditable(false);
         buscarCargosPreso(preso.getDNI());
         buscarBanda(preso.getBanda().getTipo_banda());
@@ -66,7 +66,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaFechaI = new javax.swing.JLabel();
         TextoFechaI = new javax.swing.JTextField();
         EtiquetaAgresividad = new javax.swing.JLabel();
-        ComboAgresividad = new javax.swing.JComboBox<>();
+        ComboAgresividad = new javax.swing.JComboBox<String>();
         Celda = new javax.swing.JPanel();
         EtiquetaIdCelda = new javax.swing.JLabel();
         CampoIdCelda = new javax.swing.JTextField();
@@ -76,7 +76,7 @@ public class VPreso extends javax.swing.JDialog {
         EtiquetaPlazas = new javax.swing.JLabel();
         CampoPlazas = new javax.swing.JTextField();
         EtiquetaSeguridad = new javax.swing.JLabel();
-        ComboSeguridad = new javax.swing.JComboBox<>();
+        ComboSeguridad = new javax.swing.JComboBox<String>();
         BotonAlojar = new javax.swing.JButton();
         Banda = new javax.swing.JPanel();
         EtiquetaTipo = new javax.swing.JLabel();
@@ -98,7 +98,7 @@ public class VPreso extends javax.swing.JDialog {
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
-        ComboIntensidad = new javax.swing.JComboBox<>();
+        ComboIntensidad = new javax.swing.JComboBox<String>();
         BotonAtualizarCargos = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
         BotonGuardar = new javax.swing.JButton();
@@ -106,6 +106,12 @@ public class VPreso extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         EtiquetaDNI.setText("DNI");
+
+        TextoDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TextoDNIActionPerformed(evt);
+            }
+        });
 
         EtiquetaNombre.setText("Nombre");
 
@@ -129,7 +135,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaAgresividad.setText("Agresividad");
 
-        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout PresosLayout = new javax.swing.GroupLayout(Presos);
         Presos.setLayout(PresosLayout);
@@ -215,7 +221,7 @@ public class VPreso extends javax.swing.JDialog {
 
         EtiquetaSeguridad.setText("Seguridad");
 
-        ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         BotonAlojar.setText("Alojar");
         BotonAlojar.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +390,7 @@ public class VPreso extends javax.swing.JDialog {
             }
         });
 
-        ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         BotonAtualizarCargos.setText("Actualizar");
         BotonAtualizarCargos.addActionListener(new java.awt.event.ActionListener() {
@@ -510,6 +516,10 @@ public class VPreso extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void TextoDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoDNIActionPerformed
+
+    }//GEN-LAST:event_TextoDNIActionPerformed
 
     private void TextoApodoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoApodoActionPerformed
 
@@ -747,9 +757,26 @@ public class VPreso extends javax.swing.JDialog {
         fc.insertarCargo(dni, delito);
 
     }
-
-    public void modificarCargo() {
-
+    
+    public void modificarCargo(){
+        /*String dni = TextoDNI.getText();
+        String nombre = TextoTipoDelito.getText();
+        String descripcion = TextoDescripcion.getText();
+        Nivel intensidad = Nivel.Alta;
+        switch(ComboIntensidad.getSelectedItem().toString()){
+            case "Alta":
+                intensidad = Nivel.Alta;
+                break;
+            case "Media":
+                intensidad = Nivel.Media;
+                break;
+            case "Baja":
+                intensidad = Nivel.Baja;
+                break;
+        }
+        Delito delito = new Delito(nombre, descripcion, intensidad);
+        
+        fc.modificarCargo(dni, delito);*/
     }
 
     public void eliminarCargo() {

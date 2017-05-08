@@ -139,6 +139,9 @@ public class FachadaCarcel {
         gp.insertarCargo(dni, delito);
     }
     
+    public void modificarCargo(String dni, Delito delito){
+        //gp.modificarCargo(dni, delito);
+    }
     public java.util.List<Banda> obtenerBandas(String tipo) {
         return gp.obtenerBandas(tipo);
     }
