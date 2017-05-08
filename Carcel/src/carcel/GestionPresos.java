@@ -45,6 +45,8 @@ public class GestionPresos {
     
     public void buscarPresosCelda(Celda celda){
         fbd.buscarPresosCelda(celda);
+    }
+    
     public void insertarCargo(String dni, Delito delito){
         fbd.insertarCargo(dni, delito);
     }
