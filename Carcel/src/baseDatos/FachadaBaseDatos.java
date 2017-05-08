@@ -113,5 +113,7 @@ public class FachadaBaseDatos {
     
     public void buscarPresosCelda(Celda celda){
         daoPresos.buscarPresosCelda(celda);
+    public void insertarCargo(String dni, Delito delito){
+        daoPresos.insertarCargo(dni, delito);
     }
 }

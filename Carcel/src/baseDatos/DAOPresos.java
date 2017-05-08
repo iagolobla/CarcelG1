@@ -269,5 +269,39 @@ public class DAOPresos extends AbstractDAO {
     
     public void buscarPresosCelda(Celda celda){
         
+    public void insertarCargo(String dni, Delito delito){
+        /*java.util.List<Delito> resultado = new java.util.ArrayList<>();
+        Delito delitoActual;
+        Connection con;
+        PreparedStatement stmDelitos = null;
+        ResultSet rsDelitos;
+
+        con = this.getConnection();
+
+        String consulta = "SELECT nombre, descripcion, intensidad "
+                + "FROM delito JOIN cometerdelito ON nombre=delito "
+                + "WHERE preso=?";
+        try {
+            stmDelitos = con.prepareStatement(consulta);
+            stmDelitos.setString(1, DNI);
+            rsDelitos = stmDelitos.executeQuery();
+            while (rsDelitos.next()) {
+                delitoActual = new Delito(rsDelitos.getString("nombre"),
+                        rsDelitos.getString("descripcion"),
+                        Nivel.valueOf(rsDelitos.getString("intensidad")));
+                resultado.add(delitoActual);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmDelitos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;*/
     }
 }

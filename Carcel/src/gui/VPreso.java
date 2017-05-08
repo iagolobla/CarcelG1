@@ -2,6 +2,7 @@ package gui;
 
 import carcel.Banda;
 import carcel.Celda;
+import carcel.Delito;
 import carcel.FachadaCarcel;
 import carcel.Nivel;
 import carcel.Preso;
@@ -704,7 +705,25 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void insertarCargo(){
+        String dni = TextoDNI.getText();
+        String nombre = TextoTipoDelito.getText();
+        String descripcion = TextoDescripcion.getText();
+        Nivel intensidad = Nivel.Alta;
+        switch(ComboIntensidad.getSelectedItem().toString()){
+            case "Alta":
+                intensidad = Nivel.Alta;
+                break;
+            case "Media":
+                intensidad = Nivel.Media;
+                break;
+            case "Baja":
+                intensidad = Nivel.Baja;
+                break;
+        }
+        Delito delito = new Delito(nombre, descripcion, intensidad);
         
+        
+        fc.insertarCargo(dni, delito);
     }
     
     public void modificarCargo(){
