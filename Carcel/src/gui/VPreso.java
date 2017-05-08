@@ -99,19 +99,12 @@ public class VPreso extends javax.swing.JDialog {
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         ComboIntensidad = new javax.swing.JComboBox<String>();
-        BotonAtualizarCargos = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
         BotonGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         EtiquetaDNI.setText("DNI");
-
-        TextoDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextoDNIActionPerformed(evt);
-            }
-        });
 
         EtiquetaNombre.setText("Nombre");
 
@@ -397,13 +390,6 @@ public class VPreso extends javax.swing.JDialog {
 
         ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        BotonAtualizarCargos.setText("Actualizar");
-        BotonAtualizarCargos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAtualizarCargosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout CargosLayout = new javax.swing.GroupLayout(Cargos);
         Cargos.setLayout(CargosLayout);
         CargosLayout.setHorizontalGroup(
@@ -419,11 +405,8 @@ public class VPreso extends javax.swing.JDialog {
                                     .addComponent(EtiquetaTipoDelito)
                                     .addComponent(EtiquetaDescripcion))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(CargosLayout.createSequentialGroup()
-                                        .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(BotonAtualizarCargos))
+                                .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(CargosLayout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(PanelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -448,8 +431,7 @@ public class VPreso extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EtiquetaTipoDelito)
-                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonAtualizarCargos))
+                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EtiquetaDescripcion)
@@ -585,10 +567,6 @@ public class VPreso extends javax.swing.JDialog {
         insertarPreso();
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
-    private void BotonAtualizarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtualizarCargosActionPerformed
-        //buscarCargosPreso(TextoDNI.getText());
-    }//GEN-LAST:event_BotonAtualizarCargosActionPerformed
-
     private void TablaCargosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCargosMouseReleased
         rellenarCampos();
     }//GEN-LAST:event_TablaCargosMouseReleased
@@ -597,7 +575,6 @@ public class VPreso extends javax.swing.JDialog {
     private javax.swing.JPanel Banda;
     private javax.swing.JButton BotonAlojar;
     private javax.swing.JButton BotonAsociar;
-    private javax.swing.JButton BotonAtualizarCargos;
     private javax.swing.JButton BotonBuscarB;
     private javax.swing.JButton BotonBuscarC;
     private javax.swing.JButton BotonDesasociar;
