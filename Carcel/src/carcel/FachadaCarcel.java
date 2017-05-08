@@ -123,6 +123,10 @@ public class FachadaCarcel {
         gp.asociarPreso(DNI, banda);
     }
     
+    public void desasociarPreso(String dni){
+        gp.desasociarPreso(dni);
+    }
+    
     public void eliminarCelda(Celda celda){
         gc.eliminarCelda(celda);
     }
@@ -140,8 +144,13 @@ public class FachadaCarcel {
     }
     
     public void modificarCargo(String dni, Delito delito){
-        //gp.modificarCargo(dni, delito);
+        gp.modificarCargo(dni, delito);
     }
+    
+    public void eliminarCargo(String dni, Delito delito){
+        gp.eliminarCargo(dni, delito);
+    }
+    
     public java.util.List<Banda> obtenerBandas(String tipo) {
         return gp.obtenerBandas(tipo);
     }

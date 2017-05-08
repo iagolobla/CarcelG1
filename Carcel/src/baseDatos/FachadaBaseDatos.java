@@ -105,6 +105,10 @@ public class FachadaBaseDatos {
         daoPresos.asociarPreso(DNI, banda);
     }
     
+    public void desasociarPreso(String dni){
+        daoPresos.desasociarPreso(dni);
+    }
+    
     public void eliminarCelda(Celda celda){
         daoCeldas.eliminarCelda(celda);
     }
@@ -129,6 +133,18 @@ public class FachadaBaseDatos {
             daoDelitos.insertarCargo(dni, delito);
         } else{
             //Mensaje de que xa ten un cargo dese tipo
+        }
+    }
+    
+    public void modificarCargo(String dni, Delito delito){
+        if(daoDelitos.comprobarCargo(dni, delito)){
+            daoDelitos.modificarCargo(dni, delito);
+        }
+    }
+    
+    public void eliminarCargo(String dni, Delito delito){
+        if(daoDelitos.comprobarCargo(dni,delito)){
+            daoDelitos.eliminarCargo(dni, delito);
         }
     }
 }

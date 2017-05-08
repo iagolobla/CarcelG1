@@ -99,19 +99,12 @@ public class VPreso extends javax.swing.JDialog {
         BotonModificar = new javax.swing.JButton();
         BotonEliminar = new javax.swing.JButton();
         ComboIntensidad = new javax.swing.JComboBox<String>();
-        BotonAtualizarCargos = new javax.swing.JButton();
         BotonSalir = new javax.swing.JButton();
         BotonGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         EtiquetaDNI.setText("DNI");
-
-        TextoDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextoDNIActionPerformed(evt);
-            }
-        });
 
         EtiquetaNombre.setText("Nombre");
 
@@ -350,6 +343,11 @@ public class VPreso extends javax.swing.JDialog {
         jTabbedPanel.addTab("Banda", Banda);
 
         TablaCargos.setModel(new ModeloTablaCargos());
+        TablaCargos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaCargosMouseReleased(evt);
+            }
+        });
         jScrollPane3.setViewportView(TablaCargos);
 
         EtiquetaTipoDelito.setText("Tipo Delito");
@@ -392,13 +390,6 @@ public class VPreso extends javax.swing.JDialog {
 
         ComboIntensidad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        BotonAtualizarCargos.setText("Actualizar");
-        BotonAtualizarCargos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonAtualizarCargosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout CargosLayout = new javax.swing.GroupLayout(Cargos);
         Cargos.setLayout(CargosLayout);
         CargosLayout.setHorizontalGroup(
@@ -414,11 +405,8 @@ public class VPreso extends javax.swing.JDialog {
                                     .addComponent(EtiquetaTipoDelito)
                                     .addComponent(EtiquetaDescripcion))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(CargosLayout.createSequentialGroup()
-                                        .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(BotonAtualizarCargos))
+                                .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(CargosLayout.createSequentialGroup()
                                         .addGap(12, 12, 12)
                                         .addComponent(PanelDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -443,8 +431,7 @@ public class VPreso extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EtiquetaTipoDelito)
-                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotonAtualizarCargos))
+                    .addComponent(TextoTipoDelito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(CargosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(EtiquetaDescripcion)
@@ -551,22 +538,27 @@ public class VPreso extends javax.swing.JDialog {
 
     private void BotonAsociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAsociarActionPerformed
         asociarPresoBanda();
+        buscarBanda(CampoTipoBanda.getText());
     }//GEN-LAST:event_BotonAsociarActionPerformed
 
     private void BotonDesasociarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonDesasociarActionPerformed
         desasociarPresoBanda();
+        buscarBanda(CampoTipoBanda.getText());
     }//GEN-LAST:event_BotonDesasociarActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         insertarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         eliminarCargo();
+        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -577,15 +569,14 @@ public class VPreso extends javax.swing.JDialog {
         insertarPreso();
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
-    private void BotonAtualizarCargosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonAtualizarCargosActionPerformed
-        buscarCargosPreso(TextoDNI.getText());
-    }//GEN-LAST:event_BotonAtualizarCargosActionPerformed
+    private void TablaCargosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCargosMouseReleased
+        rellenarCampos();
+    }//GEN-LAST:event_TablaCargosMouseReleased
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Banda;
     private javax.swing.JButton BotonAlojar;
     private javax.swing.JButton BotonAsociar;
-    private javax.swing.JButton BotonAtualizarCargos;
     private javax.swing.JButton BotonBuscarB;
     private javax.swing.JButton BotonBuscarC;
     private javax.swing.JButton BotonDesasociar;
@@ -669,7 +660,7 @@ public class VPreso extends javax.swing.JDialog {
         }
 
         //Insertar Preso
-        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, "no hay campo en la interfaz", agresividad, celda);
+        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
         fc.insertarPreso(preso);
     }
 
@@ -733,7 +724,8 @@ public class VPreso extends javax.swing.JDialog {
     }
 
     public void desasociarPresoBanda() {
-
+        String dni = TextoDNI.getText();
+        fc.desasociarPreso(dni);
     }
 
     public void insertarCargo() {
@@ -759,7 +751,7 @@ public class VPreso extends javax.swing.JDialog {
     }
     
     public void modificarCargo(){
-        /*String dni = TextoDNI.getText();
+        String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.Alta;
@@ -776,11 +768,28 @@ public class VPreso extends javax.swing.JDialog {
         }
         Delito delito = new Delito(nombre, descripcion, intensidad);
         
-        fc.modificarCargo(dni, delito);*/
+        fc.modificarCargo(dni, delito);
     }
 
     public void eliminarCargo() {
-
+        String dni = TextoDNI.getText();
+        String nombre = TextoTipoDelito.getText();
+        String descripcion = TextoDescripcion.getText();
+        Nivel intensidad = Nivel.Alta;
+        switch(ComboIntensidad.getSelectedItem().toString()){
+            case "Alta":
+                intensidad = Nivel.Alta;
+                break;
+            case "Media":
+                intensidad = Nivel.Media;
+                break;
+            case "Baja":
+                intensidad = Nivel.Baja;
+                break;
+        }
+        Delito delito = new Delito(nombre, descripcion, intensidad);
+        
+        fc.eliminarCargo(dni, delito);
     }
 
     public void buscarCargosPreso(String DNI) {
