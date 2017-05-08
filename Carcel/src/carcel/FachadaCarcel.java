@@ -135,8 +135,8 @@ public class FachadaCarcel {
         gc.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
     
-    public void buscarPresosCelda(Celda celda){
-        gp.buscarPresosCelda(celda);
+    public ArrayList<Preso> buscarPresosCelda(Celda celda){
+        return gp.buscarPresosCelda(celda);
     }
     
     public void insertarCargo(String dni, Delito delito){
