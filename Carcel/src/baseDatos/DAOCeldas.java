@@ -86,7 +86,7 @@ public class DAOCeldas extends AbstractDAO{
         PreparedStatement query = null;
         ResultSet rsCelda;
         
-        String consulta =   "SELECT numCelda, superficie, numCamas, seguridad " +
+        String consulta =   "SELECT numCelda, superficie, numCamas, seguridad, ocupantes " +
                             "FROM celda c " +
                             "WHERE c.numCelda = ?";
         
@@ -100,14 +100,15 @@ public class DAOCeldas extends AbstractDAO{
             rsCelda = query.executeQuery();
             
             while(rsCelda.next()){
-                celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), Nivel.valueOf(rsCelda.getString("seguridad")));
+                celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), 
+                        Nivel.valueOf(rsCelda.getString("seguridad")), rsCelda.getInt("ocupantes"));
             }
         } catch (SQLException e){
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                query.close();   //Aprender funcionamiento
+                query.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar Cursores");
             }

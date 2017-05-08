@@ -19,7 +19,7 @@ public class ModeloTablaCeldas extends AbstractTableModel{
     private java.util.List<Celda> celdas;
 
     public ModeloTablaCeldas() {
-        this.celdas = new ArrayList<Celda>();
+        this.celdas = new ArrayList<>();
     }
 
     @Override
