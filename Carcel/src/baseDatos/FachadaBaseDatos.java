@@ -71,8 +71,14 @@ public class FachadaBaseDatos {
         daoPresos.liberarPreso(DNI);
     }
     
+    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo){
+        return daoPresos.buscarPresos(DNI, nombre, apodo);
+    }
+    
     public void insertarCelda(String nPlazas, String superficie, String seguridad){
         daoCeldas.insertarCelda(nPlazas, superficie, seguridad);
+    }
+    
     public java.util.List<String> rellenarCampos(String tipo){
         return daoPresos.rellenarCampos(tipo);
     }

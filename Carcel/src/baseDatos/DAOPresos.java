@@ -1,5 +1,7 @@
 package baseDatos;
 
+import carcel.Banda;
+import carcel.Celda;
 import carcel.Delito;
 import carcel.Nivel;
 import carcel.Preso;
@@ -7,12 +9,48 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DAOPresos extends AbstractDAO {
 
     public DAOPresos(Connection connection, carcel.FachadaCarcel fa) {
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
+    }
+    
+    protected java.util.List<Preso> buscarPresos(String DNI, String nombre, String apodo){
+        java.util.List<Preso> presos = new ArrayList<Preso>();
+        Connection con;
+        PreparedStatement stmPreso = null;
+        ResultSet rsPreso;
+        
+        con = super.getConnection();
+        
+        try {
+            stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, categoria, celda "
+                    + "FROM preso "
+                    + "WHERE dni LIKE ? AND nombre LIKE ? AND apodo LIKE ?");
+            stmPreso.setString(1, "%" + DNI + "%");
+            stmPreso.setString(2, "%" + nombre + "%");
+            stmPreso.setString(3, "%" + apodo + "%");
+            rsPreso = stmPreso.executeQuery();
+            while (rsPreso.next()) {
+                Banda banda= new Banda(rsPreso.getString("banda"));
+                Celda celda = new Celda(rsPreso.getInt("celda"));
+                Preso preso = new Preso(rsPreso.getString("dni"), rsPreso.getString("nombre"), rsPreso.getString("apodo"), rsPreso.getDate("fechaNacimiento"), 
+                    rsPreso.getDate("fechaIngreso"), rsPreso.getDate("fechaSalida"), banda, rsPreso.getString("categoria"), Nivel.valueOf(rsPreso.getString("agresividad")), celda);
+                presos.add(preso);
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                stmPreso.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return presos;
     }
 
     protected Boolean comprobarReincidente(String DNI) {

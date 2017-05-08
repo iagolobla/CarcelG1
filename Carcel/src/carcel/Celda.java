@@ -24,6 +24,14 @@ public class Celda {
         this.ocupantes = ocupantes;
     }
 
+    public Celda(int nCelda) {
+        this.nCelda = nCelda;
+        superficie = 0.0f;
+        nCamas = 0;
+        seguridad = null;
+        ocupantes = null;
+    }
+
     public int getnCelda() {
         return nCelda;
     }

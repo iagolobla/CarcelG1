@@ -10,6 +10,10 @@ public class Banda {
         this.presos = presos;
     }
 
+    public Banda(String tipo_banda) {
+        this.tipo_banda = tipo_banda;
+    }
+
     public String getTipo_banda() {
         return tipo_banda;
     }

@@ -26,6 +26,10 @@ public class GestionPresos {
         fbd.liberarPreso(DNI);
     }
     
+    protected java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo){
+        return fbd.buscarPreso(DNI, nombre, apodo);
+    }
+    
     public java.util.List<String> rellenarCampos(String tipo){
         return(fbd.rellenarCampos(tipo));
     }

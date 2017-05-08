@@ -227,7 +227,8 @@ public class VGestionPresos extends javax.swing.JDialog {
     }
     
     public void buscarPreso(){
-        
+        ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
+        mtp.setFilas(fc.buscarPreso(CampoDNI.getText(), CampoNombre.getText(), CampoNombre.getText()));
     }
     
 }

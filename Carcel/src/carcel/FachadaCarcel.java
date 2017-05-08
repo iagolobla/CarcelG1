@@ -68,6 +68,10 @@ public class FachadaCarcel {
     public void liberarPreso(String DNI) {
         gp.liberarPreso(DNI);
     }
+    
+    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo){
+        return gp.buscarPreso(DNI, nombre, apodo);
+    }
 
     public void iniciaRelacionesBanda() {
         fgui.iniciaVGestionBandasRelaciones();
