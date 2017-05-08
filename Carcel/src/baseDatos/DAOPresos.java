@@ -130,7 +130,6 @@ public class DAOPresos extends AbstractDAO {
                     + "apodo=?, "
                     + "agresividad=?, "
                     + "banda=?, "
-                    + "categoria=?, "
                     + "celda=?"
                     + "WHERE DNI=?");
             stmPreso.setString(1, preso.getDNI());
