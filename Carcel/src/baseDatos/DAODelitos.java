@@ -6,6 +6,7 @@
 package baseDatos;
 
 import carcel.Delito;
+import carcel.Nivel;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,23 +23,14 @@ public class DAODelitos extends AbstractDAO{
     }
     
     public void insertarDelito(Delito delito){
-        /*Connection con;
+        Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
 
         try {
-            stmPreso = con.prepareStatement("INSERT INTO preso(dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, "
-                    + "categoria, celda "
-                    + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?)");
-            stmPreso.setString(1, preso.getDNI());
-            stmPreso.setString(2, preso.getFechaIngreso().toString());
-            stmPreso.setString(3, preso.getNombre());
-            stmPreso.setString(4, preso.getFechaNacimiento().toString());
-            stmPreso.setString(5, preso.getApodo());
-            stmPreso.setString(6, preso.getAgresividad().toString());
-            stmPreso.setString(7, preso.getBanda().getTipo_banda());
-            stmPreso.setString(8, preso.getCategoria());
-            stmPreso.setInt(9, preso.getCelda().getnCelda());
+            stmPreso = con.prepareStatement("INSERT INTO delito(nombre) "
+                    + "VALUES (?)");
+            stmPreso.setString(1, delito.getTipo_delito());
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -48,7 +40,7 @@ public class DAODelitos extends AbstractDAO{
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar cursores");
             }
-        }*/
+        }
     }
     
     public Boolean comprobarDelito(Delito delito){
@@ -78,5 +70,36 @@ public class DAODelitos extends AbstractDAO{
             }
         }
         return resultado;
+    }
+    
+    public void insertarCargo(String dni, Delito delito){
+        java.util.List<Delito> resultado = new java.util.ArrayList<>();
+        Delito delitoActual;
+        Connection con;
+        PreparedStatement stmDelitos = null;
+        ResultSet rsDelitos;
+
+        con = this.getConnection();
+
+        String consulta = "INSERT INTO cometerDelito(delito, preso, descripcion, intensidad) "
+                + "VALUES (?,?,?,?)";
+        try {
+            stmDelitos = con.prepareStatement(consulta);
+            stmDelitos.setString(1, delito.getTipo_delito());
+            stmDelitos.setString(2, dni);
+            stmDelitos.setString(3, delito.getDescripcion());
+            stmDelitos.setString(4, delito.getIntensidad().toString());
+            stmDelitos.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmDelitos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
     }
 }

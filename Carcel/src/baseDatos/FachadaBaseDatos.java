@@ -114,9 +114,9 @@ public class FachadaBaseDatos {
     }
     
     public void insertarCargo(String dni, Delito delito){
-        /*if(daoDelitos.comprobarDelito(Delito delito)){
-            
+        if(!daoDelitos.comprobarDelito(delito)){
+            daoDelitos.insertarDelito(delito);
         }
-        daoPresos.insertarCargo(dni, delito);*/
+        daoDelitos.insertarCargo(dni, delito);
     }
 }
