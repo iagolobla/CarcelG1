@@ -2,6 +2,7 @@ package carcel;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGUI;
+import java.util.ArrayList;
 
 public class GestionPresos {
     protected FachadaGUI fgui;
@@ -46,8 +47,8 @@ public class GestionPresos {
         fbd.desasociarPreso(dni);
     }
     
-    public void buscarPresosCelda(Celda celda){
-        fbd.buscarPresosCelda(celda);
+    public ArrayList<Preso> buscarPresosCelda(Celda celda){
+        return fbd.buscarPresosCelda(celda);
     }
     
     protected java.util.List<Banda> obtenerBandas(String tipo) {

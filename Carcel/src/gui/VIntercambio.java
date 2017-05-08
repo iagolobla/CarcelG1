@@ -3,6 +3,7 @@ package gui;
 import carcel.Celda;
 import carcel.FachadaCarcel;
 import carcel.Preso;
+import java.util.ArrayList;
 
 public class VIntercambio extends javax.swing.JDialog {
 
@@ -26,14 +27,14 @@ public class VIntercambio extends javax.swing.JDialog {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaPresos = new javax.swing.JTable();
         BotonIntercambiar = new javax.swing.JButton();
         BotonCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new ModeloTablaPresos());
-        jScrollPane1.setViewportView(jTable1);
+        TablaPresos.setModel(new ModeloTablaPresos());
+        jScrollPane1.setViewportView(TablaPresos);
 
         BotonIntercambiar.setText("Intercambiar");
 
@@ -85,13 +86,24 @@ public class VIntercambio extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonCancelar;
     private javax.swing.JButton BotonIntercambiar;
+    private javax.swing.JTable TablaPresos;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
     public void buscarPresosCelda(){
-        fc.buscarPresosCelda(celda);
+        ModeloTablaPresos mp;
+        ArrayList<Preso> presos;
+        
+        mp = (ModeloTablaPresos) TablaPresos.getModel();
+        
+        presos = fc.buscarPresosCelda(celda);
+         mp.setFilas(presos);
+         
+         if (mp.getRowCount() > 0) {
+            TablaPresos.setRowSelectionInterval(0, 0);
+         }
+        
     }
     
 }

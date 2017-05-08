@@ -27,7 +27,7 @@ public class DAOPresos extends AbstractDAO {
         con = super.getConnection();
 
         try {
-            stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, categoria, celda "
+            stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, celda "
                     + "FROM preso "
                     + "WHERE dni LIKE ? AND nombre LIKE ? AND apodo LIKE ?");
             stmPreso.setString(1, "%" + DNI + "%");
@@ -99,15 +99,16 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            if (preso.getBanda() != null) {
+            if (preso.getBanda()!=null) {
                 stmPreso.setString(7, preso.getBanda().getTipo_banda());
+
             } else {
-                stmPreso.setString(7, "null");
+                stmPreso.setNull(7, java.sql.Types.VARCHAR);
             }
             if (preso.getCelda() != null) {
                 stmPreso.setInt(8, preso.getCelda().getnCelda());
             } else {
-                stmPreso.setString(8, "null");
+                stmPreso.setNull(8, java.sql.Types.INTEGER);
             }
             stmPreso.executeUpdate();
         } catch (SQLException e) {
@@ -337,7 +338,41 @@ public class DAOPresos extends AbstractDAO {
         return bandas;
     }
 
-    public void buscarPresosCelda(Celda celda) {
-
+    public ArrayList<Preso> buscarPresosCelda(Celda celda) {
+        ArrayList<Preso> presos = new ArrayList<>();
+        Preso auxPreso;
+        
+        Connection con;
+        PreparedStatement query=null;
+        ResultSet rsPresos;
+        
+        String consulta = "SELECT * FROM preso WHERE celda = ?";
+        
+        con = this.getConnection();
+         try{
+             query = con.prepareStatement(consulta);
+             
+             query.setInt(1, celda.getnCelda());
+             
+             rsPresos = query.executeQuery();
+             
+             while(rsPresos.next()){
+                 auxPreso = new Preso(  rsPresos.getString("DNI"), rsPresos.getString("nombre"), rsPresos.getString("apodo"),
+                                        rsPresos.getDate("fechaNacimiento"), rsPresos.getDate("fechaIngreso"), rsPresos.getDate("fechaSalida"),
+                                        new Banda(rsPresos.getString("banda")), Nivel.valueOf(rsPresos.getString("agresividad")),
+                                        new Celda(celda.getnCelda()));
+                 presos.add(auxPreso);
+             }
+         } catch (SQLException e){
+            System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                query.close();   
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar Cursores");
+            }
+        }
+         return presos;
     }
 }

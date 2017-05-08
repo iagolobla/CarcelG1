@@ -229,6 +229,7 @@ public class VGestionPresos extends javax.swing.JDialog {
             if (TablaPresos.getSelectedRowCount() > 0) {
                 String DNI = mtp.obtenerPreso(TablaPresos.getSelectedRow()).getDNI();
                 fc.liberarPreso(DNI);
+                buscarPreso();
             }
         }
     }

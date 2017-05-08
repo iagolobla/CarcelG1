@@ -117,8 +117,8 @@ public class FachadaBaseDatos {
         daoCeldas.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
     
-    public void buscarPresosCelda(Celda celda){
-        daoPresos.buscarPresosCelda(celda);
+    public ArrayList<Preso> buscarPresosCelda(Celda celda){
+        return daoPresos.buscarPresosCelda(celda);
     }
     
     public java.util.List<Banda> obtenerBandas(String tipo) {

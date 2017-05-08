@@ -152,7 +152,7 @@
                               <Component id="TextoApodo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="EtiquetaApodo" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="156" max="32767" attributes="0"/>
+                          <EmptySpace pref="168" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -281,7 +281,7 @@
                           <Component id="jScrollPane2" min="-2" pref="142" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BotonAlojar" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="85" max="32767" attributes="0"/>
+                          <EmptySpace pref="103" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -413,7 +413,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="153" max="-2" attributes="0"/>
-                          <EmptySpace pref="94" max="32767" attributes="0"/>
+                          <EmptySpace pref="108" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="BotonAsociar" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BotonDesasociar" alignment="3" min="-2" max="-2" attributes="0"/>
