@@ -67,4 +67,8 @@ public class GestionPresos {
         fbd.eliminarCargo(dni, delito);
     }
     
+    public void intercambiarPresos(Preso preso1, Preso preso2){
+        fbd.intercambiarPresos(preso1, preso2);
+    }
+    
 }

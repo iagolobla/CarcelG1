@@ -132,7 +132,7 @@ public class FachadaBaseDatos {
         if(!daoDelitos.comprobarCargo(dni, delito)){
             daoDelitos.insertarCargo(dni, delito);
         } else{
-            //Mensaje de que xa ten un cargo dese tipo
+            System.out.println("El preso ya tiene un cargo de ese tipo!");
         }
     }
     
@@ -146,5 +146,9 @@ public class FachadaBaseDatos {
         if(daoDelitos.comprobarCargo(dni,delito)){
             daoDelitos.eliminarCargo(dni, delito);
         }
+    }
+    
+    public void intercambiarPresos(Preso preso1, Preso preso2){
+        daoPresos.intercambiarPresos(preso1, preso2);
     }
 }

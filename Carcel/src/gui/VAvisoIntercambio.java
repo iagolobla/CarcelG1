@@ -79,10 +79,11 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
 
     private void BotonSIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSIActionPerformed
         fc.iniciaGestionIntercambio(celda, preso);
+        this.dispose();
     }//GEN-LAST:event_BotonSIActionPerformed
 
     private void BotonNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonNoActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_BotonNoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

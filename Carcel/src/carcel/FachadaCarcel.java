@@ -154,4 +154,8 @@ public class FachadaCarcel {
     public java.util.List<Banda> obtenerBandas(String tipo) {
         return gp.obtenerBandas(tipo);
     }
+    
+    public void intercambiarPresos(Preso preso1, Preso preso2){
+        gp.intercambiarPresos(preso1, preso2);
+    }
 }
