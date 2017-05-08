@@ -43,6 +43,7 @@ public class DAOPresos extends AbstractDAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -72,6 +73,7 @@ public class DAOPresos extends AbstractDAO {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -103,6 +105,7 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -141,6 +144,7 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
@@ -163,6 +167,7 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
                 stmPreso.close();
