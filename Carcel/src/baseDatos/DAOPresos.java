@@ -92,9 +92,9 @@ public class DAOPresos extends AbstractDAO {
                     + "categoria, celda "
                     + "VALUES (?, ?, null, ?, ?, ?, ?, ?, ?, ?)");
             stmPreso.setString(1, preso.getDNI());
-            stmPreso.setString(2, preso.getFechaIngreso().toString());
+            stmPreso.setDate(2, preso.getFechaIngreso());
             stmPreso.setString(3, preso.getNombre());
-            stmPreso.setString(4, preso.getFechaNacimiento().toString());
+            stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
             stmPreso.setString(7, preso.getBanda().getTipo_banda());
@@ -127,16 +127,17 @@ public class DAOPresos extends AbstractDAO {
                     + "apodo=?, "
                     + "agresividad=?, "
                     + "banda=?, "
-                    + "categoria=?, "
-                    + "celda=?"
+                    + "celda=? "
                     + "WHERE DNI=?");
             stmPreso.setString(1, preso.getDNI());
-            stmPreso.setString(2, preso.getFechaIngreso().toString());
+            stmPreso.setDate(2, preso.getFechaIngreso());
             stmPreso.setString(3, preso.getNombre());
-            stmPreso.setString(4, preso.getFechaNacimiento().toString());
+            stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            stmPreso.setString(7, preso.getDNI());
+            stmPreso.setString(7, preso.getBanda().getTipo_banda());
+            stmPreso.setInt(8, preso.getCelda().getnCelda());
+            stmPreso.setString(9, preso.getDNI());
             stmPreso.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
