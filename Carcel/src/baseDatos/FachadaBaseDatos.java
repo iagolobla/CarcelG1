@@ -5,6 +5,7 @@ import carcel.Preso;
 import carcel.Delito;
 import java.io.*;
 import java.sql.*;
+import java.util.List;
 import java.util.Properties;
 
 public class FachadaBaseDatos {
@@ -85,5 +86,9 @@ public class FachadaBaseDatos {
     
     public java.util.List<Delito> consultarCargos(String tipo){
         return daoPresos.consultarCargos(tipo);
+    }
+
+    public List<Delito> consultarCargosPreso(String DNI) {
+        return daoPresos.consultarCargosPreso(DNI);
     }
 }

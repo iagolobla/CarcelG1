@@ -22,6 +22,26 @@ public class VPreso extends javax.swing.JDialog {
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
     }
 
+    public VPreso(java.awt.Frame parent, boolean modal, FachadaCarcel fc, Preso preso) {
+        super(parent, modal);
+        initComponents();
+        this.fc = fc;
+        
+        ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
+        ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
+        ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
+        
+        TextoDNI.setText(preso.getDNI());
+        TextoNombre.setText(preso.getNombre());
+        TextoApodo.setText(preso.getApodo());
+        TextoFechaI.setText(preso.getFechaIngreso().toString());
+        TextoFechaN.setText(preso.getFechaNacimiento().toString());
+        ComboAgresividad.setSelectedItem(preso.getAgresividad());
+        //Buscar celda segun el preso y seleccionar fila
+        //Buscar banda segun el preso y seleccionar fila
+        buscarCargosPreso(preso.getDNI());
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -689,13 +709,27 @@ public class VPreso extends javax.swing.JDialog {
         }
     }
     
+    public void buscarCargosPreso(String DNI){
+        ModeloTablaCargos mtc = (ModeloTablaCargos)TablaCargos.getModel();
+
+        mtc.setFilas(fc.obtenerCargosPreso(DNI));
+        if (mtc.getRowCount() > 0) {
+            TablaCargos.setRowSelectionInterval(0, 0);
+            BotonEliminar.setEnabled(true);
+            rellenarCampos();
+        }
+        else {
+            BotonEliminar.setEnabled(false);
+        }
+    }
+    
     public void rellenarCampos(){
         int fila=TablaCargos.getSelectedRow();
         String tipo=TablaCargos.getValueAt(fila, 0).toString();
-        java.util.ArrayList<String> resultado=(java.util.ArrayList<String>)fc.rellenarCampos(tipo);
+        java.util.ArrayList<String> resultado= (java.util.ArrayList<String>)fc.rellenarCampos(tipo);
         TextoTipoDelito.setText(resultado.get(0));
         TextoDescripcion.setText(resultado.get(1));
-        switch(resultado.get(3)){
+        switch(resultado.get(2)){
             case "Alta":
                 ComboIntensidad.setSelectedIndex(0);
                 break;

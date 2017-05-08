@@ -1,6 +1,7 @@
 package gui;
 
 import carcel.FachadaCarcel;
+import carcel.Preso;
 
 public class VGestionPresos extends javax.swing.JDialog {
 
@@ -209,7 +210,13 @@ public class VGestionPresos extends javax.swing.JDialog {
     }
     
     public void modificarPreso(){
-        fc.iniciaPreso();
+        ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
+        if (mtp.getRowCount() > 0) {
+            if (TablaPresos.getSelectedRowCount() > 0) {
+                Preso preso = mtp.getFilas().get(TablaPresos.getSelectedRow());
+                fc.iniciaPreso(preso);
+            }
+        }
     }
     
     public void eliminarPreso(){

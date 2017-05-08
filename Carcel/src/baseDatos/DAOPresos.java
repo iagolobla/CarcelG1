@@ -10,6 +10,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class DAOPresos extends AbstractDAO {
 
@@ -17,15 +18,15 @@ public class DAOPresos extends AbstractDAO {
         super.setConnection(connection);
         super.setFachadaCarcel(fa);
     }
-    
-    protected java.util.List<Preso> buscarPresos(String DNI, String nombre, String apodo){
+
+    protected java.util.List<Preso> buscarPresos(String DNI, String nombre, String apodo) {
         java.util.List<Preso> presos = new ArrayList<Preso>();
         Connection con;
         PreparedStatement stmPreso = null;
         ResultSet rsPreso;
-        
+
         con = super.getConnection();
-        
+
         try {
             stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, categoria, celda "
                     + "FROM preso "
@@ -35,10 +36,10 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setString(3, "%" + apodo + "%");
             rsPreso = stmPreso.executeQuery();
             while (rsPreso.next()) {
-                Banda banda= new Banda(rsPreso.getString("banda"));
+                Banda banda = new Banda(rsPreso.getString("banda"));
                 Celda celda = new Celda(rsPreso.getInt("celda"));
-                Preso preso = new Preso(rsPreso.getString("dni"), rsPreso.getString("nombre"), rsPreso.getString("apodo"), rsPreso.getDate("fechaNacimiento"), 
-                    rsPreso.getDate("fechaIngreso"), rsPreso.getDate("fechaSalida"), banda, rsPreso.getString("categoria"), Nivel.valueOf(rsPreso.getString("agresividad")), celda);
+                Preso preso = new Preso(rsPreso.getString("dni"), rsPreso.getString("nombre"), rsPreso.getString("apodo"), rsPreso.getDate("fechaNacimiento"),
+                        rsPreso.getDate("fechaIngreso"), rsPreso.getDate("fechaSalida"), banda, rsPreso.getString("categoria"), Nivel.valueOf(rsPreso.getString("agresividad")), celda);
                 presos.add(preso);
             }
         } catch (SQLException e) {
@@ -153,7 +154,7 @@ public class DAOPresos extends AbstractDAO {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
-        
+
         try {
             stmPreso = con.prepareStatement("UPDATE preso "
                     + "SET fechaSalida=CURRENT_DATE, banda=NULL, celda=NULL "
@@ -170,68 +171,111 @@ public class DAOPresos extends AbstractDAO {
             }
         }
     }
-    
-    public java.util.List<String> rellenarCampos(String tipo){
-        java.util.List<String> resultado= new java.util.ArrayList<>();
+
+    public java.util.List<String> rellenarCampos(String tipo) {
+        java.util.List<String> resultado = new java.util.ArrayList<>();
         Connection con;
-        PreparedStatement stmRellenar=null;
+        PreparedStatement stmRellenar = null;
         ResultSet rsRellenar;
-        
-        con=this.getConnection();
-        String consulta = "select *" +
-                          "from delito as d "+
-                          "where tipo = ?";
-        try{
-            stmRellenar=con.prepareStatement(consulta);
+
+        con = this.getConnection();
+        String consulta = "select * "
+                + "from delito LEFT JOIN cometerdelito ON nombre=delito "
+                + "where nombre = ?";
+        try {
+            stmRellenar = con.prepareStatement(consulta);
             stmRellenar.setString(1, tipo);
-            rsRellenar=stmRellenar.executeQuery();
-            while(rsRellenar.next()){
-                resultado.add(rsRellenar.getString("tipo"));
+            rsRellenar = stmRellenar.executeQuery();
+            while (rsRellenar.next()) {
+                resultado.add(rsRellenar.getString("nombre"));
                 resultado.add(rsRellenar.getString("descripcion"));
                 resultado.add(rsRellenar.getString("intensidad"));
             }
-        }catch(SQLException e){
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
-        }finally{
-          try {stmRellenar.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        } finally {
+            try {
+                stmRellenar.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
         }
         return resultado;
     }
-    
-    public java.util.List<Delito> consultarCargos(String tipo){
+
+    public java.util.List<Delito> consultarCargos(String tipo) {
         java.util.List<Delito> resultado = new java.util.ArrayList<>();
         Delito delitoActual;
         Connection con;
-        PreparedStatement stmDelitos=null;
+        PreparedStatement stmDelitos = null;
         ResultSet rsDelitos;
 
-        con=this.getConnection();
-        
-        String consulta = "select *" +
-                          "from delito as d";
-        if(!tipo.isEmpty()){
-            consulta=consulta+" where tipo like ?";
-        }
-        try  {
-         stmDelitos=con.prepareStatement(consulta);
-         if (!tipo.isEmpty()){
-             stmDelitos.setString(1, "%"+tipo+"%");
-         }
-         rsDelitos=stmDelitos.executeQuery();
-        while (rsDelitos.next())
-        {
-            delitoActual = new Delito(rsDelitos.getString("tipo"),
-                                        rsDelitos.getString("descripcion"),
-                                        Nivel.valueOf(rsDelitos.getString("intensidad")));
-            resultado.add(delitoActual);
-        }
+        con = this.getConnection();
 
-        } catch (SQLException e){
-          System.out.println(e.getMessage());
-          //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
-        }finally{
-          try {stmDelitos.close();} catch (SQLException e){System.out.println("Imposible cerrar cursores");}
+        String consulta = "select *"
+                + "from delito as d";
+        if (!tipo.isEmpty()) {
+            consulta = consulta + " where tipo like ?";
+        }
+        try {
+            stmDelitos = con.prepareStatement(consulta);
+            if (!tipo.isEmpty()) {
+                stmDelitos.setString(1, "%" + tipo + "%");
+            }
+            rsDelitos = stmDelitos.executeQuery();
+            while (rsDelitos.next()) {
+                delitoActual = new Delito(rsDelitos.getString("tipo"),
+                        rsDelitos.getString("descripcion"),
+                        Nivel.valueOf(rsDelitos.getString("intensidad")));
+                resultado.add(delitoActual);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmDelitos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
+        }
+        return resultado;
+    }
+
+    protected java.util.List<Delito> consultarCargosPreso(String DNI) {
+        java.util.List<Delito> resultado = new java.util.ArrayList<>();
+        Delito delitoActual;
+        Connection con;
+        PreparedStatement stmDelitos = null;
+        ResultSet rsDelitos;
+
+        con = this.getConnection();
+
+        String consulta = "SELECT nombre, descripcion, intensidad "
+                + "FROM delito JOIN cometerdelito ON nombre=delito "
+                + "WHERE preso=?";
+        try {
+            stmDelitos = con.prepareStatement(consulta);
+            stmDelitos.setString(1, DNI);
+            rsDelitos = stmDelitos.executeQuery();
+            while (rsDelitos.next()) {
+                delitoActual = new Delito(rsDelitos.getString("nombre"),
+                        rsDelitos.getString("descripcion"),
+                        Nivel.valueOf(rsDelitos.getString("intensidad")));
+                resultado.add(delitoActual);
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            //this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+        } finally {
+            try {
+                stmDelitos.close();
+            } catch (SQLException e) {
+                System.out.println("Imposible cerrar cursores");
+            }
         }
         return resultado;
     }

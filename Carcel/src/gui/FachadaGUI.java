@@ -1,5 +1,7 @@
 package gui;
 
+import carcel.Preso;
+
 public class FachadaGUI {
     
     private carcel.FachadaCarcel fc;
@@ -69,6 +71,12 @@ public class FachadaGUI {
     public void iniciaVPreso(){
         VPreso vps;
         vps = new VPreso(vp, true, fc);
+        vps.setVisible(true);
+    }
+
+    public void iniciaVPreso(Preso preso) {
+        VPreso vps;
+        vps = new VPreso(vp, true, fc, preso);
         vps.setVisible(true);
     }
     

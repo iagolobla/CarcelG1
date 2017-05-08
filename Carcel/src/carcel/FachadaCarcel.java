@@ -61,6 +61,10 @@ public class FachadaCarcel {
         fgui.iniciaVPreso();
     }
 
+    public void iniciaPreso(Preso preso) {
+        fgui.iniciaVPreso(preso);
+    }
+
     public void insertarPreso(Preso preso) {
         gp.insertarPreso(preso);
     }
@@ -83,6 +87,10 @@ public class FachadaCarcel {
     
     public java.util.List<Delito> obtenerCargos(String tipo){
         return(gp.obtenerCargos(tipo));
+    }
+    
+    public java.util.List<Delito> obtenerCargosPreso(String DNI) {
+        return gp.obtenerCargosPreso(DNI);
     }
     
     public java.util.List<String> rellenarCampos(String tipo){

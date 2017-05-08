@@ -2,6 +2,7 @@ package carcel;
 
 import baseDatos.FachadaBaseDatos;
 import gui.FachadaGUI;
+import java.util.List;
 
 public class GestionPresos {
     protected FachadaGUI fgui;
@@ -36,6 +37,10 @@ public class GestionPresos {
     
     public java.util.List<Delito> obtenerCargos(String tipo) {
         return fbd.consultarCargos(tipo);
+    }
+    
+    protected java.util.List<Delito> obtenerCargosPreso(String DNI){
+        return fbd.consultarCargosPreso(DNI);
     }
     
 }
