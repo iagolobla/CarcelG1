@@ -27,7 +27,7 @@ public class DAOPresos extends AbstractDAO {
         con = super.getConnection();
 
         try {
-            stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, categoria, celda "
+            stmPreso = con.prepareStatement("SELECT dni, fechaIngreso, fechaSalida, nombre, fechaNacimiento, apodo, agresividad, banda, celda "
                     + "FROM preso "
                     + "WHERE dni LIKE ? AND nombre LIKE ? AND apodo LIKE ?");
             stmPreso.setString(1, "%" + DNI + "%");
@@ -99,15 +99,16 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            if (preso.getBanda() != null) {
+            if (preso.getBanda()!=null) {
                 stmPreso.setString(7, preso.getBanda().getTipo_banda());
+
             } else {
-                stmPreso.setString(7, "null");
+                stmPreso.setNull(7, java.sql.Types.VARCHAR);
             }
             if (preso.getCelda() != null) {
                 stmPreso.setInt(8, preso.getCelda().getnCelda());
             } else {
-                stmPreso.setString(8, "null");
+                stmPreso.setNull(8, java.sql.Types.INTEGER);
             }
             stmPreso.executeUpdate();
         } catch (SQLException e) {

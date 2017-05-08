@@ -22,10 +22,12 @@ public class ModeloTablaCeldas extends AbstractTableModel{
         this.celdas = new ArrayList<Celda>();
     }
 
+    @Override
     public int getColumnCount() {
         return 5;
     }
 
+    @Override
     public int getRowCount() {
         return celdas.size();
     }
@@ -83,6 +85,7 @@ public class ModeloTablaCeldas extends AbstractTableModel{
         return col != 0 && col != 4;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 

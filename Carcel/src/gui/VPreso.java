@@ -658,6 +658,9 @@ public class VPreso extends javax.swing.JDialog {
                 celda = new Celda(nCelda, superficie, nCamas, seguridad, ocupantes);
             }
         }
+        //Insertar Preso
+        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
+        fc.insertarPreso(preso);
 
         if (!TextoTipoDelito.getText().isEmpty()) {
             String nombreDelito = TextoTipoDelito.getText();
@@ -677,9 +680,6 @@ public class VPreso extends javax.swing.JDialog {
             Delito delito = new Delito(nombreDelito, descripcion, intensidad);
             fc.insertarCargo(DNI, delito);
         }
-        //Insertar Preso
-        Preso preso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
-        fc.insertarPreso(preso);
     }
 
     public void obtenerCeldaPreso(String id) {
@@ -687,9 +687,9 @@ public class VPreso extends javax.swing.JDialog {
         java.util.List<Celda> celdas = new ArrayList<>();
 
         Celda celda = fc.obtenerCelda(id);
-        celdas.add(celda);
-        mc.setFilas(celdas);
-        if (mc.getRowCount() > 0) {
+        if (celda!=null) {
+            celdas.add(celda);
+            mc.setFilas(celdas);
             TablaCeldas.setRowSelectionInterval(0, 0);
         }
     }

@@ -112,5 +112,6 @@ public class FachadaGUI {
         VExcepcion ve;
         
         ve = new VExcepcion(vp, true, mensaje);
+        ve.setVisible(true);
     }
 }
