@@ -11,6 +11,10 @@ public class VGestionPresos extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fc = fc;
+        
+        BotonModificar.setEnabled(false);
+        BotonLiberar.setEnabled(false);
+        BotonEliminar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -238,6 +242,11 @@ public class VGestionPresos extends javax.swing.JDialog {
     private void buscarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
         mtp.setFilas(fc.buscarPreso(CampoDNI.getText(), CampoNombre.getText(), CampoNombre.getText()));
+        if (mtp.getRowCount() > 0) {
+            TablaPresos.setRowSelectionInterval(0, 0);
+            BotonModificar.setEnabled(true);
+            BotonLiberar.setEnabled(true);
+        }
     }
 
 }
