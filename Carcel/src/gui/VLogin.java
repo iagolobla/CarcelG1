@@ -19,7 +19,7 @@ public class VLogin extends javax.swing.JDialog {
             }
         });
     }
-   
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -110,7 +110,7 @@ public class VLogin extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAccederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAccederActionPerformed
-        this.dispose();
+        login();
     }//GEN-LAST:event_botonAccederActionPerformed
 
 
@@ -128,7 +128,7 @@ public class VLogin extends javax.swing.JDialog {
         if (fc.validarAdministrador(CampoDNI.getText(), CampoContrasena.getText())) {
             this.dispose();
         } else {
-            System.out.println("error");
+            fc.muestraExcepcion("DNI o clave incorrecta");
         }
     }
 }

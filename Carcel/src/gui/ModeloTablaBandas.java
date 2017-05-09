@@ -9,13 +9,15 @@ public class ModeloTablaBandas extends AbstractTableModel {
     private java.util.List<Banda> bandas;
 
     public ModeloTablaBandas() {
-        this.bandas = new ArrayList<Banda>();
+        this.bandas = new ArrayList<>();
     }
 
+    @Override
     public int getColumnCount() {
         return 2;
     }
 
+    @Override
     public int getRowCount() {
         return bandas.size();
     }
@@ -55,6 +57,7 @@ public class ModeloTablaBandas extends AbstractTableModel {
         return col >= 0;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 

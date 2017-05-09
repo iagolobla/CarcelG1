@@ -19,6 +19,7 @@ public class VExcepcion extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Texto.setColumns(20);
+        Texto.setForeground(new java.awt.Color(255, 51, 51));
         Texto.setRows(5);
 
         BotonCerrar.setText("Cerrar");

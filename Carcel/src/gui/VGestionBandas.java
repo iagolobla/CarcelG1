@@ -5,7 +5,7 @@ import carcel.FachadaCarcel;
 public class VGestionBandas extends javax.swing.JDialog {
 
     FachadaCarcel fc;
-    
+
     public VGestionBandas(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
@@ -159,7 +159,7 @@ public class VGestionBandas extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        buscarBanda();
+
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     private void BotonRelacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRelacionesActionPerformed
@@ -167,15 +167,15 @@ public class VGestionBandas extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonRelacionesActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
-        insertarBanda();
+
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        modificarBanda();
+
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        eliminarBanda();
+
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -199,24 +199,7 @@ public class VGestionBandas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void buscarBanda(){
-        
-    }
-    
-    public void relacionesBanda(){
+    private void relacionesBanda() {
         fc.iniciaRelacionesBanda();
     }
-    
-    public void insertarBanda(){
-        
-    }
-    
-    public void modificarBanda(){
-        
-    }
-    
-    public void eliminarBanda(){
-        
-    }
-    
 }

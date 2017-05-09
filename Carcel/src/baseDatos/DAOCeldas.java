@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package baseDatos;
 
 import carcel.Celda;
@@ -13,10 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-/**
- *
- * @author root
- */
 public class DAOCeldas extends AbstractDAO{
     
     public DAOCeldas(Connection connection, carcel.FachadaCarcel fc) {

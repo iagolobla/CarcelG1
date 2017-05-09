@@ -289,15 +289,15 @@ public class VTrapicheos extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        guardar();
+        
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonBuscarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarEActionPerformed
-        buscar();
+        
     }//GEN-LAST:event_BotonBuscarEActionPerformed
 
     private void BotonBuscarRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarRActionPerformed
-        buscar();
+        
     }//GEN-LAST:event_BotonBuscarRActionPerformed
 
 
@@ -336,11 +336,4 @@ public class VTrapicheos extends javax.swing.JDialog {
     private javax.swing.JTable jTable2;
     // End of variables declaration//GEN-END:variables
 
-    public void guardar(){
-        
-    }
-    
-    public void buscar(){
-        
-    }
 }

@@ -9,7 +9,7 @@ import javax.swing.DefaultComboBoxModel;
 public class VGestionCeldas extends javax.swing.JDialog {
 
     FachadaCarcel fc;
-    /** Creates new form VGestionCeldas */
+
     public VGestionCeldas(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
@@ -256,43 +256,43 @@ public class VGestionCeldas extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void insertarCelda(){
+    private void insertarCelda() {
         fc.insertarCelda(TextoPlazas.getText(), TextoSuperficie.getText(), ComboSeguridad.getSelectedItem().toString());
     }
-    
-    public void modificarCelda(){
+
+    private void modificarCelda() {
         ModeloTablaCeldas mc;
         Celda celda = null;
-        
-        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+
+        mc = (ModeloTablaCeldas) TablaCeldas.getModel();
         celda = fc.obtenerCelda(mc.getValueAt(TablaCeldas.getSelectedRow(), 0).toString());
-        
-        if(celda != null){
+
+        if (celda != null) {
             fc.modificarCelda(celda, TextoPlazas.getText(), TextoSuperficie.getText(), ComboSeguridad.getSelectedItem().toString());
             mc.fireTableDataChanged();
         }
     }
-    
-    public void eliminarCelda(){
+
+    private void eliminarCelda() {
         ModeloTablaCeldas mc;
         Celda celda = null;
-        
-        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+
+        mc = (ModeloTablaCeldas) TablaCeldas.getModel();
         celda = fc.obtenerCelda(mc.getValueAt(TablaCeldas.getSelectedRow(), 0).toString());
-        
-        if(celda != null){
+
+        if (celda != null) {
             fc.eliminarCelda(celda);
             mc.fireTableDataChanged();
         }
     }
-    
-    public void buscarCelda(){
+
+    private void buscarCelda() {
         ModeloTablaCeldas mc;
         ArrayList<Celda> celdas = null;
-        
-        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+
+        mc = (ModeloTablaCeldas) TablaCeldas.getModel();
         celdas = fc.buscarCelda(CampoId.getText(), CampoPlazas.getText(), ComboCampoSeguridad.getSelectedItem().toString());
-    
+
         mc.setFilas(celdas);
 
         if (mc.getRowCount() > 0) {
@@ -300,15 +300,15 @@ public class VGestionCeldas extends javax.swing.JDialog {
             rellenarCampos();
         }
     }
-    
-    public void rellenarCampos(){
+
+    private void rellenarCampos() {
         ModeloTablaCeldas mc;
         Celda celda = null;
-        
-        mc=(ModeloTablaCeldas) TablaCeldas.getModel();
+
+        mc = (ModeloTablaCeldas) TablaCeldas.getModel();
         celda = fc.obtenerCelda(mc.getValueAt(TablaCeldas.getSelectedRow(), 0).toString());
-        
-        if(celda != null){
+
+        if (celda != null) {
             TextoPlazas.setText(String.valueOf(celda.getnCamas()));
             TextoSuperficie.setText(String.valueOf(celda.getSuperficie()));
             ComboSeguridad.setSelectedItem(celda.getSeguridad());

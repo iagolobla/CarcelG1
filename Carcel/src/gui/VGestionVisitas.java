@@ -53,7 +53,6 @@ public class VGestionVisitas extends javax.swing.JDialog {
 
         EtiquetaDNIVisitante.setText("DNI Visitante");
 
-        jTable1.setModel(new ModeloTablaVisitas());
         jScrollPane1.setViewportView(jTable1);
 
         BotonInsertar.setText("Insertar");
@@ -190,15 +189,15 @@ public class VGestionVisitas extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        buscarVisita();
+        
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
-        insertarVisita();
+        
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        modificarVisita();
+        
     }//GEN-LAST:event_BotonModificarActionPerformed
 
 
@@ -224,16 +223,4 @@ public class VGestionVisitas extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    public void buscarVisita(){
-        
-    }
-    
-    public void insertarVisita(){
-        fc.iniciaVisita();
-    }
-    
-    public void modificarVisita(){
-        fc.iniciaVisita();
-    }
-    
 }

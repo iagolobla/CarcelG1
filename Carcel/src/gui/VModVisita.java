@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import carcel.FachadaCarcel;
 
-/**
- *
- * @author root
- */
 public class VModVisita extends javax.swing.JDialog {
 
     FachadaCarcel fc;
-    
+
     public VModVisita(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
@@ -238,11 +229,11 @@ public class VModVisita extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        guardarVisita();
+
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        buscarPreso();
+
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
 
@@ -272,12 +263,4 @@ public class VModVisita extends javax.swing.JDialog {
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 
-    public void guardarVisita(){
-        
-    }
-    
-    public void buscarPreso(){
-        
-    }
-    
 }

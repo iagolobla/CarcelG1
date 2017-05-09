@@ -87,7 +87,6 @@ public class VPrincipal extends javax.swing.JFrame {
             }
         });
 
-        TablaTrapicheos.setModel(new ModeloTablaTrapicheos());
         jScrollPane1.setViewportView(TablaTrapicheos);
 
         jLabel1.setFont(new java.awt.Font("Open Sans", 0, 36)); // NOI18N
@@ -279,7 +278,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoEmisorNombreActionPerformed
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
-        insertarTrapicheo();
+        
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -287,7 +286,7 @@ public class VPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
-        modificarTrapicheo();
+        
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
@@ -341,45 +340,29 @@ public class VPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
-public void BuscarTrapicheos() {
-        ModeloTablaTrapicheos m;
-
-        m = (ModeloTablaTrapicheos) TablaTrapicheos.getModel();
-        //m.setFilas(fa.obtenerTrapicheo(CampoEmisorDNI.getText(), CampoEmisorNombre.getText(), CampoEmisorApodo.getText(), CampoReceptorDNI.getText(), CampoReceptorNombre.getText(), CampoReceptorApodo.getText(), CampoFecha.getText()));
-        if (m.getRowCount() > 0) {
-            TablaTrapicheos.setRowSelectionInterval(0, 0);
-            BotonModificar.setEnabled(true);
-        } else {
-            BotonModificar.setEnabled(false);
-        }
+    
+    private void BuscarTrapicheos() {
+        //fc
     }
 
-    public void insertarTrapicheo(){
-        fc.iniciaGestionTrapicheos();
-    }
-    
-    public void modificarTrapicheo(){
-        fc.iniciaGestionTrapicheos();
-    }
-    
-    public void iniciaGestionEmpleados(){
+    private void iniciaGestionEmpleados() {
         fc.iniciaGestionEmpleados();
     }
-    
-    public void iniciaGestionPresos(){
+
+    private void iniciaGestionPresos() {
         fc.iniciaGestionPresos();
     }
-    
-    public void iniciaGestionCeldas(){
+
+    private void iniciaGestionCeldas() {
         fc.iniciaGestionCeldas();
     }
-    
-    public void iniciaGestionBandas(){
+
+    private void iniciaGestionBandas() {
         fc.iniciaGestionBandas();
     }
-    
-    public void iniciaGestionVisitas(){
+
+    private void iniciaGestionVisitas() {
         fc.iniciaGestionVisitas();
     }
-    
+
 }

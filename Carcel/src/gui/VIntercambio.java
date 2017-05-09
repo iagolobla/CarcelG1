@@ -2,7 +2,6 @@ package gui;
 
 import carcel.Celda;
 import carcel.FachadaCarcel;
-import carcel.Nivel;
 import carcel.Preso;
 import java.util.ArrayList;
 
@@ -11,14 +10,14 @@ public class VIntercambio extends javax.swing.JDialog {
     FachadaCarcel fc;
     Celda celda;
     Preso preso;
-    
+
     public VIntercambio(java.awt.Frame parent, boolean modal, FachadaCarcel fc, Celda celda, Preso preso) {
         super(parent, modal);
         initComponents();
         this.fc = fc;
         this.celda = celda;
         this.preso = preso;
-        
+
         buscarPresosCelda();
     }
 
@@ -110,34 +109,34 @@ public class VIntercambio extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void buscarPresosCelda(){
+    private void buscarPresosCelda() {
         ModeloTablaPresos mp;
         ArrayList<Preso> presos;
-        
+
         mp = (ModeloTablaPresos) TablaPresos.getModel();
-        
+
         presos = fc.buscarPresosCelda(celda);
-         mp.setFilas(presos);
-         
-         if (mp.getRowCount() > 0) {
+        mp.setFilas(presos);
+
+        if (mp.getRowCount() > 0) {
             TablaPresos.setRowSelectionInterval(0, 0);
-         }
-        
+        }
+
     }
-    
-    public void intercambiarPresos(){
+
+    private void intercambiarPresos() {
         Preso preso2;
         ModeloTablaPresos mp;
-        
+
         mp = (ModeloTablaPresos) TablaPresos.getModel();
         if (mp.getRowCount() > 0) {
-            if(TablaPresos.getSelectedRow() > 0){   //Si hay algo seleccionado
+            if (TablaPresos.getSelectedRow() > 0) {   //Si hay algo seleccionado
                 preso2 = new Preso(mp.obtenerPreso(TablaPresos.getSelectedRow()));
                 //Hace de forma unitaria el intercambio
                 fc.intercambiarPresos(this.preso, preso2);
             }
-         }
+        }
         this.dispose(); //Al final cerramos la ventana
     }
-    
+
 }

@@ -8,7 +8,6 @@ public class FachadaCarcel {
     private baseDatos.FachadaBaseDatos fbd;
     private GestionCeldas gc;
     private GestionEmpleados ge;
-    private GestionTrapicheos gt;
     private GestionPresos gp;
 
     public FachadaCarcel() {
@@ -16,7 +15,6 @@ public class FachadaCarcel {
         fbd = new baseDatos.FachadaBaseDatos(this);
         ge = new GestionEmpleados(fgui, fbd);
         gp = new GestionPresos(fgui, fbd);
-        gt = new GestionTrapicheos(fgui, fbd);
         gc = new GestionCeldas(fgui, fbd);
     }
 
@@ -33,10 +31,6 @@ public class FachadaCarcel {
 
     public Boolean validarAdministrador(String dni, String clave) {
         return ge.validarAdmin(dni, clave);
-    }
-
-    public void iniciaGestionTrapicheos() {
-        fgui.iniciaVTrapicheos();
     }
 
     public void iniciaGestionEmpleados() {
@@ -66,12 +60,12 @@ public class FachadaCarcel {
     public void iniciaPreso(Preso preso) {
         fgui.iniciaVPreso(preso);
     }
-    
-    public void iniciaAvisoIntercambio(Celda celda, Preso preso){
+
+    public void iniciaAvisoIntercambio(Celda celda, Preso preso) {
         fgui.iniciaVAvisoIntercambio(celda, preso);
     }
-    
-    public void iniciaGestionIntercambio(Celda celda, Preso preso){
+
+    public void iniciaGestionIntercambio(Celda celda, Preso preso) {
         fgui.iniciaVIntercambio(celda, preso);
     }
 
@@ -82,8 +76,8 @@ public class FachadaCarcel {
     public void liberarPreso(String DNI) {
         gp.liberarPreso(DNI);
     }
-    
-    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo){
+
+    public java.util.List<Preso> buscarPreso(String DNI, String nombre, String apodo) {
         return gp.buscarPreso(DNI, nombre, apodo);
     }
 
@@ -94,68 +88,68 @@ public class FachadaCarcel {
     public void iniciaVisita() {
         fgui.iniciaVModVisita();
     }
-    
+
     public java.util.List<Delito> obtenerCargosPreso(String DNI) {
         return gp.obtenerCargosPreso(DNI);
     }
-    
-    public java.util.List<String> rellenarCampos(String tipo){
+
+    public java.util.List<String> rellenarCampos(String tipo) {
         return gp.rellenarCampos(tipo);
     }
 
-    public void insertarCelda(String nPlazas, String superficie, String seguridad){
+    public void insertarCelda(String nPlazas, String superficie, String seguridad) {
         gc.insertarCelda(nPlazas, superficie, seguridad);
     }
-    
-    public void muestraExcepcion(String mensaje){
+
+    public void muestraExcepcion(String mensaje) {
         fgui.muestraExcepcion(mensaje);
     }
-    
-    public Celda obtenerCelda(String id){
+
+    public Celda obtenerCelda(String id) {
         return gc.obtenerCelda(id);
     }
-    
-    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad){
+
+    public ArrayList<Celda> buscarCelda(String id, String nPlazas, String seguridad) {
         return gc.buscarCelda(id, nPlazas, seguridad);
     }
-    
-    public void asociarPreso(String DNI, Banda banda){
+
+    public void asociarPreso(String DNI, Banda banda) {
         gp.asociarPreso(DNI, banda);
     }
-    
-    public void desasociarPreso(String dni){
+
+    public void desasociarPreso(String dni) {
         gp.desasociarPreso(dni);
     }
-    
-    public void eliminarCelda(Celda celda){
+
+    public void eliminarCelda(Celda celda) {
         gc.eliminarCelda(celda);
     }
-    
-    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad){
+
+    public void modificarCelda(Celda celda, String nPlazas, String superficie, String seguridad) {
         gc.modificarCelda(celda, nPlazas, superficie, seguridad);
     }
-    
-    public ArrayList<Preso> buscarPresosCelda(Celda celda){
+
+    public ArrayList<Preso> buscarPresosCelda(Celda celda) {
         return gp.buscarPresosCelda(celda);
     }
-    
-    public void insertarCargo(String dni, Delito delito){
+
+    public void insertarCargo(String dni, Delito delito) {
         gp.insertarCargo(dni, delito);
     }
-    
-    public void modificarCargo(String dni, Delito delito){
+
+    public void modificarCargo(String dni, Delito delito) {
         gp.modificarCargo(dni, delito);
     }
-    
-    public void eliminarCargo(String dni, Delito delito){
+
+    public void eliminarCargo(String dni, Delito delito) {
         gp.eliminarCargo(dni, delito);
     }
-    
+
     public java.util.List<Banda> obtenerBandas(String tipo) {
         return gp.obtenerBandas(tipo);
     }
-    
-    public void intercambiarPresos(Preso preso1, Preso preso2){
+
+    public void intercambiarPresos(Preso preso1, Preso preso2) {
         gp.intercambiarPresos(preso1, preso2);
     }
 }

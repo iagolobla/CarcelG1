@@ -12,7 +12,7 @@ public class DAOEmpleados extends AbstractDAO{
         super.setFachadaCarcel(fa);
     }
     
-    protected carcel.Empleado validarAdmin(String dni, String clave){
+    public carcel.Empleado validarAdmin(String dni, String clave){
         carcel.Administrador resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;

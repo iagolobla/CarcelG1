@@ -1,8 +1,6 @@
 package gui;
 
 import carcel.FachadaCarcel;
-import carcel.Relacion;
-import javax.swing.DefaultComboBoxModel;
 
 public class VGestionBandasRelaciones extends javax.swing.JDialog {
 
@@ -11,10 +9,7 @@ public class VGestionBandasRelaciones extends javax.swing.JDialog {
     public VGestionBandasRelaciones(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
-        this.fc = fc;
-        
-        ComboRelacion.setModel(new DefaultComboBoxModel(Relacion.values()));
-        
+        this.fc = fc;    
     }
 
     @SuppressWarnings("unchecked")
@@ -115,11 +110,11 @@ public class VGestionBandasRelaciones extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
-        buscarBanda();
+        
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        guardarRelacion();
+        
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void BotonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonCancelarActionPerformed
@@ -138,13 +133,5 @@ public class VGestionBandasRelaciones extends javax.swing.JDialog {
     private javax.swing.JTable TablaB;
     private javax.swing.JScrollPane TablaBanda;
     // End of variables declaration//GEN-END:variables
-
-    public void buscarBanda(){
-        
-    }
-    
-    public void guardarRelacion(){
-        
-    }
 
 }

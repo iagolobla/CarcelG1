@@ -117,9 +117,7 @@
                                           <Component id="EtiquetaPuesto" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                           <Component id="TextoPuestoA" min="-2" pref="66" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="145" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                          <EmptySpace pref="-2147483271" max="32767" attributes="0"/>
+                                          <EmptySpace pref="256" max="32767" attributes="0"/>
                                           <Component id="EtiquetaEmail" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="TextoEmailA" min="-2" pref="183" max="-2" attributes="0"/>
@@ -232,9 +230,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="TablaAdministradores">
                       <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new ModeloTablaAdministradores()" type="code"/>
-                        </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
                         </Property>
@@ -509,9 +504,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="TablaGuardias">
                       <Properties>
-                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="new ModeloTablaGuardias()" type="code"/>
-                        </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0"/>
                         </Property>

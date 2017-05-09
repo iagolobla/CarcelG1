@@ -1,29 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import carcel.Administrador;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author root
- */
-public class ModeloTablaAdministradores extends AbstractTableModel{
+public class ModeloTablaAdministradores extends AbstractTableModel {
+
     private java.util.List<Administrador> administradores;
 
     public ModeloTablaAdministradores() {
         this.administradores = new ArrayList<Administrador>();
     }
 
+    @Override
     public int getColumnCount() {
         return 7;
     }
 
+    @Override
     public int getRowCount() {
         return administradores.size();
     }
@@ -93,6 +87,7 @@ public class ModeloTablaAdministradores extends AbstractTableModel{
         return col >= 0;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 

@@ -70,7 +70,7 @@ public class VGestionEmpleados extends javax.swing.JDialog {
         BotonModificarG = new javax.swing.JButton();
         BotonEliminarG = new javax.swing.JButton();
         EtiquetaAgresividad = new javax.swing.JLabel();
-        ComboAgresividad = new javax.swing.JComboBox<String>();
+        ComboAgresividad = new javax.swing.JComboBox<>();
         TextoPuestoG = new javax.swing.JTextField();
         BotonSalirG = new javax.swing.JButton();
 
@@ -87,7 +87,6 @@ public class VGestionEmpleados extends javax.swing.JDialog {
             }
         });
 
-        TablaAdministradores.setModel(new ModeloTablaAdministradores());
         jScrollPane1.setViewportView(TablaAdministradores);
 
         EtiquetaDNI1.setText("DNI");
@@ -186,9 +185,7 @@ public class VGestionEmpleados extends javax.swing.JDialog {
                                 .addComponent(EtiquetaPuesto)
                                 .addGap(13, 13, 13)
                                 .addComponent(TextoPuestoA, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(145, 145, 145)
-                                .addGap(49, 49, 49)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 256, Short.MAX_VALUE)
                                 .addComponent(EtiquetaEmail)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TextoEmailA, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -265,7 +262,6 @@ public class VGestionEmpleados extends javax.swing.JDialog {
             }
         });
 
-        TablaGuardias.setModel(new ModeloTablaGuardias());
         jScrollPane2.setViewportView(TablaGuardias);
 
         EtiquetaDNI3.setText("DNI");
@@ -309,7 +305,7 @@ public class VGestionEmpleados extends javax.swing.JDialog {
 
         EtiquetaAgresividad.setText("Agresividad");
 
-        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ComboAgresividad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         BotonSalirG.setText("Salir");
         BotonSalirG.addActionListener(new java.awt.event.ActionListener() {
@@ -477,35 +473,35 @@ public class VGestionEmpleados extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirGActionPerformed
 
     private void ButonInsertarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButonInsertarAActionPerformed
-        insertarAdministrador();
+        
     }//GEN-LAST:event_ButonInsertarAActionPerformed
 
     private void BotonModificarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarAActionPerformed
-        modificarAdministrador();
+        
     }//GEN-LAST:event_BotonModificarAActionPerformed
 
     private void BotonEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarAActionPerformed
-        eliminarAdministrador();
+        
     }//GEN-LAST:event_BotonEliminarAActionPerformed
 
     private void ButonInsertarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButonInsertarGActionPerformed
-        insertarGuardia();
+        
     }//GEN-LAST:event_ButonInsertarGActionPerformed
 
     private void BotonModificarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarGActionPerformed
-        modificarGuardia();
+        
     }//GEN-LAST:event_BotonModificarGActionPerformed
 
     private void BotonEliminarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarGActionPerformed
-        eliminarGuardia();
+        
     }//GEN-LAST:event_BotonEliminarGActionPerformed
 
     private void BotonBuscarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarAActionPerformed
-        buscarAdministrador();
+        
     }//GEN-LAST:event_BotonBuscarAActionPerformed
 
     private void BotonBuscarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarGActionPerformed
-        buscarGuardia();
+        
     }//GEN-LAST:event_BotonBuscarGActionPerformed
 
 
@@ -565,37 +561,5 @@ public class VGestionEmpleados extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-
-    public void insertarAdministrador(){
-        
-    }
-    
-    public void insertarGuardia(){
-        
-    }
-    
-    public void modificarAdministrador(){
-        
-    }
-    
-    public void modificarGuardia(){
-        
-    }
-    
-    public void eliminarAdministrador(){
-        
-    }
-    
-    public void eliminarGuardia(){
-        
-    }
-    
-    public void buscarAdministrador(){
-        
-    }
-    
-    public void buscarGuardia(){
-        
-    }
 
 }

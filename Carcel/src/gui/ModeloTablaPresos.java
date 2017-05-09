@@ -96,6 +96,7 @@ public class ModeloTablaPresos extends AbstractTableModel {
         return col > 0;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 
@@ -141,13 +142,13 @@ public class ModeloTablaPresos extends AbstractTableModel {
                 presos.get(row).setApodo((String) v);
                 break;
             case 3:
-                presos.get(row).setFechaNacimiento(Date.valueOf((String)v));
+                presos.get(row).setFechaNacimiento(Date.valueOf((String) v));
                 break;
             case 4:
-                presos.get(row).setFechaIngreso(Date.valueOf((String)v));
+                presos.get(row).setFechaIngreso(Date.valueOf((String) v));
                 break;
             case 5:
-                presos.get(row).setFechaSalida(Date.valueOf((String)v));
+                presos.get(row).setFechaSalida(Date.valueOf((String) v));
                 break;
             case 6:
                 presos.get(row).setBanda((Banda) v);

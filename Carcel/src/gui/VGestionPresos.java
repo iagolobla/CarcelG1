@@ -6,12 +6,13 @@ import carcel.Preso;
 public class VGestionPresos extends javax.swing.JDialog {
 
     FachadaCarcel fc;
-    
+
     public VGestionPresos(java.awt.Frame parent, boolean modal, FachadaCarcel fc) {
         super(parent, modal);
         initComponents();
         this.fc = fc;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -205,11 +206,11 @@ public class VGestionPresos extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
-    public void iniciaPreso(){
+    private void iniciaPreso() {
         fc.iniciaPreso();
     }
-    
-    public void modificarPreso(){
+
+    private void modificarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
         if (mtp.getRowCount() > 0) {
             if (TablaPresos.getSelectedRowCount() > 0) {
@@ -218,12 +219,12 @@ public class VGestionPresos extends javax.swing.JDialog {
             }
         }
     }
-    
-    public void eliminarPreso(){
-        
+
+    private void eliminarPreso() {
+
     }
-    
-    public void liberarPreso(){
+
+    private void liberarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
         if (mtp.getRowCount() > 0) {
             if (TablaPresos.getSelectedRowCount() > 0) {
@@ -233,10 +234,10 @@ public class VGestionPresos extends javax.swing.JDialog {
             }
         }
     }
-    
-    public void buscarPreso(){
+
+    private void buscarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
         mtp.setFilas(fc.buscarPreso(CampoDNI.getText(), CampoNombre.getText(), CampoNombre.getText()));
     }
-    
+
 }

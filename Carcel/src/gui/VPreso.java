@@ -19,8 +19,8 @@ public class VPreso extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fc = fc;
-        this.preso = preso;
 
+        this.preso = preso;
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
@@ -35,6 +35,7 @@ public class VPreso extends javax.swing.JDialog {
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
 
+        this.preso = preso;
         TextoDNI.setText(preso.getDNI());
         TextoNombre.setText(preso.getNombre());
         TextoApodo.setText(preso.getApodo());
@@ -627,7 +628,7 @@ public class VPreso extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPanel;
     // End of variables declaration//GEN-END:variables
 
-    public void insertarPreso() {
+    private void insertarPreso() {
         String DNI = TextoDNI.getText();
         String nombre = TextoNombre.getText();
         String apodo = TextoApodo.getText();
@@ -652,10 +653,10 @@ public class VPreso extends javax.swing.JDialog {
         if (mtc.getRowCount() > 0) {
             if (TablaCeldas.getSelectedRowCount() > 0) {
                 celda = new Celda(mtc.obtenerCelda(TablaCeldas.getSelectedRow()));
-                
+
                 //Si la celda esta llena
-                if(celda.getnOcupantes() >= celda.getnCamas()){
-                    if(preso.getCelda() != null){   //En caso de que el preso este en otra celda (Modificacion)
+                if (celda.getnOcupantes() >= celda.getnCamas()) {
+                    if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
                         intercambiarPresos(celda);
                     } else {    //Si el preso no esta en ninguna otra celda (Insercion)
                         System.out.println("La celda escogida esta llena!");
@@ -672,18 +673,18 @@ public class VPreso extends javax.swing.JDialog {
             String nombreDelito = TextoTipoDelito.getText();
             String descripcion = TextoDescripcion.getText();
             Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
-                    
+
             Delito delito = new Delito(nombreDelito, descripcion, intensidad);
             fc.insertarCargo(DNI, delito);
         }
     }
 
-    public void obtenerCeldaPreso(String id) {
+    private void obtenerCeldaPreso(String id) {
         ModeloTablaCeldas mc = (ModeloTablaCeldas) TablaCeldas.getModel();
         java.util.List<Celda> celdas = new ArrayList<>();
 
         Celda celda = fc.obtenerCelda(id);
-        if (celda!=null) {
+        if (celda != null) {
             celdas.add(celda);
             mc.setFilas(celdas);
             TablaCeldas.setRowSelectionInterval(0, 0);
@@ -691,11 +692,11 @@ public class VPreso extends javax.swing.JDialog {
     }
 
     //Debe usarse junto con la comprobacion previa de si esta ocupada o no una celda
-    public void intercambiarPresos(Celda celda) {
+    private void intercambiarPresos(Celda celda) {
         fc.iniciaAvisoIntercambio(celda, preso);
     }
 
-    public void buscarCelda() {
+    private void buscarCelda() {
         ModeloTablaCeldas mc;
 
         mc = (ModeloTablaCeldas) TablaCeldas.getModel();
@@ -708,11 +709,11 @@ public class VPreso extends javax.swing.JDialog {
 
     }
 
-    public void alojarPreso() {
+    private void alojarPreso() {
 
     }
 
-    public void buscarBanda(String tipo) {
+    private void buscarBanda(String tipo) {
         ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
         java.util.List<Banda> bandas = fc.obtenerBandas(tipo);
         mtb.setFilas(bandas);
@@ -722,7 +723,7 @@ public class VPreso extends javax.swing.JDialog {
 
     }
 
-    public void asociarPresoBanda() {
+    private void asociarPresoBanda() {
         String DNI = TextoDNI.getText();
         ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
 
@@ -737,12 +738,12 @@ public class VPreso extends javax.swing.JDialog {
         fc.asociarPreso(DNI, banda);
     }
 
-    public void desasociarPresoBanda() {
+    private void desasociarPresoBanda() {
         String dni = TextoDNI.getText();
         fc.desasociarPreso(dni);
     }
 
-    public void insertarCargo() {
+    private void insertarCargo() {
         String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
@@ -764,7 +765,7 @@ public class VPreso extends javax.swing.JDialog {
 
     }
 
-    public void modificarCargo() {
+    private void modificarCargo() {
         String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
@@ -785,7 +786,7 @@ public class VPreso extends javax.swing.JDialog {
         fc.modificarCargo(dni, delito);
     }
 
-    public void eliminarCargo() {
+    private void eliminarCargo() {
         String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
@@ -806,7 +807,7 @@ public class VPreso extends javax.swing.JDialog {
         fc.eliminarCargo(dni, delito);
     }
 
-    public void buscarCargosPreso(String DNI) {
+    private void buscarCargosPreso(String DNI) {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
 
         mtc.setFilas(fc.obtenerCargosPreso(DNI));
@@ -819,7 +820,7 @@ public class VPreso extends javax.swing.JDialog {
         }
     }
 
-    public void rellenarCampos() {
+    private void rellenarCampos() {
         int fila = TablaCargos.getSelectedRow();
         String tipo = TablaCargos.getValueAt(fila, 0).toString();
         java.util.ArrayList<String> resultado = (java.util.ArrayList<String>) fc.rellenarCampos(tipo);
