@@ -30,6 +30,7 @@ public class VPreso extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.fc = fc;
+        this.preso = preso;
 
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
