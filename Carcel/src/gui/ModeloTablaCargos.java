@@ -1,6 +1,5 @@
 package gui;
 
-import carcel.Banda;
 import carcel.Delito;
 import carcel.Nivel;
 import java.util.ArrayList;
@@ -11,13 +10,15 @@ public class ModeloTablaCargos extends AbstractTableModel {
     private java.util.List<Delito> delitos;
 
     public ModeloTablaCargos() {
-        this.delitos = new ArrayList<Delito>();
+        this.delitos = new ArrayList<>();
     }
 
+    @Override
     public int getColumnCount() {
         return 3;
     }
 
+    @Override
     public int getRowCount() {
         return delitos.size();
     }
@@ -63,6 +64,7 @@ public class ModeloTablaCargos extends AbstractTableModel {
         return col >= 0;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
         Object resultado = null;
 

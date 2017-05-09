@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import carcel.Celda;
@@ -10,12 +5,8 @@ import carcel.Nivel;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
-/**
- *
- * @author iagolobla
- */
-public class ModeloTablaCeldas extends AbstractTableModel{
-    
+public class ModeloTablaCeldas extends AbstractTableModel {
+
     private java.util.List<Celda> celdas;
 
     public ModeloTablaCeldas() {
@@ -146,5 +137,5 @@ public class ModeloTablaCeldas extends AbstractTableModel{
     public Celda obtenerCelda(int i) {
         return this.celdas.get(i);
     }
-    
+
 }

@@ -12,7 +12,7 @@ public class DAOEmpleados extends AbstractDAO{
         super.setFachadaCarcel(fa);
     }
     
-    protected carcel.Empleado validarAdmin(String dni, String clave){
+    public carcel.Empleado validarAdmin(String dni, String clave){
         carcel.Administrador resultado = null;
         Connection con;
         PreparedStatement stmUsuario = null;
@@ -22,7 +22,7 @@ public class DAOEmpleados extends AbstractDAO{
 
         try {
             stmUsuario = con.prepareStatement("SELECT DNI, nombre, puesto, telefono, direccion, email, contraseña "
-                    + "FROM administradores "
+                    + "FROM administrador "
                     + "WHERE DNI = ? AND contraseña = ?");
             stmUsuario.setString(1, dni);
             stmUsuario.setString(2, clave);

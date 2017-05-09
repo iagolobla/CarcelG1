@@ -7,7 +7,7 @@ public class GestionEmpleados {
     protected FachadaGUI fgui;
     protected FachadaBaseDatos fbd;
 
-    public GestionEmpleados(FachadaGUI fgui, FachadaBaseDatos fbd) {
+    protected GestionEmpleados(FachadaGUI fgui, FachadaBaseDatos fbd) {
         this.fgui = fgui;
         this.fbd = fbd;
     }

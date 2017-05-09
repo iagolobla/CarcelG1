@@ -23,6 +23,6 @@ public abstract class AbstractDAO {
     }
     
     public void muestraExcepcion(String mensaje){
-        //fa.muestraExcepcion(mensaje);
+        fa.muestraExcepcion(mensaje);
     }
 }

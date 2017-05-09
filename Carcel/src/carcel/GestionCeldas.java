@@ -14,8 +14,8 @@ import java.util.ArrayList;
  * @author root
  */
 public class GestionCeldas {
-    protected FachadaGUI fgui;
-    protected FachadaBaseDatos fbd;
+    private FachadaGUI fgui;
+    private FachadaBaseDatos fbd;
     
     public GestionCeldas(FachadaGUI fgui, FachadaBaseDatos fbd) {
         this.fgui = fgui;

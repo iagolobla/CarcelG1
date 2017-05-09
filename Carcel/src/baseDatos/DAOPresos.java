@@ -18,7 +18,7 @@ public class DAOPresos extends AbstractDAO {
         super.setFachadaCarcel(fa);
     }
 
-    protected java.util.List<Preso> buscarPresos(String DNI, String nombre, String apodo) {
+    public java.util.List<Preso> buscarPresos(String DNI, String nombre, String apodo) {
         java.util.List<Preso> presos = new ArrayList<Preso>();
         Connection con;
         PreparedStatement stmPreso = null;
@@ -54,7 +54,7 @@ public class DAOPresos extends AbstractDAO {
         return presos;
     }
 
-    protected Boolean comprobarReincidente(String DNI) {
+    public Boolean comprobarReincidente(String DNI) {
         Boolean resultado = false;
         Connection con;
         PreparedStatement stmPreso = null;
@@ -84,7 +84,7 @@ public class DAOPresos extends AbstractDAO {
         return resultado;
     }
 
-    protected void insertarPresoNoReincidente(Preso preso) {
+    public void insertarPresoNoReincidente(Preso preso) {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
@@ -99,7 +99,7 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            if (preso.getBanda()!=null) {
+            if (preso.getBanda() != null) {
                 stmPreso.setString(7, preso.getBanda().getTipo_banda());
 
             } else {
@@ -123,7 +123,7 @@ public class DAOPresos extends AbstractDAO {
         }
     }
 
-    protected void insertarPresoReincidente(Preso preso) {
+    public void insertarPresoReincidente(Preso preso) {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
@@ -146,7 +146,7 @@ public class DAOPresos extends AbstractDAO {
             stmPreso.setDate(4, preso.getFechaNacimiento());
             stmPreso.setString(5, preso.getApodo());
             stmPreso.setString(6, preso.getAgresividad().toString());
-            if (preso.getBanda()!=null) {
+            if (preso.getBanda() != null) {
                 stmPreso.setString(7, preso.getBanda().getTipo_banda());
 
             } else {
@@ -171,7 +171,7 @@ public class DAOPresos extends AbstractDAO {
         }
     }
 
-    protected void liberarPreso(String DNI) {
+    public void liberarPreso(String DNI) {
         Connection con;
         PreparedStatement stmPreso = null;
         con = super.getConnection();
@@ -226,7 +226,7 @@ public class DAOPresos extends AbstractDAO {
         return resultado;
     }
 
-    protected java.util.List<Delito> consultarCargosPreso(String DNI) {
+    public java.util.List<Delito> consultarCargosPreso(String DNI) {
         java.util.List<Delito> resultado = new java.util.ArrayList<>();
         Delito delitoActual;
         Connection con;
@@ -316,7 +316,7 @@ public class DAOPresos extends AbstractDAO {
         }
     }
 
-    protected java.util.List<Banda> obtenerBanda(String tipo) {
+    public java.util.List<Banda> obtenerBanda(String tipo) {
         java.util.List<Banda> bandas = new java.util.ArrayList<Banda>();
         Connection con;
         PreparedStatement stmBandas = null;
@@ -350,61 +350,61 @@ public class DAOPresos extends AbstractDAO {
     public ArrayList<Preso> buscarPresosCelda(Celda celda) {
         ArrayList<Preso> presos = new ArrayList<>();
         Preso auxPreso;
-        
+
         Connection con;
-        PreparedStatement query=null;
+        PreparedStatement query = null;
         ResultSet rsPresos;
-        
+
         String consulta = "SELECT * FROM preso WHERE celda = ?";
-        
+
         con = this.getConnection();
-         try{
-             query = con.prepareStatement(consulta);
-             
-             query.setInt(1, celda.getnCelda());
-             
-             rsPresos = query.executeQuery();
-             
-             while(rsPresos.next()){
-                 auxPreso = new Preso(  rsPresos.getString("DNI"), rsPresos.getString("nombre"), rsPresos.getString("apodo"),
-                                        rsPresos.getDate("fechaNacimiento"), rsPresos.getDate("fechaIngreso"), rsPresos.getDate("fechaSalida"),
-                                        new Banda(rsPresos.getString("banda")), Nivel.valueOf(rsPresos.getString("agresividad")),
-                                        new Celda(celda.getnCelda()));
-                 presos.add(auxPreso);
-             }
-         } catch (SQLException e){
+        try {
+            query = con.prepareStatement(consulta);
+
+            query.setInt(1, celda.getnCelda());
+
+            rsPresos = query.executeQuery();
+
+            while (rsPresos.next()) {
+                auxPreso = new Preso(rsPresos.getString("DNI"), rsPresos.getString("nombre"), rsPresos.getString("apodo"),
+                        rsPresos.getDate("fechaNacimiento"), rsPresos.getDate("fechaIngreso"), rsPresos.getDate("fechaSalida"),
+                        new Banda(rsPresos.getString("banda")), Nivel.valueOf(rsPresos.getString("agresividad")),
+                        new Celda(celda.getnCelda()));
+                presos.add(auxPreso);
+            }
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                query.close();   
+                query.close();
             } catch (SQLException e) {
                 System.out.println("Imposible cerrar Cursores");
             }
         }
-         return presos;
+        return presos;
     }
-    
+
     //Con query (Consulta1) desligamos al preso 2 de su celda
     //Con query2 (Consulta2) ligamos el preso 1 a la antigua celda del preso 2
     //Con query3 (Consulta2) ligamos el preso 2 a la antigua celda del preso 1
     //Esta complicacion se hace para evitar problemas en caso de que ambas celdas estuviesen llenas
-    public void intercambiarPresos(Preso preso1, Preso preso2){
+    public void intercambiarPresos(Preso preso1, Preso preso2) {
         Connection con;
         PreparedStatement query = null;
         PreparedStatement query2 = null;
         PreparedStatement query3 = null;
-        
+
         String consulta1 = "UPDATE preso SET celda = NULL WHERE DNI = ?";
         String consulta2 = "UPDATE preso SET celda = ? WHERE DNI = ?";
-        
+
         con = this.getConnection();
-        
-        try{
+
+        try {
             query = con.prepareStatement(consulta1);
             query2 = con.prepareStatement(consulta2);
             query3 = con.prepareStatement(consulta2);
-            
+
             query.setString(1, preso2.getDNI());
             //Preso 1 a la celda 2
             query2.setInt(1, preso2.getCelda().getnCelda());
@@ -412,17 +412,17 @@ public class DAOPresos extends AbstractDAO {
             //Preso 2 a la celda 1
             query3.setInt(1, preso1.getCelda().getnCelda());
             query3.setString(2, preso2.getDNI());
-            
+
             query.execute();
             query2.execute();
             query3.execute();
-            
-        } catch (SQLException e){
+
+        } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());
         } finally {
             try {
-                query.close();   
+                query.close();
                 query2.close();
                 query3.close();
             } catch (SQLException e) {
