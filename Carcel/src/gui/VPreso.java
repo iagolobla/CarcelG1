@@ -669,7 +669,7 @@ public class VPreso extends javax.swing.JDialog {
         Preso auxPreso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
         fc.insertarPreso(auxPreso);
 
-        if (!TextoTipoDelito.getText().isEmpty()) {
+        if (!TextoTipoDelito.getText().isEmpty() && preso==null) {
             String nombreDelito = TextoTipoDelito.getText();
             String descripcion = TextoDescripcion.getText();
             Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
