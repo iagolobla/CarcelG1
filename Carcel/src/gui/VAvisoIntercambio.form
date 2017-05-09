@@ -76,7 +76,7 @@
       <Properties>
         <Property name="columns" type="int" value="20"/>
         <Property name="rows" type="int" value="5"/>
-        <Property name="text" type="java.lang.String" value="Esta intentando meter a un &#xa;preso en una celda llena,&#xa;&#xbf;Desea intercambiarlo por otro?"/>
+        <Property name="text" type="java.lang.String" value="&#xa;&#xa;"/>
       </Properties>
     </Component>
   </SubComponents>

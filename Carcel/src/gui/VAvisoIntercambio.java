@@ -44,7 +44,7 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
 
         TextoPregunta.setColumns(20);
         TextoPregunta.setRows(5);
-        TextoPregunta.setText("Esta intentando meter a un \npreso en una celda llena,\n¿Desea intercambiarlo por otro?");
+        TextoPregunta.setText("\n\n");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
