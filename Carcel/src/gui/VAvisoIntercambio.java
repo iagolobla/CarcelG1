@@ -44,7 +44,7 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
 
         TextoPregunta.setColumns(20);
         TextoPregunta.setRows(5);
-        TextoPregunta.setText("La celda donde esta intentando\nalojar al preso esta llena. \n¿Desea intercambiarlo por otro?\nSe guardaran los cambios antes\nde realizar el intercambio.");
+        TextoPregunta.setText("Se han guardado los cambios.\n\nLa celda donde esta intentando\nalojar al preso esta llena. \n¿Desea intercambiarlo por otro?");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
