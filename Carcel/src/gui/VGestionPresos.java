@@ -14,7 +14,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         
         BotonModificar.setEnabled(false);
         BotonLiberar.setEnabled(false);
-        BotonEliminar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +30,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonBuscar = new javax.swing.JButton();
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
-        BotonEliminar = new javax.swing.JButton();
         BotonLiberar = new javax.swing.JButton();
         EtiquetaApodo = new javax.swing.JLabel();
         CampoApodo = new javax.swing.JTextField();
@@ -44,6 +42,11 @@ public class VGestionPresos extends javax.swing.JDialog {
         EtiquetaNombre.setText("Nombre");
 
         TablaPresos.setModel(new ModeloTablaPresos());
+        TablaPresos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaPresosMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaPresos);
 
         BotonBuscar.setText("Buscar");
@@ -64,13 +67,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarActionPerformed(evt);
-            }
-        });
-
-        BotonEliminar.setText("Eliminar");
-        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarActionPerformed(evt);
             }
         });
 
@@ -121,9 +117,7 @@ public class VGestionPresos extends javax.swing.JDialog {
                 .addComponent(BotonInsertar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(114, 114, 114)
                 .addComponent(BotonSalir)
                 .addGap(36, 36, 36))
         );
@@ -145,7 +139,6 @@ public class VGestionPresos extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonInsertar)
                     .addComponent(BotonModificar)
-                    .addComponent(BotonEliminar)
                     .addComponent(BotonLiberar)
                     .addComponent(BotonSalir))
                 .addGap(22, 22, 22))
@@ -171,10 +164,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_BotonSalirActionPerformed
 
-    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        eliminarPreso();
-    }//GEN-LAST:event_BotonEliminarActionPerformed
-
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarPreso();
     }//GEN-LAST:event_BotonModificarActionPerformed
@@ -191,10 +180,13 @@ public class VGestionPresos extends javax.swing.JDialog {
         buscarPreso();
     }//GEN-LAST:event_BotonBuscarActionPerformed
 
+    private void TablaPresosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPresosMouseReleased
+        actualizar();
+    }//GEN-LAST:event_TablaPresosMouseReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
-    private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonInsertar;
     private javax.swing.JButton BotonLiberar;
     private javax.swing.JButton BotonModificar;
@@ -213,6 +205,24 @@ public class VGestionPresos extends javax.swing.JDialog {
     private void iniciaPreso() {
         fc.iniciaPreso();
     }
+    
+    private void actualizar(){
+        ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
+        
+        if (mtp.getRowCount() > 0) {
+            if (TablaPresos.getSelectedRowCount() > 0) {
+                Preso preso = mtp.getFilas().get(TablaPresos.getSelectedRow());
+                
+                if(preso.getFechaSalida() == null){
+                    BotonModificar.setEnabled(true);
+                    BotonLiberar.setEnabled(true);
+                } else {
+                    BotonModificar.setEnabled(false);
+                    BotonLiberar.setEnabled(false);
+                }
+            }
+        }
+    }
 
     private void modificarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
@@ -226,10 +236,6 @@ public class VGestionPresos extends javax.swing.JDialog {
                 }
             }
         }
-    }
-
-    private void eliminarPreso() {
-
     }
 
     private void liberarPreso() {
@@ -248,8 +254,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         mtp.setFilas(fc.buscarPreso(CampoDNI.getText(), CampoNombre.getText(), CampoNombre.getText()));
         if (mtp.getRowCount() > 0) {
             TablaPresos.setRowSelectionInterval(0, 0);
-            BotonModificar.setEnabled(true);
-            BotonLiberar.setEnabled(true);
         }
     }
 
