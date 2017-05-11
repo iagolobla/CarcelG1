@@ -44,6 +44,11 @@ public class VGestionPresos extends javax.swing.JDialog {
         EtiquetaNombre.setText("Nombre");
 
         TablaPresos.setModel(new ModeloTablaPresos());
+        TablaPresos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                TablaPresosMouseReleased(evt);
+            }
+        });
         jScrollPane1.setViewportView(TablaPresos);
 
         BotonBuscar.setText("Buscar");
@@ -172,7 +177,7 @@ public class VGestionPresos extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-        eliminarPreso();
+       
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
@@ -190,6 +195,10 @@ public class VGestionPresos extends javax.swing.JDialog {
     private void BotonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBuscarActionPerformed
         buscarPreso();
     }//GEN-LAST:event_BotonBuscarActionPerformed
+
+    private void TablaPresosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaPresosMouseReleased
+        actualizar();
+    }//GEN-LAST:event_TablaPresosMouseReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -213,6 +222,24 @@ public class VGestionPresos extends javax.swing.JDialog {
     private void iniciaPreso() {
         fc.iniciaPreso();
     }
+    
+    private void actualizar(){
+        ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
+        
+        if (mtp.getRowCount() > 0) {
+            if (TablaPresos.getSelectedRowCount() > 0) {
+                Preso preso = mtp.getFilas().get(TablaPresos.getSelectedRow());
+                
+                if(preso.getFechaSalida() == null){
+                    BotonModificar.setEnabled(true);
+                    BotonLiberar.setEnabled(true);
+                } else {
+                    BotonModificar.setEnabled(false);
+                    BotonLiberar.setEnabled(false);
+                }
+            }
+        }
+    }
 
     private void modificarPreso() {
         ModeloTablaPresos mtp = (ModeloTablaPresos) TablaPresos.getModel();
@@ -222,10 +249,6 @@ public class VGestionPresos extends javax.swing.JDialog {
                 fc.iniciaPreso(preso);
             }
         }
-    }
-
-    private void eliminarPreso() {
-
     }
 
     private void liberarPreso() {
@@ -244,8 +267,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         mtp.setFilas(fc.buscarPreso(CampoDNI.getText(), CampoNombre.getText(), CampoNombre.getText()));
         if (mtp.getRowCount() > 0) {
             TablaPresos.setRowSelectionInterval(0, 0);
-            BotonModificar.setEnabled(true);
-            BotonLiberar.setEnabled(true);
         }
     }
 
