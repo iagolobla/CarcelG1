@@ -551,17 +551,14 @@ public class VPreso extends javax.swing.JDialog {
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         insertarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         eliminarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -744,23 +741,43 @@ public class VPreso extends javax.swing.JDialog {
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
         preso.getCargos().put(delito.getTipo_delito(), delito);
-
+        actualizarCargos();
     }
 
     private void modificarCargo() {
-        insertarCargo();
-    }
-
-    private void eliminarCargo() {
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
         
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
-        preso.getCargos().remove(delito.getTipo_delito());
+        preso.getCargos().put(delito.getTipo_delito(), delito);
+        actualizarCargos();
     }
 
+    private void eliminarCargo() {
+        preso.getCargos().remove(TextoTipoDelito.getText());
+        actualizarCargos();
+    }
+
+    private void actualizarCargos(){
+        ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
+        ArrayList<Delito> delitos = new ArrayList<>();
+        
+        for(Delito d : preso.getCargos().values())
+            delitos.add(d);
+        
+        mtc.setFilas(delitos);
+        
+        if (mtc.getRowCount() > 0) {
+            TablaCargos.setRowSelectionInterval(0, 0);
+            BotonEliminar.setEnabled(true);
+            rellenarCampos();
+        } else {
+            BotonEliminar.setEnabled(false);
+        }
+    }
+    
     private void buscarCargosPreso(String DNI) {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
 
