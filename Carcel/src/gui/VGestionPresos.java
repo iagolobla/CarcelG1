@@ -255,6 +255,7 @@ public class VGestionPresos extends javax.swing.JDialog {
         if (mtp.getRowCount() > 0) {
             TablaPresos.setRowSelectionInterval(0, 0);
         }
+        actualizar();
     }
 
 }
