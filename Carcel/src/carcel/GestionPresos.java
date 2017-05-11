@@ -63,10 +63,6 @@ public class GestionPresos {
         }
     }
 
-    public void modificarCargo(String dni, Delito delito) {
-        fbd.modificarCargo(dni, delito);
-    }
-
     public void eliminarCargos(Preso preso) {
         if (preso != null && !preso.getDNI().isEmpty()) {
             fbd.eliminarCargos(preso);
