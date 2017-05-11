@@ -219,7 +219,11 @@ public class VGestionPresos extends javax.swing.JDialog {
         if (mtp.getRowCount() > 0) {
             if (TablaPresos.getSelectedRowCount() > 0) {
                 Preso preso = mtp.getFilas().get(TablaPresos.getSelectedRow());
-                fc.iniciaPreso(preso);
+                if(preso.getFechaSalida()==null){
+                    fc.iniciaPreso(preso);
+                } else{
+                    System.out.println("Ese preso ya no esta en la carcel");
+                }
             }
         }
     }

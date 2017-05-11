@@ -125,35 +125,6 @@ public class DAODelitos extends AbstractDAO{
         return resultado;
     }
     
-    public void modificarCargo(String dni, Delito delito){
-        Connection con;
-        PreparedStatement stmDelitos = null;
-
-        con = this.getConnection();
-
-        String consulta = "UPDATE cometerDelito "
-                + "SET descripcion = ?, intensidad = ? "
-                + "WHERE preso = ? AND delito = ?";
-        try {
-            stmDelitos = con.prepareStatement(consulta);
-            stmDelitos.setString(1, delito.getDescripcion());
-            stmDelitos.setString(2, delito.getIntensidad().toString());
-            stmDelitos.setString(3, dni);
-            stmDelitos.setString(4, delito.getTipo_delito());
-            stmDelitos.executeUpdate();
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-            this.getFachadaCarcel().muestraExcepcion(e.getMessage());
-        } finally {
-            try {
-                stmDelitos.close();
-            } catch (SQLException e) {
-                System.out.println("Imposible cerrar cursores");
-            }
-        }
-    }
-    
     public void eliminarCargos(Preso preso){
         Connection con;
         PreparedStatement stmDelitos = null;

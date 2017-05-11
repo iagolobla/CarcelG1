@@ -110,7 +110,11 @@ public class Preso {
     }
 
     public void setBanda(Banda banda) {
-        this.banda = new Banda(banda);
+        if(banda==null){
+            this.banda=null;
+        } else{
+            this.banda = new Banda(banda);
+        }
     }
 
     public Nivel getAgresividad() {

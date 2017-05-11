@@ -136,12 +136,6 @@ public class FachadaBaseDatos {
         }
     }
     
-    public void modificarCargo(String dni, Delito delito){
-        if(daoDelitos.comprobarCargo(dni, delito)){
-            daoDelitos.modificarCargo(dni, delito);
-        }
-    }
-    
     public void eliminarCargos(Preso preso){
         daoDelitos.eliminarCargos(preso);
     }
