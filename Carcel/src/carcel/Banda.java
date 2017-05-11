@@ -5,6 +5,11 @@ public class Banda {
     private String tipo_banda;
     private int presos;
 
+    public Banda(Banda banda){
+        this.tipo_banda = banda.getTipo_banda();
+        this.presos = banda.getPresos();
+    }
+    
     public Banda(String tipo_banda, int presos) {
         this.tipo_banda = tipo_banda;
         this.presos = presos;

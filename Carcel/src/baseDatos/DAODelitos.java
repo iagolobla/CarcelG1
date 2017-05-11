@@ -1,6 +1,7 @@
 package baseDatos;
 
 import carcel.Delito;
+import carcel.Preso;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -153,20 +154,18 @@ public class DAODelitos extends AbstractDAO{
         }
     }
     
-    public void eliminarCargo(String dni, Delito delito){
+    public void eliminarCargos(Preso preso){
         Connection con;
         PreparedStatement stmDelitos = null;
 
         con = this.getConnection();
 
         String consulta = "DELETE FROM cometerDelito "
-                + "WHERE preso = ? AND delito = ?";
+                + "WHERE preso = ?";
         try {
             stmDelitos = con.prepareStatement(consulta);
-            stmDelitos.setString(1, dni);
-            stmDelitos.setString(2, delito.getTipo_delito());
+            stmDelitos.setString(1, preso.getDNI());
             stmDelitos.executeUpdate();
-
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             this.getFachadaCarcel().muestraExcepcion(e.getMessage());

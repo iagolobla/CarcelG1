@@ -142,10 +142,8 @@ public class FachadaBaseDatos {
         }
     }
     
-    public void eliminarCargo(String dni, Delito delito){
-        if(daoDelitos.comprobarCargo(dni,delito)){
-            daoDelitos.eliminarCargo(dni, delito);
-        }
+    public void eliminarCargos(Preso preso){
+        daoDelitos.eliminarCargos(preso);
     }
     
     public void intercambiarPresos(Preso preso1, Preso preso2){
