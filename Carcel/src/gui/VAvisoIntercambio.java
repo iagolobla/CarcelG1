@@ -44,7 +44,7 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
 
         TextoPregunta.setColumns(20);
         TextoPregunta.setRows(5);
-        TextoPregunta.setText("\n\n");
+        TextoPregunta.setText("La celda donde esta intentando\nalojar al preso esta llena. \n¿Desea intercambiarlo por otro?\nSe guardaran los cambios antes\nde realizar el intercambio.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -66,12 +66,12 @@ public class VAvisoIntercambio extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(TextoPregunta, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextoPregunta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonSI)
                     .addComponent(BotonNo))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();

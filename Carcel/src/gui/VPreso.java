@@ -657,6 +657,7 @@ public class VPreso extends javax.swing.JDialog {
 
     //Debe usarse junto con la comprobacion previa de si esta ocupada o no una celda
     private void intercambiarPresos(Celda celda) {
+        guardarCambios();   //Se guardan los cambios antes
         fc.iniciaAvisoIntercambio(celda, preso);
     }
 
@@ -687,6 +688,7 @@ public class VPreso extends javax.swing.JDialog {
                 if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
                     if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
                         intercambiarPresos(celda);
+                        preso.setCelda(celda);
                     } else {    //Plazas libres en la celda
                         preso.setCelda(celda);
                     }
