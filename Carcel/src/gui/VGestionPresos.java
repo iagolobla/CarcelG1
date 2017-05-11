@@ -14,7 +14,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         
         BotonModificar.setEnabled(false);
         BotonLiberar.setEnabled(false);
-        BotonEliminar.setEnabled(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -31,7 +30,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonBuscar = new javax.swing.JButton();
         BotonInsertar = new javax.swing.JButton();
         BotonModificar = new javax.swing.JButton();
-        BotonEliminar = new javax.swing.JButton();
         BotonLiberar = new javax.swing.JButton();
         EtiquetaApodo = new javax.swing.JLabel();
         CampoApodo = new javax.swing.JTextField();
@@ -69,13 +67,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         BotonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotonModificarActionPerformed(evt);
-            }
-        });
-
-        BotonEliminar.setText("Eliminar");
-        BotonEliminar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonEliminarActionPerformed(evt);
             }
         });
 
@@ -126,9 +117,7 @@ public class VGestionPresos extends javax.swing.JDialog {
                 .addComponent(BotonInsertar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotonEliminar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(114, 114, 114)
                 .addComponent(BotonSalir)
                 .addGap(36, 36, 36))
         );
@@ -150,7 +139,6 @@ public class VGestionPresos extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonInsertar)
                     .addComponent(BotonModificar)
-                    .addComponent(BotonEliminar)
                     .addComponent(BotonLiberar)
                     .addComponent(BotonSalir))
                 .addGap(22, 22, 22))
@@ -176,10 +164,6 @@ public class VGestionPresos extends javax.swing.JDialog {
         this.dispose();
     }//GEN-LAST:event_BotonSalirActionPerformed
 
-    private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
-       
-    }//GEN-LAST:event_BotonEliminarActionPerformed
-
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarPreso();
     }//GEN-LAST:event_BotonModificarActionPerformed
@@ -203,7 +187,6 @@ public class VGestionPresos extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
-    private javax.swing.JButton BotonEliminar;
     private javax.swing.JButton BotonInsertar;
     private javax.swing.JButton BotonLiberar;
     private javax.swing.JButton BotonModificar;

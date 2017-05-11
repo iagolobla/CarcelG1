@@ -70,9 +70,7 @@
                   <Component id="BotonInsertar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="BotonModificar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="BotonEliminar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
                   <Component id="BotonSalir" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
@@ -97,7 +95,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BotonInsertar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonLiberar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -168,14 +165,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonModificarActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="BotonEliminar">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Eliminar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonEliminarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BotonLiberar">
