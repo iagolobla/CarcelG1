@@ -14,11 +14,11 @@ public class FachadaGUI {
     }
 
     public void iniciaVista() {
-        VLogin vl;
+        /*VLogin vl;
         
-        vl = new VLogin(vp, true, fc);
+        vl = new VLogin(vp, true, fc);*/
         vp.setVisible(true);
-        vl.setVisible(true);
+        //vl.setVisible(true);
     } 
     
     public void iniciaVTrapicheos(){

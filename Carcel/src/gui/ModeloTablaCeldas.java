@@ -15,7 +15,7 @@ public class ModeloTablaCeldas extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 5;
+        return 6;
     }
 
     @Override
@@ -43,6 +43,10 @@ public class ModeloTablaCeldas extends AbstractTableModel {
             case 4:
                 nombre = "Num_Ocupantes";
                 break;
+            case 5:
+                nombre = "Plazas_Libres";
+                break;
+                
         }
         return nombre;
     }
@@ -67,13 +71,17 @@ public class ModeloTablaCeldas extends AbstractTableModel {
             case 4:
                 clase = java.lang.Integer.class;
                 break;
+            case 5:
+                clase = java.lang.Integer.class;
+                break;
+                
         }
         return clase;
     }
 
     @Override
     public boolean isCellEditable(int row, int col) {
-        return col != 0 && col != 4;
+        return col != 0 && col != 4 && col != 5;
     }
 
     @Override
@@ -95,7 +103,11 @@ public class ModeloTablaCeldas extends AbstractTableModel {
                 break;
             case 4:
                 resultado = celdas.get(row).getnOcupantes();
+                break;    
+            case 5:
+                resultado = celdas.get(row).getnCamas() - celdas.get(row).getnOcupantes();
                 break;
+                
         }
         return resultado;
     }
