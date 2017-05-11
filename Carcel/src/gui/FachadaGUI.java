@@ -115,4 +115,11 @@ public class FachadaGUI {
         ve = new VExcepcion(vp, true, mensaje);
         ve.setVisible(true);
     }
+    
+    public void iniciaVigilancia(Celda celda){
+        VVigilancia vv;
+        
+        vv = new VVigilancia(vp, true, fc, celda);
+        vv.setVisible(true);
+    }
 }

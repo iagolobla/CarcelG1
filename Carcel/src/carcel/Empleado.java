@@ -4,12 +4,12 @@ public abstract class Empleado {
 
     private String DNI;
     private String nombre;
-    private String puesto;
-    private int telefono;
+    private Nivel2 puesto;
+    private String telefono;
     private String direccion;
     private String email;
 
-    public Empleado(String DNI, String nombre, String puesto, int telefono, String direccion, String email) {
+    public Empleado(String DNI, String nombre, Nivel2 puesto, String telefono, String direccion, String email) {
         this.DNI = DNI;
         this.nombre = nombre;
         this.puesto = puesto;
@@ -34,22 +34,22 @@ public abstract class Empleado {
         this.nombre = nombre;
     }
 
-    public String getPuesto() {
+    public Nivel2 getPuesto() {
         return puesto;
     }
-
-    public void setPuesto(String puesto) {
+    
+    public void setPuesto(Nivel2 puesto) {
         this.puesto = puesto;
     }
-
-    public int getTelefono() {
+    
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+    
     public String getDireccion() {
         return direccion;
     }
@@ -57,7 +57,7 @@ public abstract class Empleado {
     public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-
+    
     public String getEmail() {
         return email;
     }
@@ -65,7 +65,4 @@ public abstract class Empleado {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    
-
 }

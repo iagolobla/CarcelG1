@@ -4,7 +4,7 @@ public class Administrador extends Empleado {
 
     private String contrasena;
 
-    public Administrador(String DNI, String nombre, String contrasena, String puesto, int telefono, String direccion, String email) {
+    public Administrador(String DNI, String nombre, String contrasena, Nivel2 puesto, String telefono, String direccion, String email) {
         super(DNI, nombre, puesto, telefono, direccion, email);
         this.contrasena = contrasena;
     }

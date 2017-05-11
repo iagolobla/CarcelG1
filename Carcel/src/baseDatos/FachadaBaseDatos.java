@@ -5,6 +5,7 @@ import carcel.Celda;
 import carcel.Empleado;
 import carcel.Preso;
 import carcel.Delito;
+import carcel.Guardia;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -142,5 +143,16 @@ public class FachadaBaseDatos {
     
     public void intercambiarPresos(Preso preso1, Preso preso2){
         daoPresos.intercambiarPresos(preso1, preso2);
+    }
+    
+    public ArrayList<Guardia> buscarGuardias(String DNI, String Nombre, String Agresividad){
+        return daoEmpleados.buscarGuardias(DNI,Nombre,Agresividad);
+    }
+    
+    public void asociarGuardia(Celda celda, Guardia guardia){
+        daoEmpleados.asociarGuardia(celda, guardia);
+    }
+    public void desasociarGuardia(Celda celda){
+        daoEmpleados.desasociarGuardia(celda);
     }
 }
