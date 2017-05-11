@@ -35,7 +35,7 @@ public class VPreso extends javax.swing.JDialog {
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
-        
+
         TextoDNI.setText(preso.getDNI());
         TextoNombre.setText(preso.getNombre());
         TextoApodo.setText(preso.getApodo());
@@ -632,7 +632,7 @@ public class VPreso extends javax.swing.JDialog {
         preso.setFechaNacimiento(Date.valueOf(TextoFechaN.getText()));
         preso.setFechaIngreso(Date.valueOf(TextoFechaI.getText()));
         preso.setAgresividad((Nivel) ComboAgresividad.getSelectedItem());
-        
+
         //Insertar Preso
         fc.insertarPreso(preso);
 
@@ -640,7 +640,7 @@ public class VPreso extends javax.swing.JDialog {
         fc.eliminarCargos(preso);
         //Añadir los cargos actuales de un preso
         fc.insertarCargos(preso);
-        
+
     }
 
     private void obtenerCeldaPreso(String id) {
@@ -679,26 +679,28 @@ public class VPreso extends javax.swing.JDialog {
     private void alojarPreso() {
         ModeloTablaCeldas mtc = (ModeloTablaCeldas) TablaCeldas.getModel();
         Celda celda = null;
-        
+
         //Parte de Celdas
         if (mtc.getRowCount() > 0) {
             if (TablaCeldas.getSelectedRowCount() > 0) {
                 celda = new Celda(mtc.obtenerCelda(TablaCeldas.getSelectedRow()));
-
-                if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
-                    if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
-                        intercambiarPresos(celda);
-                        preso.setCelda(celda);
-                    } else {    //Plazas libres en la celda
-                        preso.setCelda(celda);
+                if (celda != preso.getCelda()) {
+                    if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
+                        if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
+                            intercambiarPresos(celda);
+                            preso.setCelda(celda);
+                        } else {    //Plazas libres en la celda
+                            preso.setCelda(celda);
+                        }
+                    } else {    //Si el preso no esta en ninguna otra celda (Insercion)
+                        if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
+                            System.out.println("Celda llena, seleccione otra!");
+                        } else {    //Plazas libres en la celda
+                            preso.setCelda(celda);
+                        }
                     }
-                } else {    //Si el preso no esta en ninguna otra celda (Insercion)
-                    if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
-                        System.out.println("Celda llena, seleccione otra!");
-                        return;
-                    } else {    //Plazas libres en la celda
-                        preso.setCelda(celda);
-                    }
+                } else {
+                    System.out.println("La celda escogida es la actual del Preso!");
                 }
             }
         }
@@ -739,7 +741,7 @@ public class VPreso extends javax.swing.JDialog {
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
-        
+
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
         preso.getCargos().put(delito.getTipo_delito(), delito);
@@ -750,7 +752,7 @@ public class VPreso extends javax.swing.JDialog {
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
         Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
-        
+
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
         preso.getCargos().put(delito.getTipo_delito(), delito);
@@ -762,15 +764,16 @@ public class VPreso extends javax.swing.JDialog {
         actualizarCargos();
     }
 
-    private void actualizarCargos(){
+    private void actualizarCargos() {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
         ArrayList<Delito> delitos = new ArrayList<>();
-        
-        for(Delito d : preso.getCargos().values())
+
+        for (Delito d : preso.getCargos().values()) {
             delitos.add(d);
-        
+        }
+
         mtc.setFilas(delitos);
-        
+
         if (mtc.getRowCount() > 0) {
             TablaCargos.setRowSelectionInterval(0, 0);
             BotonEliminar.setEnabled(true);
@@ -779,15 +782,15 @@ public class VPreso extends javax.swing.JDialog {
             BotonEliminar.setEnabled(false);
         }
     }
-    
+
     private void buscarCargosPreso(String DNI) {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
 
         ArrayList<Delito> delitos = (ArrayList<Delito>) fc.obtenerCargosPreso(DNI);
         mtc.setFilas(delitos);
-        
+
         preso.setCargos(delitos);   //Añadimos al preso sus cargos
-        
+
         if (mtc.getRowCount() > 0) {
             TablaCargos.setRowSelectionInterval(0, 0);
             BotonEliminar.setEnabled(true);
@@ -801,7 +804,7 @@ public class VPreso extends javax.swing.JDialog {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
 
         Delito delito = mtc.obtenerCargo(TablaCargos.getSelectedRow());
-        
+
         TextoTipoDelito.setText(delito.getTipo_delito());
         TextoDescripcion.setText(delito.getDescripcion());
         ComboIntensidad.setSelectedItem(delito.getIntensidad());
