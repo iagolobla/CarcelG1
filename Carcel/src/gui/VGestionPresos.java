@@ -117,7 +117,7 @@ public class VGestionPresos extends javax.swing.JDialog {
                 .addComponent(BotonInsertar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonModificar)
-                .addGap(114, 114, 114)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BotonSalir)
                 .addGap(36, 36, 36))
         );
