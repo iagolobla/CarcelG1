@@ -1,6 +1,8 @@
 package carcel;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Preso {
 
@@ -13,7 +15,21 @@ public class Preso {
     private Banda banda;
     private Nivel agresividad;
     private Celda celda;
+    private HashMap<String, Delito> cargos; //<tipo_delito, Delito>
 
+    public Preso(){
+        this.DNI = "";
+        this.nombre = "";
+        this.apodo = "";
+        this.fechaNacimiento = null;
+        this.fechaIngreso = null;
+        this.fechaSalida = null;
+        this.banda = null;
+        this.agresividad = null;
+        this.celda = null;
+        this.cargos = new HashMap<>();
+    }
+    
     public Preso(Preso otroPreso) {
         this.DNI = otroPreso.getDNI();
         this.nombre = otroPreso.getNombre();
@@ -24,6 +40,7 @@ public class Preso {
         this.banda = otroPreso.getBanda();
         this.agresividad = otroPreso.getAgresividad();
         this.celda = otroPreso.getCelda();
+        this.cargos = otroPreso.getCargos();
     }
     
     public Preso(String DNI, String nombre, String apodo, Date fechaNacimiento, Date fechaIngreso, 
@@ -37,6 +54,7 @@ public class Preso {
         this.banda = banda;
         this.agresividad = agresividad;
         this.celda = celda;
+        this.cargos = new HashMap<>();
     }
 
     public String getDNI() {
@@ -92,7 +110,7 @@ public class Preso {
     }
 
     public void setBanda(Banda banda) {
-        this.banda = banda;
+        this.banda = new Banda(banda);
     }
 
     public Nivel getAgresividad() {
@@ -108,6 +126,16 @@ public class Preso {
     }
 
     public void setCelda(Celda celda) {
-        this.celda = celda;
+        this.celda = new Celda(celda);
+    }
+
+    public HashMap<String, Delito> getCargos() {
+        return cargos;
+    }
+
+    public void setCargos(ArrayList<Delito> cargos) {
+        for(Delito delito : cargos){
+            this.cargos.put(delito.getTipo_delito(), delito);
+        }
     }
 }

@@ -133,16 +133,16 @@ public class FachadaCarcel {
         return gp.buscarPresosCelda(celda);
     }
 
-    public void insertarCargo(String dni, Delito delito) {
-        gp.insertarCargo(dni, delito);
+    public void insertarCargos(Preso preso) {
+        gp.insertarCargos(preso);
     }
 
     public void modificarCargo(String dni, Delito delito) {
         gp.modificarCargo(dni, delito);
     }
 
-    public void eliminarCargo(String dni, Delito delito) {
-        gp.eliminarCargo(dni, delito);
+    public void eliminarCargos(Preso preso) {
+        gp.eliminarCargos(preso);
     }
 
     public java.util.List<Banda> obtenerBandas(String tipo) {

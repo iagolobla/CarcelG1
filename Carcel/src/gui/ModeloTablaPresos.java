@@ -17,7 +17,7 @@ public class ModeloTablaPresos extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 8;
+        return 9;
     }
 
     @Override
@@ -54,6 +54,9 @@ public class ModeloTablaPresos extends AbstractTableModel {
             case 7:
                 nombre = "Agresividad";
                 break;
+            case 8:
+                nombre = "Celda";
+                break;
         }
         return nombre;
     }
@@ -87,13 +90,17 @@ public class ModeloTablaPresos extends AbstractTableModel {
             case 7:
                 clase = java.lang.String.class;
                 break;
+            case 8:
+                clase = java.lang.Integer.class;
+                break;
+                
         }
         return clase;
     }
 
     @Override
     public boolean isCellEditable(int row, int col) {
-        return col > 0;
+        return col != 0 && col != 8;
     }
 
     @Override
@@ -124,6 +131,9 @@ public class ModeloTablaPresos extends AbstractTableModel {
                 break;
             case 7:
                 resultado = presos.get(row).getAgresividad().toString();
+                break;
+            case 8:
+                resultado = presos.get(row).getCelda().getnCelda();
                 break;
         }
         return resultado;

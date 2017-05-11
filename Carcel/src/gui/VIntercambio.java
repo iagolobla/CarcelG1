@@ -130,7 +130,7 @@ public class VIntercambio extends javax.swing.JDialog {
 
         mp = (ModeloTablaPresos) TablaPresos.getModel();
         if (mp.getRowCount() > 0) {
-            if (TablaPresos.getSelectedRow() > 0) {   //Si hay algo seleccionado
+            if (TablaPresos.getSelectedRowCount() > 0) {   //Si hay algo seleccionado
                 preso2 = new Preso(mp.obtenerPreso(TablaPresos.getSelectedRow()));
                 //Hace de forma unitaria el intercambio
                 fc.intercambiarPresos(this.preso, preso2);

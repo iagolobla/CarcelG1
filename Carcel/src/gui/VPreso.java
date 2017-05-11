@@ -20,7 +20,7 @@ public class VPreso extends javax.swing.JDialog {
         initComponents();
         this.fc = fc;
 
-        this.preso = preso;
+        this.preso = new Preso();
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
@@ -35,8 +35,7 @@ public class VPreso extends javax.swing.JDialog {
         ComboAgresividad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboIntensidad.setModel(new DefaultComboBoxModel(Nivel.values()));
         ComboSeguridad.setModel(new DefaultComboBoxModel(Nivel.values()));
-
-        this.preso = preso;
+        
         TextoDNI.setText(preso.getDNI());
         TextoNombre.setText(preso.getNombre());
         TextoApodo.setText(preso.getApodo());
@@ -552,17 +551,14 @@ public class VPreso extends javax.swing.JDialog {
 
     private void BotonInsertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonInsertarActionPerformed
         insertarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonInsertarActionPerformed
 
     private void BotonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonModificarActionPerformed
         modificarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonModificarActionPerformed
 
     private void BotonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonEliminarActionPerformed
         eliminarCargo();
-        buscarCargosPreso(TextoDNI.getText());
     }//GEN-LAST:event_BotonEliminarActionPerformed
 
     private void BotonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonSalirActionPerformed
@@ -570,7 +566,7 @@ public class VPreso extends javax.swing.JDialog {
     }//GEN-LAST:event_BotonSalirActionPerformed
 
     private void BotonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonGuardarActionPerformed
-        insertarPreso();
+        guardarCambios();
     }//GEN-LAST:event_BotonGuardarActionPerformed
 
     private void TablaCargosMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaCargosMouseReleased
@@ -629,55 +625,22 @@ public class VPreso extends javax.swing.JDialog {
     private javax.swing.JTabbedPane jTabbedPanel;
     // End of variables declaration//GEN-END:variables
 
-    private void insertarPreso() {
-        String DNI = TextoDNI.getText();
-        String nombre = TextoNombre.getText();
-        String apodo = TextoApodo.getText();
-        Date fechaNacimiento = Date.valueOf(TextoFechaN.getText());
-        Date fechaIngreso = Date.valueOf(TextoFechaI.getText());
-        Nivel agresividad = (Nivel) ComboAgresividad.getSelectedItem();
-
-        ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
-        ModeloTablaCeldas mtc = (ModeloTablaCeldas) TablaCeldas.getModel();
-
-        Celda celda = null;
-        Banda banda = null;
-        if (mtb.getRowCount() > 0) {
-            if (TablaBandas.getSelectedRowCount() > 0) {
-                String tipoBanda = mtb.obtenerBanda(TablaBandas.getSelectedRow()).getTipo_banda();
-                Integer numPresos = mtb.obtenerBanda((TablaBandas.getSelectedRow())).getPresos();
-                banda = new Banda(tipoBanda, numPresos);
-            }
-        }
-
-        //Parte de Celdas
-        if (mtc.getRowCount() > 0) {
-            if (TablaCeldas.getSelectedRowCount() > 0) {
-                celda = new Celda(mtc.obtenerCelda(TablaCeldas.getSelectedRow()));
-
-                //Si la celda esta llena
-                if (celda.getnOcupantes() >= celda.getnCamas()) {
-                    if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
-                        intercambiarPresos(celda);
-                    } else {    //Si el preso no esta en ninguna otra celda (Insercion)
-                        System.out.println("La celda escogida esta llena!");
-                        return;
-                    }
-                }
-            }
-        }
+    private void guardarCambios() {
+        preso.setDNI(TextoDNI.getText());
+        preso.setNombre(TextoNombre.getText());
+        preso.setApodo(TextoApodo.getText());
+        preso.setFechaNacimiento(Date.valueOf(TextoFechaN.getText()));
+        preso.setFechaIngreso(Date.valueOf(TextoFechaI.getText()));
+        preso.setAgresividad((Nivel) ComboAgresividad.getSelectedItem());
+        
         //Insertar Preso
-        Preso auxPreso = new Preso(DNI, nombre, apodo, fechaNacimiento, fechaIngreso, null, banda, agresividad, celda);
-        fc.insertarPreso(auxPreso);
+        fc.insertarPreso(preso);
 
-        if (!TextoTipoDelito.getText().isEmpty()) {
-            String nombreDelito = TextoTipoDelito.getText();
-            String descripcion = TextoDescripcion.getText();
-            Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
-
-            Delito delito = new Delito(nombreDelito, descripcion, intensidad);
-            fc.insertarCargo(DNI, delito);
-        }
+        //Eliminar todos los Cargos de un preso
+        fc.eliminarCargos(preso);
+        //Añadir los cargos actuales de un preso
+        fc.insertarCargos(preso);
+        
     }
 
     private void obtenerCeldaPreso(String id) {
@@ -694,6 +657,7 @@ public class VPreso extends javax.swing.JDialog {
 
     //Debe usarse junto con la comprobacion previa de si esta ocupada o no una celda
     private void intercambiarPresos(Celda celda) {
+        guardarCambios();   //Se guardan los cambios antes
         fc.iniciaAvisoIntercambio(celda, preso);
     }
 
@@ -710,8 +674,34 @@ public class VPreso extends javax.swing.JDialog {
 
     }
 
+    //A los presos nuevos, si la celda esta ocupada tira error, sino, le asocian la celda
+    //A los presos actuales, celda ocupada --> intercambio, celda libre --> asociar celda
     private void alojarPreso() {
+        ModeloTablaCeldas mtc = (ModeloTablaCeldas) TablaCeldas.getModel();
+        Celda celda = null;
+        
+        //Parte de Celdas
+        if (mtc.getRowCount() > 0) {
+            if (TablaCeldas.getSelectedRowCount() > 0) {
+                celda = new Celda(mtc.obtenerCelda(TablaCeldas.getSelectedRow()));
 
+                if (preso.getCelda() != null) {   //En caso de que el preso este en otra celda (Modificacion)
+                    if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
+                        intercambiarPresos(celda);
+                        preso.setCelda(celda);
+                    } else {    //Plazas libres en la celda
+                        preso.setCelda(celda);
+                    }
+                } else {    //Si el preso no esta en ninguna otra celda (Insercion)
+                    if (celda.getnOcupantes() >= celda.getnCamas()) {   //Si la celda esta llena
+                        System.out.println("Celda llena, seleccione otra!");
+                        return;
+                    } else {    //Plazas libres en la celda
+                        preso.setCelda(celda);
+                    }
+                }
+            }
+        }
     }
 
     private void buscarBanda(String tipo) {
@@ -724,6 +714,7 @@ public class VPreso extends javax.swing.JDialog {
 
     }
 
+    //Guarda temporalmente la banda de un preso
     private void asociarPresoBanda() {
         String DNI = TextoDNI.getText();
         ModeloTablaBandas mtb = (ModeloTablaBandas) TablaBandas.getModel();
@@ -734,84 +725,69 @@ public class VPreso extends javax.swing.JDialog {
                 String tipoBanda = mtb.obtenerBanda(TablaBandas.getSelectedRow()).getTipo_banda();
                 Integer numPresos = mtb.obtenerBanda((TablaBandas.getSelectedRow())).getPresos();
                 banda = new Banda(tipoBanda, numPresos);
+                preso.setBanda(banda);
             }
         }
-        fc.asociarPreso(DNI, banda);
     }
 
+    //Quita el valor de la banda de un preso
     private void desasociarPresoBanda() {
-        String dni = TextoDNI.getText();
-        fc.desasociarPreso(dni);
+        preso.setBanda(null);
     }
 
     private void insertarCargo() {
-        String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
-        Nivel intensidad = Nivel.Alta;
-        switch (ComboIntensidad.getSelectedItem().toString()) {
-            case "Alta":
-                intensidad = Nivel.Alta;
-                break;
-            case "Media":
-                intensidad = Nivel.Media;
-                break;
-            case "Baja":
-                intensidad = Nivel.Baja;
-                break;
-        }
+        Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
+        
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
-        fc.insertarCargo(dni, delito);
-
+        preso.getCargos().put(delito.getTipo_delito(), delito);
+        actualizarCargos();
     }
 
     private void modificarCargo() {
-        String dni = TextoDNI.getText();
         String nombre = TextoTipoDelito.getText();
         String descripcion = TextoDescripcion.getText();
-        Nivel intensidad = Nivel.Alta;
-        switch (ComboIntensidad.getSelectedItem().toString()) {
-            case "Alta":
-                intensidad = Nivel.Alta;
-                break;
-            case "Media":
-                intensidad = Nivel.Media;
-                break;
-            case "Baja":
-                intensidad = Nivel.Baja;
-                break;
-        }
+        Nivel intensidad = Nivel.valueOf(ComboIntensidad.getSelectedItem().toString());
+        
         Delito delito = new Delito(nombre, descripcion, intensidad);
 
-        fc.modificarCargo(dni, delito);
+        preso.getCargos().put(delito.getTipo_delito(), delito);
+        actualizarCargos();
     }
 
     private void eliminarCargo() {
-        String dni = TextoDNI.getText();
-        String nombre = TextoTipoDelito.getText();
-        String descripcion = TextoDescripcion.getText();
-        Nivel intensidad = Nivel.Alta;
-        switch (ComboIntensidad.getSelectedItem().toString()) {
-            case "Alta":
-                intensidad = Nivel.Alta;
-                break;
-            case "Media":
-                intensidad = Nivel.Media;
-                break;
-            case "Baja":
-                intensidad = Nivel.Baja;
-                break;
-        }
-        Delito delito = new Delito(nombre, descripcion, intensidad);
-
-        fc.eliminarCargo(dni, delito);
+        preso.getCargos().remove(TextoTipoDelito.getText());
+        actualizarCargos();
     }
 
+    private void actualizarCargos(){
+        ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
+        ArrayList<Delito> delitos = new ArrayList<>();
+        
+        for(Delito d : preso.getCargos().values())
+            delitos.add(d);
+        
+        mtc.setFilas(delitos);
+        
+        if (mtc.getRowCount() > 0) {
+            TablaCargos.setRowSelectionInterval(0, 0);
+            BotonEliminar.setEnabled(true);
+            rellenarCampos();
+        } else {
+            BotonEliminar.setEnabled(false);
+        }
+    }
+    
     private void buscarCargosPreso(String DNI) {
         ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
 
-        mtc.setFilas(fc.obtenerCargosPreso(DNI));
+        ArrayList<Delito> delitos = (ArrayList<Delito>) fc.obtenerCargosPreso(DNI);
+        mtc.setFilas(delitos);
+        
+        preso.setCargos(delitos);   //Añadimos al preso sus cargos
+        
         if (mtc.getRowCount() > 0) {
             TablaCargos.setRowSelectionInterval(0, 0);
             BotonEliminar.setEnabled(true);
@@ -822,22 +798,13 @@ public class VPreso extends javax.swing.JDialog {
     }
 
     private void rellenarCampos() {
-        int fila = TablaCargos.getSelectedRow();
-        String tipo = TablaCargos.getValueAt(fila, 0).toString();
-        java.util.ArrayList<String> resultado = (java.util.ArrayList<String>) fc.rellenarCampos(tipo);
-        TextoTipoDelito.setText(resultado.get(0));
-        TextoDescripcion.setText(resultado.get(1));
-        switch (resultado.get(2)) {
-            case "Alta":
-                ComboIntensidad.setSelectedIndex(0);
-                break;
-            case "Media":
-                ComboIntensidad.setSelectedIndex(1);
-                break;
-            case "Baja":
-                ComboIntensidad.setSelectedIndex(2);
-                break;
-        }
+        ModeloTablaCargos mtc = (ModeloTablaCargos) TablaCargos.getModel();
+
+        Delito delito = mtc.obtenerCargo(TablaCargos.getSelectedRow());
+        
+        TextoTipoDelito.setText(delito.getTipo_delito());
+        TextoDescripcion.setText(delito.getDescripcion());
+        ComboIntensidad.setSelectedItem(delito.getIntensidad());
     }
 
 }
