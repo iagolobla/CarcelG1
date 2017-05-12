@@ -111,6 +111,7 @@ public class FachadaBaseDatos {
     }
     
     public void eliminarCelda(Celda celda){
+        daoEmpleados.desasociarGuardia(celda);
         daoCeldas.eliminarCelda(celda);
     }
     

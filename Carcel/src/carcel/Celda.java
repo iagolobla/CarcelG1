@@ -8,6 +8,7 @@ public class Celda {
     private Nivel seguridad;
     private Preso[] ocupantes;  //Reservar memoria para el array de tamaño NCamas
     private int nOcupantes;
+    private Guardia guardia;
 
     public Celda(Celda celda){
         this.nCamas = celda.getnCamas();
@@ -16,6 +17,7 @@ public class Celda {
         this.ocupantes = celda.getOcupantes();
         this.seguridad = celda.getSeguridad();
         this.superficie = celda.getSuperficie();
+        this.guardia = celda.getGuardia();
     }
     
     
@@ -28,13 +30,14 @@ public class Celda {
         this.nOcupantes = 0;
     }
     
-    public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad, int nOcupantes) {
+    public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad, int nOcupantes, Guardia guardia) {
         this.nCelda = nCelda;
         this.superficie = superficie;
         this.nCamas = nCamas;
         this.seguridad = seguridad;
         this.ocupantes = new Preso[nCamas];
         this.nOcupantes = nOcupantes;
+        this.guardia = guardia;
     }
 
     public Celda(int nCelda, float superficie, int nCamas, Nivel seguridad, Preso[] ocupantes) {
@@ -101,6 +104,14 @@ public class Celda {
 
     public void setnOcupantes(int nOcupantes) {
         this.nOcupantes = nOcupantes;
+    }
+    
+    public Guardia getGuardia(){
+        return(this.guardia);
+    }
+    
+    public void setGuardia(Guardia guardia){
+        this.guardia = guardia;
     }
 
 }

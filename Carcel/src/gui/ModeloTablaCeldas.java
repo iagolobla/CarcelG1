@@ -2,6 +2,7 @@ package gui;
 
 import carcel.Celda;
 import carcel.Nivel;
+import carcel.Guardia;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -15,7 +16,7 @@ public class ModeloTablaCeldas extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 6;
+        return 7;
     }
 
     @Override
@@ -46,6 +47,9 @@ public class ModeloTablaCeldas extends AbstractTableModel {
             case 5:
                 nombre = "Plazas_Libres";
                 break;
+            case 6:
+                nombre = "Guardia";
+                break;
                 
         }
         return nombre;
@@ -74,6 +78,8 @@ public class ModeloTablaCeldas extends AbstractTableModel {
             case 5:
                 clase = java.lang.Integer.class;
                 break;
+            case 6:
+                clase = Guardia.class;
                 
         }
         return clase;
@@ -81,7 +87,7 @@ public class ModeloTablaCeldas extends AbstractTableModel {
 
     @Override
     public boolean isCellEditable(int row, int col) {
-        return col != 0 && col != 4 && col != 5;
+        return col != 0 && col != 4 && col != 5 && col != 6;
     }
 
     @Override
@@ -107,6 +113,12 @@ public class ModeloTablaCeldas extends AbstractTableModel {
             case 5:
                 resultado = celdas.get(row).getnCamas() - celdas.get(row).getnOcupantes();
                 break;
+            case 6:
+                if(celdas.get(row).getGuardia()!=null){
+                    resultado = celdas.get(row).getGuardia().getDNI();
+                } else{
+                    resultado=null;
+                }
                 
         }
         return resultado;

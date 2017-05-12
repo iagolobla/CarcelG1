@@ -1,7 +1,9 @@
 package baseDatos;
 
 import carcel.Celda;
+import carcel.Guardia;
 import carcel.Nivel;
+import carcel.Nivel2;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -74,12 +76,12 @@ public class DAOCeldas extends AbstractDAO{
         
         Connection con;
         
-        PreparedStatement query = null;
-        ResultSet rsCelda;
+        PreparedStatement query = null, stmGuardia = null;
+        ResultSet rsCelda, rsGuardia;
         
-        String consulta =   "SELECT numCelda, superficie, numCamas, seguridad, ocupantes " +
-                            "FROM celda c " +
-                            "WHERE c.numCelda = ?";
+        String consulta =   "SELECT numCelda, superficie, numCamas, seguridad, ocupantes, guardia " +
+                            "FROM celda LEFT OUTER JOIN vigilar ON numCelda=celda " +
+                            "WHERE numCelda = ?";
         
         con = this.getConnection();
         
@@ -91,8 +93,30 @@ public class DAOCeldas extends AbstractDAO{
             rsCelda = query.executeQuery();
             
             while(rsCelda.next()){
-                celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), 
-                        Nivel.valueOf(rsCelda.getString("seguridad")), rsCelda.getInt("ocupantes"));
+                if(rsCelda.getString("guardia")!=null){
+                try{
+                    stmGuardia = con.prepareStatement("select DNI, nombre, puesto, telefono, direccion, email, agresividad "+
+                                              "from guardia "+
+                                              "where DNI = ? ");
+                    stmGuardia.setString(1, rsCelda.getString("guardia"));
+                    rsGuardia=stmGuardia.executeQuery();
+                    while (rsGuardia.next())
+                    {
+                        celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), 
+                            Nivel.valueOf(rsCelda.getString("seguridad")), rsCelda.getInt("ocupantes"), new Guardia(rsGuardia.getString("DNI"),
+                            rsGuardia.getString("nombre"), Nivel2.valueOf(rsGuardia.getString("puesto")), rsGuardia.getString("telefono"),
+                            rsGuardia.getString("direccion"), rsGuardia.getString("email"), Nivel.valueOf(rsGuardia.getString("agresividad"))));
+                    }
+                    }catch (SQLException e){
+                        System.out.println(e.getMessage());
+                        this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+                    } finally {
+                        stmGuardia.close();
+                    }
+                } else{
+                    celda = new Celda(rsCelda.getInt("numCelda"), rsCelda.getFloat("superficie"), rsCelda.getInt("numCamas"), 
+                            Nivel.valueOf(rsCelda.getString("seguridad")), rsCelda.getInt("ocupantes"), null);
+                }
             }
         } catch (SQLException e){
             System.out.println(e.getMessage());
@@ -116,10 +140,10 @@ public class DAOCeldas extends AbstractDAO{
         //Variables para guardar el orden de cada parametro en la consulta
         int oId, oNPlazas, oSeguridad;
         
-        PreparedStatement query = null;
-        ResultSet rsCeldas;
+        PreparedStatement query = null, stmGuardia = null;
+        ResultSet rsCeldas, rsGuardia;
         
-        String Consulta = "SELECT * FROM celda c ";
+        String Consulta = "SELECT numCelda, superficie, numCamas, seguridad, ocupantes, guardia FROM celda LEFT OUTER JOIN vigilar ON numCelda=celda  ";
         
         //Si algun parametro tiene algo
         if(!(id.isEmpty() && nPlazas.isEmpty() && seguridad.isEmpty())){
@@ -185,12 +209,42 @@ public class DAOCeldas extends AbstractDAO{
             rsCeldas = query.executeQuery();
             
             while(rsCeldas.next()){
-                auxCell = new Celda(rsCeldas.getInt("numCelda"),
+//                auxCell = new Celda(rsCeldas.getInt("numCelda"),
+//                                    rsCeldas.getFloat("superficie"),
+//                                    rsCeldas.getInt("numCamas"),
+//                                    Nivel.valueOf(rsCeldas.getString("seguridad")),
+//                                    rsCeldas.getInt("ocupantes"),
+//                );
+//                celdas.add(auxCell);
+                if(rsCeldas.getString("guardia")!=null){
+                try{
+                    stmGuardia = con.prepareStatement("select DNI, nombre, puesto, telefono, direccion, email, agresividad "+
+                                              "from guardia "+
+                                              "where DNI = ? ");
+                    stmGuardia.setString(1, rsCeldas.getString("guardia"));
+                    rsGuardia=stmGuardia.executeQuery();
+                    while (rsGuardia.next())
+                    {
+                        auxCell = new Celda(rsCeldas.getInt("numCelda"), rsCeldas.getFloat("superficie"), rsCeldas.getInt("numCamas"), 
+                            Nivel.valueOf(rsCeldas.getString("seguridad")), rsCeldas.getInt("ocupantes"), new Guardia(rsGuardia.getString("DNI"),
+                            rsGuardia.getString("nombre"), Nivel2.valueOf(rsGuardia.getString("puesto")), rsGuardia.getString("telefono"),
+                            rsGuardia.getString("direccion"), rsGuardia.getString("email"), Nivel.valueOf(rsGuardia.getString("agresividad"))));
+                    }
+                    }catch (SQLException e){
+                        System.out.println(e.getMessage());
+                        this.getFachadaCarcel().muestraExcepcion(e.getMessage());
+                    } finally {
+                        stmGuardia.close();
+                    }
+                } else{
+                    auxCell = new Celda(rsCeldas.getInt("numCelda"),
                                     rsCeldas.getFloat("superficie"),
                                     rsCeldas.getInt("numCamas"),
                                     Nivel.valueOf(rsCeldas.getString("seguridad")),
-                                    rsCeldas.getInt("ocupantes")
+                                    rsCeldas.getInt("ocupantes"),
+                                    null
                 );
+                }
                 celdas.add(auxCell);
             }
         } catch(SQLException e){
