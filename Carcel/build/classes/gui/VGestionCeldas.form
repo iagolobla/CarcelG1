@@ -79,12 +79,6 @@
                                   <Component id="BotonSalir" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="EtiquetaSeguridad1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="ComboSeguridad" min="-2" pref="101" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="EtiquetaPlazas1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -94,6 +88,14 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="TextoSuperficie" min="-2" pref="109" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="EtiquetaSeguridad1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="ComboSeguridad" min="-2" pref="101" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="BotonVigilancia" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -118,7 +120,7 @@
                       <Component id="CampoPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EtqiuetaPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <EmptySpace pref="12" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -131,6 +133,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="EtiquetaSeguridad1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ComboSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonVigilancia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -271,6 +274,14 @@
               </StringArray>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="BotonVigilancia">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Vigilancia"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonVigilanciaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

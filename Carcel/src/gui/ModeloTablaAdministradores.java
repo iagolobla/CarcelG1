@@ -1,6 +1,7 @@
 package gui;
 
 import carcel.Administrador;
+import carcel.Nivel2;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 
@@ -70,7 +71,7 @@ public class ModeloTablaAdministradores extends AbstractTableModel {
                 clase = java.lang.String.class;
                 break;
             case 4:
-                clase = java.lang.Integer.class;
+                clase = java.lang.String.class;
                 break;
             case 5:
                 clase = java.lang.String.class;
@@ -130,10 +131,10 @@ public class ModeloTablaAdministradores extends AbstractTableModel {
                 administradores.get(row).setContrasena((String) v);
                 break;
             case 3:
-                administradores.get(row).setPuesto((String) v);
+                administradores.get(row).setPuesto(Nivel2.valueOf((String) v));
                 break;
             case 4:
-                administradores.get(row).setTelefono((int) v);
+                administradores.get(row).setTelefono((String) v);
                 break;
             case 5:
                 administradores.get(row).setDireccion((String) v);

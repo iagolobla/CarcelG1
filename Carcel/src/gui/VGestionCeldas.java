@@ -42,6 +42,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
         BotonSalir = new javax.swing.JButton();
         ComboCampoSeguridad = new javax.swing.JComboBox();
         ComboSeguridad = new javax.swing.JComboBox();
+        BotonVigilancia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -104,6 +105,13 @@ public class VGestionCeldas extends javax.swing.JDialog {
 
         ComboSeguridad.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        BotonVigilancia.setText("Vigilancia");
+        BotonVigilancia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonVigilanciaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -143,11 +151,6 @@ public class VGestionCeldas extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(BotonSalir)
                                 .addGap(6, 6, 6))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(EtiquetaSeguridad1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(EtiquetaPlazas1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -156,7 +159,14 @@ public class VGestionCeldas extends javax.swing.JDialog {
                                 .addComponent(EtiquetaSuperficie)
                                 .addGap(18, 18, 18)
                                 .addComponent(TextoSuperficie, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)))))
+                                .addGap(34, 34, 34))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(EtiquetaSeguridad1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonVigilancia)
+                                .addGap(49, 49, 49)))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,7 +183,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CampoPlazas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EtqiuetaPlazas))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -184,7 +194,8 @@ public class VGestionCeldas extends javax.swing.JDialog {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EtiquetaSeguridad1)
-                    .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ComboSeguridad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotonVigilancia))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotonInsertar)
@@ -232,6 +243,10 @@ public class VGestionCeldas extends javax.swing.JDialog {
         rellenarCampos();
     }//GEN-LAST:event_TablaCeldasMouseReleased
 
+    private void BotonVigilanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonVigilanciaActionPerformed
+        iniciaVigilancia();
+    }//GEN-LAST:event_BotonVigilanciaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonBuscar;
@@ -239,6 +254,7 @@ public class VGestionCeldas extends javax.swing.JDialog {
     private javax.swing.JButton BotonInsertar;
     private javax.swing.JButton BotonModificar;
     private javax.swing.JButton BotonSalir;
+    private javax.swing.JButton BotonVigilancia;
     private javax.swing.JTextField CampoId;
     private javax.swing.JTextField CampoPlazas;
     private javax.swing.JComboBox ComboCampoSeguridad;
@@ -313,5 +329,12 @@ public class VGestionCeldas extends javax.swing.JDialog {
             TextoSuperficie.setText(String.valueOf(celda.getSuperficie()));
             ComboSeguridad.setSelectedItem(celda.getSeguridad());
         }
+    }
+    
+    private void iniciaVigilancia(){
+        ModeloTablaCeldas mc = (ModeloTablaCeldas) TablaCeldas.getModel();
+        
+        if(mc.getRowCount() > 0 && TablaCeldas.getSelectedRowCount() > 0)
+        fc.iniciaVigilancia(mc.obtenerCelda(TablaCeldas.getSelectedRow()));
     }
 }
