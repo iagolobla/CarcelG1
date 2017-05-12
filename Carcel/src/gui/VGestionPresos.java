@@ -232,7 +232,7 @@ public class VGestionPresos extends javax.swing.JDialog {
                 if(preso.getFechaSalida()==null){
                     fc.iniciaPreso(preso);
                 } else{
-                    System.out.println("Ese preso ya no esta en la carcel");
+                    fc.muestraExcepcion("Este preso ya no está en la carcel");
                 }
             }
         }
