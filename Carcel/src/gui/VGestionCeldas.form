@@ -71,6 +71,8 @@
                                   <Component id="BotonModificar" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="BotonEliminar" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="BotonVigilancia" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="BotonSalir" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -86,27 +88,19 @@
                                       <Component id="TextoPlazas" alignment="1" min="-2" pref="92" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="BotonVigilancia" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="EtiquetaSuperficie" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="TextoSuperficie" min="-2" pref="109" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
+                                  <Component id="EtiquetaSuperficie" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="TextoSuperficie" min="-2" pref="109" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" pref="471" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="564" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -126,7 +120,7 @@
                       <Component id="CampoPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="EtqiuetaPlazas" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="12" max="32767" attributes="0"/>
+                  <EmptySpace pref="13" max="32767" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="97" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -139,7 +133,6 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="EtiquetaSeguridad1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="ComboSeguridad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="BotonVigilancia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -147,6 +140,7 @@
                       <Component id="BotonModificar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonEliminar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BotonSalir" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonVigilancia" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
